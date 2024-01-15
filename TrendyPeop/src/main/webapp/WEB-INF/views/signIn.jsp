@@ -4,7 +4,6 @@
 <html>
 <head>
 <title>TrendyPeop</title>
-<meta charset="UTF-8">
 <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -26,8 +25,9 @@
 			<div class="row align-items-center text-center">
 				<div class="col-md-12">
 					<div class="card-body">
+					<form action="updateSuccess" method="post">
 						<img src="resources/assets/images/트렌디핍_글자_로고(195x28).png" alt="" class="img-fluid mb-4">
-						<h4 class="mb-3 f-w-400">Sign In</h4>
+						<h4 class="mb-3 f-w-400">로그인</h4>
 						<div class="form-group mb-3">
 							<label class="floating-label" for="Userid">UserID</label>
 							<input type="text" class="form-control" id="userid" placeholder="">
@@ -41,7 +41,8 @@
 							<label class="custom-control-label" for="customCheck1">로그인 정보 저장</label>
 						</div>
 						<button class="btn btn-block btn-primary mb-4">Signin</button>
-						<p class="mb-0 text-muted">아직 계정이 없으신가요? <a href="z_SignUp.html" class="f-w-400">Signup</a></p>
+						<p class="mb-0 text-muted">아직 계정이 없으신가요? <a href="signUp" class="f-w-400">Signup</a></p>
+					</form>
 					</div>
 				</div>
 			</div>

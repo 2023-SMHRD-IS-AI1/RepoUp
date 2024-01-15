@@ -4,7 +4,6 @@
 <html>
 <head>
 <title>TrendyPeop</title>
-<meta charset="UTF-8">
 <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -53,7 +52,7 @@
 					    <label>Pages</label>
 					</li>
 					<li class="nav-item">
-					    <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Main</span></a>
+					    <a href="goMain" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Main</span></a>
 					</li>
 					<li class="nav-item pcoded-hasmenu">
 					    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-align-justify"></i></span><span class="pcoded-mtext">Item Main</span></a>
@@ -146,7 +145,7 @@
                             <h5 class="m-b-10">Fashion Trend Dashboard</h5>
                         </div>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#!"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="goMain"><i class="feather icon-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="#!">TrendyPeop</a></li>
                         </ul>
                     </div>
