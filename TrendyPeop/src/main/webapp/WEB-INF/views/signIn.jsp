@@ -25,9 +25,9 @@
 			<div class="row align-items-center text-center">
 				<div class="col-md-12">
 					<div class="card-body">
-					<form action="updateSuccess" method="post">
+					<form action="goMain" method="post">
 						<img src="resources/assets/images/트렌디핍_글자_로고(195x28).png" alt="" class="img-fluid mb-4">
-						<h4 class="mb-3 f-w-400">로그인</h4>
+						<h4 class="mb-4 f-w-400">로그인</h4>
 						<div class="form-group mb-3">
 							<label class="floating-label" for="Userid">UserID</label>
 							<input type="text" class="form-control" id="userid" placeholder="">

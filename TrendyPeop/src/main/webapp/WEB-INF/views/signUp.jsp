@@ -26,15 +26,15 @@
 			<div class="row align-items-center text-center">
 				<div class="col-md-12">
 					<div class="card-body">
-					<form action="joinUser" method="post">
+					<form action="signUpSuccess" method="post">
 						<img src="resources/assets/images/트렌디핍_글자_로고(195x28).png" alt="" class="img-fluid mb-4">
-						<h4 class="mb-3 f-w-400">Sign up</h4>
+						<h4 class="mb-4 f-w-400">Sign up</h4>
+						
                         <div class="form-group mb-3">
 							<label class="floating-label" for="userid">UserID</label>
 							<input type="text" class="form-control" id=user_id name="user_id" placeholder="아이디를 입력하세요"><br>
 							<label id="label1"></label>
 						</div>
-
                         <div class="form-group mb-4">
 							<label class="floating-label" for="Password">Password</label>
 							<input type="password" class="form-control" id="password" name="user_pw" placeholder="비밀번호를 입력하세요">
