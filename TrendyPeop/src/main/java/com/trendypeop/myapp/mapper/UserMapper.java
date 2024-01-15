@@ -9,6 +9,6 @@ import com.trendypeop.myapp.entity.User;
 public interface UserMapper {
 
 	@Insert("insert into tb_user(user_id,user_pw,user_name,user_nick,user_type) values(#{user_id},#{user_pw},#{user_name},#{user_nick},#{user_type})")
-	void joinUser(User user);
+	int joinUser(User user);
 
 }
