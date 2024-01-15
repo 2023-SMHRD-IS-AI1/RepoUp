@@ -1,9 +1,15 @@
 package com.trendypeop.myapp;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.trendypeop.myapp.entity.User;
 import com.trendypeop.myapp.mapper.UserMapper;
@@ -63,7 +69,30 @@ public class MainController {
 		return "signUpSuccess";
 	}
 	
-	
+	@RequestMapping("/ConfirmId")
+	@ResponseBody
+	public void confirmId(String user_id, HttpServletResponse response) {
+
+		
+		boolean result = true;		
+		if(user_id.trim().isEmpty()) {
+			result = false;
+		} else {
+			if (userMapper.selectId(user_id)) {
+				result = false;
+			} else {
+				result = true;
+			}
+		}
+		
+		try {
+			PrintWriter out = response.getWriter();
+			out.print(result);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 	
 	
 	

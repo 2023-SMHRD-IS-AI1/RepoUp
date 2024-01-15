@@ -26,17 +26,15 @@
 			<div class="row align-items-center text-center">
 				<div class="col-md-12">
 					<div class="card-body">
-					<form action="signUpSuccess" method="post">
+					<form action="joinUser" method="post">
 						<img src="resources/assets/images/트렌디핍_글자_로고(195x28).png" alt="" class="img-fluid mb-4">
-						<h4 class="mb-4 f-w-400">회원가입</h4>
-                        <div class="form-group mb-4">
+						<h4 class="mb-3 f-w-400">Sign up</h4>
+                        <div class="form-group mb-3">
 							<label class="floating-label" for="userid">UserID</label>
-							<input type="text" class="form-control" id="userid" name="user_id" placeholder="아이디를 입력하세요">
+							<input type="text" class="form-control" id=user_id name="user_id" placeholder="아이디를 입력하세요"><br>
+							<label id="label1"></label>
 						</div>
-                        <div>
-                        	<!-- 기능 구현 전 까지 숨김 -->
-                            <!-- <button class="btn btn-primary btn-block mb-4">아이디 중복 체크</button> -->
-                        </div>
+
                         <div class="form-group mb-4">
 							<label class="floating-label" for="Password">Password</label>
 							<input type="password" class="form-control" id="password" name="user_pw" placeholder="비밀번호를 입력하세요">
@@ -45,7 +43,7 @@
 							<label class="floating-label" for="PasswordCheck">Password Check</label>
 							<input type="password" class="form-control" id="passwordcheck" placeholder="비밀번호 확인">
 						</div>
-						<div class="form-group mb-4">
+						<div class="form-group mb-3">
 							<label class="floating-label" for="Username">Username</label>
 							<input type="text" class="form-control" id="username" name="user_name" placeholder="이름을 입력하세요">
 						</div>
@@ -71,19 +69,46 @@
 <script src="resources/assets/js/ripple.js"></script>
 <script src="resources/assets/js/pcoded.min.js"></script>
 
+	
+	<!-- <script src="resources/assets/js/jquery-3.7.1.min.js"></script> -->
+		
+	<script type="text/javascript">
+		$(document).ready(function() {
+    		//ID 중복 확인
+		   	//id를 입력할 수 있는 input text 영역을 벗어나면 동작한다.
+    		$("#user_id").on("focusout", function() {
+    		
+    			var user_id = $("#user_id").val();
+    	
+    			if(user_id == '' || user_id.length == 0) {
+    				$("#label1").css("color", "red").text("공백은 ID로 사용할 수 없습니다.");
+    				return false;
+    			}
+				
+    			
+    				
+        		//Ajax로 전송
+        		$.ajax({
+        			url : './ConfirmId',
+        			data : {user_id : user_id},
+        			type : 'POST',
+        			dataType : 'json',
+        			success : function(result) {
+        				console.log(result);
+        				if (result == true) {
+        					$("#label1").css("color", "black").text("사용 가능한 ID 입니다.");
+        				} else{
+        					$("#label1").css("color", "red").text("사용 불가능한 ID 입니다.");
+        					$("#user_id").val('');
+        				}
+        			}
+        		}); //End Ajax
+    			
+    		});
+ 	   })
+	</script>
+
+
 </body>
 
-
-<!-- 
-<body bgcolor="lavender">
-	<form action="joinUser" method="post">
-		user_id<input type="text" name="user_id"><br>
-		user_pw<input type="text" name="user_pw"><br>
-		user_name<input type="text" name="user_name"><br>
-		user_nick<input type="text" name="user_nick"><br>
-		user_type<input type="text" name="user_type"><br>
-		
-		<input type="submit" value="SEND">
-	</form>
-</body> -->
 </html>
