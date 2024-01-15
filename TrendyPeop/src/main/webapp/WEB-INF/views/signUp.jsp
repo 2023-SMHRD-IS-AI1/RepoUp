@@ -53,12 +53,7 @@
 							<label class="floating-label" for="Nickname">Nickname</label>
 							<input type="text" class="form-control" id="nickname" name="user_nick" placeholder="닉네임을 입력하세요">
 						</div>
-						
-<<<<<<< HEAD
-						<button class="btn btn-primary btn-block mb-4"><a href="joinUser">Sign up</a></button>
-=======
 						<button class="btn btn-primary btn-block mb-4">Sign up</button>
->>>>>>> branch 'master' of https://github.com/2023-SMHRD-IS-AI1/RepoUp.git
 						<p class="mb-2">이미 계정이 있으신가요? <a href="signIn" class="f-w-400">Signin</a></p>
 					</form>
 					</div>
