@@ -54,8 +54,8 @@
 							<input type="text" class="form-control" id="nickname" name="user_nick" placeholder="닉네임을 입력하세요">
 						</div>
 						
-						<button class="btn btn-primary btn-block mb-4">Sign up</button>
-						<p class="mb-2">이미 계정이 있으신가요? <a href="z_SignIn.html" class="f-w-400">Signin</a></p>
+						<button class="btn btn-primary btn-block mb-4"><a href="joinUser">Sign up</a></button>
+						<p class="mb-2">이미 계정이 있으신가요? <a href="signIn" class="f-w-400">Signin</a></p>
 					</form>
 					</div>
 				</div>

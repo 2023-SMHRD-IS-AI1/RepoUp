@@ -41,7 +41,7 @@
 							<label class="custom-control-label" for="customCheck1">로그인 정보 저장</label>
 						</div>
 						<button class="btn btn-block btn-primary mb-4">Signin</button>
-						<p class="mb-0 text-muted">아직 계정이 없으신가요? <a href="z_SignUp.html" class="f-w-400">Signup</a></p>
+						<p class="mb-0 text-muted">아직 계정이 없으신가요? <a href="signUp" class="f-w-400">Signup</a></p>
 					</div>
 				</div>
 			</div>
