@@ -112,8 +112,16 @@
 					<ul class="navbar-nav ml-auto">
 						<li>
 							<div class="dropdown drp-user">
-								<a href="#!" class="dropdown-toggle" title="SignUp">
+								<a href="signUp" class="dropdown-toggle" title="SignUp">
 									<i class="feather icon-user"></i>
+								</a>
+							</div>
+						</li>
+						
+						<li>
+							<div class="dropdown drp-user">
+								<a href="signIn" class="dropdown-toggle" title="SignIn">
+									<i class="feather icon-log-in"></i>
 								</a>
 							</div>
 						</li>

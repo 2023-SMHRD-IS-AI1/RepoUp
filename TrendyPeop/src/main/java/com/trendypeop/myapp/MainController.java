@@ -21,10 +21,16 @@ public class MainController {
 	}
 	
 	
-	@RequestMapping("/join")
-	public String join() {
+	@RequestMapping("/signUp")
+	public String signUp() {
 		
-		return "join";
+		return "signUp";
+	}
+	
+	@RequestMapping("/signIn")
+	public String signIn() {
+		
+		return "signIn";
 	}
 
 	
