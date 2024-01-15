@@ -28,9 +28,9 @@
 					<div class="card-body">
 					<form action="signUpSuccess" method="post">
 						<img src="resources/assets/images/트렌디핍_글자_로고(195x28).png" alt="" class="img-fluid mb-4">
-						<h4 class="mb-4 f-w-400">Sign up</h4>
+						<h4 class="mb-4 f-w-400">회원가입</h4>
 						
-                        <div class="form-group mb-3">
+                        <div class="form-group mb-4">
 							<label class="floating-label" for="userid">UserID</label>
 							<input type="text" class="form-control" id=user_id name="user_id" placeholder="아이디를 입력하세요"><br>
 							<label id="label1"></label>
