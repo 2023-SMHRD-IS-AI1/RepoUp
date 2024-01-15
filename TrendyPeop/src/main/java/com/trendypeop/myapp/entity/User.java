@@ -23,5 +23,5 @@ public class User {
 	@NonNull private String user_name;
 	@NonNull private String user_nick;
 	private Date joined_at;
-	@NonNull private String user_type;
+	private String user_type;
 }
