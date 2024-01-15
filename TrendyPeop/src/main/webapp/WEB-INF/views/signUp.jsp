@@ -4,7 +4,6 @@
 <html>
 <head>
 <title>TrendyPeop</title>
-<meta charset="UTF-8">
 <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -27,15 +26,16 @@
 			<div class="row align-items-center text-center">
 				<div class="col-md-12">
 					<div class="card-body">
-					<form action="joinUser" method="post">
+					<form action="signUpSuccess" method="post">
 						<img src="resources/assets/images/트렌디핍_글자_로고(195x28).png" alt="" class="img-fluid mb-4">
-						<h4 class="mb-3 f-w-400">Sign up</h4>
-                        <div class="form-group mb-3">
+						<h4 class="mb-4 f-w-400">회원가입</h4>
+                        <div class="form-group mb-4">
 							<label class="floating-label" for="userid">UserID</label>
 							<input type="text" class="form-control" id="userid" name="user_id" placeholder="아이디를 입력하세요">
 						</div>
                         <div>
-                            <button class="btn btn-primary btn-block mb-4">아이디 중복 체크</button>
+                        	<!-- 기능 구현 전 까지 숨김 -->
+                            <!-- <button class="btn btn-primary btn-block mb-4">아이디 중복 체크</button> -->
                         </div>
                         <div class="form-group mb-4">
 							<label class="floating-label" for="Password">Password</label>
@@ -45,7 +45,7 @@
 							<label class="floating-label" for="PasswordCheck">Password Check</label>
 							<input type="password" class="form-control" id="passwordcheck" placeholder="비밀번호 확인">
 						</div>
-						<div class="form-group mb-3">
+						<div class="form-group mb-4">
 							<label class="floating-label" for="Username">Username</label>
 							<input type="text" class="form-control" id="username" name="user_name" placeholder="이름을 입력하세요">
 						</div>
@@ -54,7 +54,11 @@
 							<input type="text" class="form-control" id="nickname" name="user_nick" placeholder="닉네임을 입력하세요">
 						</div>
 						
+<<<<<<< HEAD
 						<button class="btn btn-primary btn-block mb-4"><a href="joinUser">Sign up</a></button>
+=======
+						<button class="btn btn-primary btn-block mb-4">Sign up</button>
+>>>>>>> branch 'master' of https://github.com/2023-SMHRD-IS-AI1/RepoUp.git
 						<p class="mb-2">이미 계정이 있으신가요? <a href="signIn" class="f-w-400">Signin</a></p>
 					</form>
 					</div>

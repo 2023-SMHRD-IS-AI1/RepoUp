@@ -20,6 +20,12 @@ public class MainController {
 		return "Main";
 	}
 	
+	@RequestMapping("/goMain")
+	public String goMain() {
+		
+		return "redirect:/";
+	}
+	
 	
 	@RequestMapping("/signUp")
 	public String signUp() {
@@ -32,13 +38,21 @@ public class MainController {
 		
 		return "signIn";
 	}
+	
+	
+	@RequestMapping("/updateSuccess")
+	public String updateSuccess() {
+		
+		return "updateSuccess";
+	}
 
 	
-	@RequestMapping("/joinUser")
-	public String joinUser(User user, Model model) {
+	
+	@RequestMapping("/signUpSuccess")
+	public String signUpSuccess(User user, Model model) {
 		
 		System.out.println(user.toString());
-		int cnt = userMapper.joinUser(user);
+		int cnt = userMapper.signUpSuccess(user);
 		
 		if (cnt > 0) {
 			System.out.println("데이터 입력 성공");
@@ -46,7 +60,7 @@ public class MainController {
 		
 		model.addAttribute("user_id", user.getUser_id());
 		
-		return "joinSuccess";
+		return "signUpSuccess";
 	}
 	
 	
