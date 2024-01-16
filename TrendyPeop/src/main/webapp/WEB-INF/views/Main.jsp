@@ -11,17 +11,19 @@
     <meta name="description" content="" />
     <meta name="keywords" content="">
     <meta name="author" content="Phoenixcoded" />
+    
     <!-- Favicon icon -->
     <link rel="icon" href="resources/assets/images/favicon.png" type="image/x-icon">
 
     <!-- vendor css -->
     <link rel="stylesheet" href="resources/assets/css/style.css">
+    
 </head>
+
 <body class="">
+
 <%@include file="./nav.jsp" %>
 	
-	
-
 <!-- [ Main Content ] start -->
 <div class="pcoded-main-container">
     <div class="pcoded-content">
