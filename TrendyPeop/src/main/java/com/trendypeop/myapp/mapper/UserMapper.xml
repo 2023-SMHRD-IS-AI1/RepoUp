@@ -6,4 +6,8 @@
 		SELECT COUNT(*) FROM tb_user WHERE user_id = #{user_id}
 	</select>
 	
+	<select id="userSelect" parameterType="com.trendypeop.myapp.entity.User" resultType="com.trendypeop.myapp.entity.User">
+		select * from tb_user where user_id = #{user_id} and user_pw = #{user_pw}
+	</select>
+	
 </mapper>
