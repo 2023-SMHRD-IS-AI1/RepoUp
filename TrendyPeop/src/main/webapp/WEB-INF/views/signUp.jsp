@@ -37,11 +37,11 @@
 						</div>
 						<div class="form-group mb-4">
 					        <label class="floating-label" for="Password">Password</label>
-					        <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호를 입력하세요" onchange="isSame()" >
+					        <input type="password" class="form-control" id="user_pw" name="user_pw" placeholder="비밀번호를 입력하세요" onchange="isSame()" >
 					    </div>
 					    <div class="form-group mb-4">
 					        <label class="floating-label" for="PasswordCheck">PasswordCheck</label>
-					        <input type="password" class="form-control" id="passwordcheck"  name="passwordcheck" placeholder="비밀번호 확인" onchange="isSame()" > 
+					        <input type="password" class="form-control" id="user_pwcheck"  name="user_pwcheck" placeholder="비밀번호 확인" onchange="isSame()" > 
 					        <label id="same"></label>
 					    </div>
 						<div class="form-group mb-3">
@@ -109,10 +109,10 @@
  	   })
  	   
  	   function isSame(){
-            if(document.getElementById('password').value != '' && document.getElementById('passwordcheck').value!='') {
-                if(document.getElementById('password').value==document.getElementById('passwordcheck').value) {
+            if(document.getElementById('user_pw').value != '' && document.getElementById('user_pwcheck').value!='') {
+                if(document.getElementById('user_pw').value==document.getElementById('user_pwcheck').value) {
                     document.getElementById('same').innerHTML='비밀번호가 일치합니다.';
-                    document.getElementById('same').style.color='blue';
+                    document.getElementById('same').style.color='black';
                 }
                 else{
                     document.getElementById('same').innerHTML='비밀번호가 일치하지 않습니다.';
