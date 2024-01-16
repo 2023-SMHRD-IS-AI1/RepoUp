@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -31,6 +33,22 @@ public class MainController {
 		
 		return "redirect:/";
 	}
+	
+	@PostMapping("/userSelect")
+	public String userSelect(User user, HttpSession session) {
+
+		User loginUser = userMapper.userSelect(user);
+		session.setAttribute("loginUser", loginUser);
+		System.out.println(loginUser.toString());
+		return "Main";
+	}
+	
+	@RequestMapping("/logoutUser")
+	public String logoutUser(HttpSession session) {
+		session.invalidate();
+		return "Main";
+	}
+	
 	
 	
 	@RequestMapping("/signUp")
