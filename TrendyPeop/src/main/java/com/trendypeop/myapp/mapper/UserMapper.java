@@ -12,4 +12,6 @@ public interface UserMapper {
 	int signUpSuccess(User user);
 
 	boolean selectId(String user_id); //중복 Id 검색
+	
+	public User userSelect(User user) ;
 }
