@@ -18,7 +18,9 @@
 		User loginUser = (User)session.getAttribute("loginUser");
 
 	%>
-		<div class="loader-bg">
+	
+	<!-- [ Pre-loader ] start -->
+	<div class="loader-bg">
 		<div class="loader-track">
 			<div class="loader-fill"></div>
 		</div>
@@ -37,7 +39,7 @@
 					<div class="main-menu-header">
 						<img class="img-radius" src="resources/assets/images/user/default.png" alt="User-Profile-Image">
 						<div class="user-details">
-							<div id="more-details">${loginUser.user_id} <!-- 이용자 닉네임 출력(끝에 띄어쓰기 한 칸 주기) --><i class="fa fa-caret-down"></i></div>
+							<div id="more-details">${loginUser.user_id} <i class="fa fa-caret-down"></i></div>
 						</div>
 					</div>
 					<div class="collapse" id="nav-user-link">
@@ -54,25 +56,34 @@
 					    <label>Pages</label>
 					</li>
 					<li class="nav-item">
-					    <a href="z_Main.html" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Main</span></a>
+					    <a href="goMain" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Main</span></a>
 					</li>
 					<li class="nav-item pcoded-hasmenu">
-					    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-align-justify"></i></span><span class="pcoded-mtext">Item Main</span></a>
-					    <ul class="pcoded-submenu">
-					        <li><a href="#!" target="_self"><i class="feather icon-thumbs-up m-r-5"></i> 추천 Page</a></li>
-					    </ul>
+						<a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-align-justify"></i></span>
+						<span class="pcoded-mtext">Item</span></a>
+						<ul class="pcoded-submenu">
+							<li><a href="styleMain" target="_self"><i class="feather icon-tag"></i> Item Main</a>
+							</li>
+							<li><a href="#!" target="_self"><i class="feather icon-thumbs-up m-r-5"></i> 추천</a>
+							</li>
+						</ul>
 					</li>
 					<li class="nav-item pcoded-hasmenu">
-					    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-align-justify"></i></span><span class="pcoded-mtext">Cody Main</span></a>
-					    <ul class="pcoded-submenu">
-					        <li><a href="#!" target="_self"><i class="feather icon-thumbs-up m-r-5"></i> 추천 Page</a></li>
-					    </ul>
+						<a href="#!" class="nav-link"><span class="pcoded-micon"><i
+									class="feather icon-align-justify"></i></span><span class="pcoded-mtext">Cody
+								</span></a>
+						<ul class="pcoded-submenu">
+							<li><a href="codyMain" target="_self"><i class="feather icon-tag"></i> Cody Main</a>
+							</li>
+							<li><a href="#!" target="_self"><i class="feather icon-thumbs-up m-r-5"></i> 추천</a>
+							</li>
+						</ul>
 					</li>
 					<li class="nav-item pcoded-hasmenu">
 					    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-align-justify"></i></span><span class="pcoded-mtext">My Page</span></a>
 					    <ul class="pcoded-submenu">
 					        <li><a href="#!" target="_self"><i class="feather icon-briefcase m-r-5"></i> 나만의 옷장</a></li>
-					        <li><a href="#!" target="_self"><i class="feather icon-heart m-r-5"></i> 개인정보수정</a></li>
+					        <li><a href="#!" target="_self"><i class="feather icon-heart m-r-5"></i> 좋아요 보기</a></li>
 					    </ul>
 					</li>
 				</ul>
@@ -89,7 +100,7 @@
 					<a href="#!" class="b-brand">
 						<!-- ========   change your logo hear   ============ -->
                         <!-- 로고 길이 짧게, 배경색 없애기 -->
-						<img src="resources/assets/images/트렌디핍_글자_로고(195x28).png" alt="" class="logo">
+						<img src="resources/assets/images/로고_누끼(160X23).png" alt="" class="logo">
 						<!-- <img src="resources/assets/images/logo-icon(30x30).png" alt="" class="logo-thumb"> -->
 					</a>
 				</div>
