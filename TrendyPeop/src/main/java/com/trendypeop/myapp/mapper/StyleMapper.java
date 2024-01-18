@@ -19,4 +19,16 @@ public interface StyleMapper {
 	public User userSelect(User user) ;
 
 	public List<Style> styleList();
+	
+	public int checkStyleHeart(Style style);
+	
+	public int insertStyleHeart(Style style);
+
+	public int deleteStyleHeart(Style style);
+	
+	public int checkCloset(Style style);
+	
+	public int insertCloset(Style style);
+
+	public int deleteCloset(Style style);
 }

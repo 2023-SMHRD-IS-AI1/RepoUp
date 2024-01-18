@@ -6,6 +6,29 @@
 		select * from tb_style where style_idx between 1 and 20
 	</select>
 	
+	<insert id="insertStyleHeart" parameterType="com.trendypeop.myapp.entity.Style">
+		insert into tb_style_favorite(style_idx, user_id) values(#{style_idx}, #{user_id})
+	</insert>
 	
+	<delete id="deleteStyleHeart" parameterType="com.trendypeop.myapp.entity.Style">
+		delete from tb_style_favorite where style_idx = #{style_idx} and user_id = #{user_id}
+	</delete>
+	
+	<select id="checkStyleHeart" parameterType="com.trendypeop.myapp.entity.Style" resultType="int">
+		select count(*) from tb_style_favorite where style_idx = #{style_idx} and user_id = #{user_id}
+	</select>
+	
+	
+	<insert id="insertCloset" parameterType="com.trendypeop.myapp.entity.Style">
+		insert into tb_closet(style_idx, user_id) values(#{style_idx}, #{user_id})
+	</insert>
+	
+	<delete id="deleteCloset" parameterType="com.trendypeop.myapp.entity.Style">
+		delete from tb_closet where style_idx = #{style_idx} and user_id = #{user_id}
+	</delete>
+	
+	<select id="checkCloset" parameterType="com.trendypeop.myapp.entity.Style" resultType="int">
+		select count(*) from tb_closet where style_idx = #{style_idx} and user_id = #{user_id}
+	</select>
 	
 </mapper>

@@ -85,9 +85,9 @@
                               </div>
                            </div>
                            <!-- 좋아요 안되어있으면 btn-outline-(빈) 속성, 좋아요 했으면 btn-(채워진) 으로 들어가야함 -->
-                           <button type="button" class="btn btn-icon btn-outline-primary"><i
+                           <button type="button" class="btn btn-icon btn-outline-primary" onclick="location.href='insertStyleHeart?style_idx=${s.style_idx }&user_id=${loginUser.user_id}'"><i
                                  class="feather icon-heart"></i></button>
-                           <button type="button" class="btn btn-icon btn-outline-success"><i
+                           <button type="button" class="btn btn-icon btn-outline-success" onclick="location.href='insertCloset?style_idx=${s.style_idx }&user_id=${loginUser.user_id}'"><i
                                  class="feather icon-briefcase"></i></button>
                         </div>
                      </div>

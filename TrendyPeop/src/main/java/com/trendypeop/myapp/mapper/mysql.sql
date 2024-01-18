@@ -15,3 +15,7 @@ alter table tb_user alter column user_type set default 'u';
 alter table tb_cody drop column cody_color;
 
 select * from tb_cody;
+
+delete from tb_cody_favorite;
+
+select * from tb_cody_favorite;

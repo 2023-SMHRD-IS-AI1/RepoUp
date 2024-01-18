@@ -20,4 +20,10 @@ public interface CodyMapper {
 	public User userSelect(User user) ;
 
 	public List<Cody> codyList();
+	
+	public int checkCodyHeart(Cody cody);
+
+	public int insertCodyHeart(Cody cody);
+
+	public int deleteCodyHeart(Cody cody);
 }

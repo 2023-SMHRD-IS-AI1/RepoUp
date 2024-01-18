@@ -17,11 +17,18 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 public class Style {
-	@NonNull private String style_idx;
+	@NonNull private int style_idx;
 	private String style_cate;
 	private String style_item;
 	@NonNull private String style_img_url;
 	@NonNull private String style_color;
 	@NonNull private String style_tag;
 	@NonNull private String style_google;
+	private String user_id;
+	
+	public Style(int style_idx, String user_id) {
+		super();
+		this.style_idx = style_idx;
+		this.user_id = user_id;
+	}
 }
