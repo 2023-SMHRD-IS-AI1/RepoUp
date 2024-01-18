@@ -62,7 +62,7 @@
 						<a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-align-justify"></i></span>
 						<span class="pcoded-mtext">Item</span></a>
 						<ul class="pcoded-submenu">
-							<li><a href="styleMain" target="_self"><i class="feather icon-tag"></i> Item Main</a>
+							<li><a href="goStyleMain" target="_self"><i class="feather icon-tag"></i> Item Main</a>
 							</li>
 							<li><a href="#!" target="_self"><i class="feather icon-thumbs-up m-r-5"></i> 추천</a>
 							</li>
