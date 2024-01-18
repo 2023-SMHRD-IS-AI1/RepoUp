@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -57,241 +58,30 @@
 							Cody Main
 						</h4>
 						<hr>
-						<!-- 첫번째줄 -->
+						<%
+                  for (int i = 0; i <= 3; i++) {
+                     int j = i * 5;
+                 %>
+						
 						<div class="card-deck">
+ 						<c:forEach items="${codyList }" var="c" begin="<%=j %>"
+                        end="<%=j+4 %>">
 							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811172600000000678.jpg"
+								<img class="img-fluid card-img-top" src="${c.cody_img_url}"
 									alt="Card image cap">
 								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
+									<h5 class="card-title">${c.cody_name }</h5>
 								</div>
 								<div class="card-footer">
 									<button type="button" class="btn btn-icon btn-primary"><i
 											class="feather icon-heart"></i></button>
 								</div>
 							</div>
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811172900000032724.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811172900000032724.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811200700000019599.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811201000000023455.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
+							
+							</c:forEach>
 						</div>
-						<!-- 두번째줄 -->
-						<br><br>
-						<div class="card-deck">
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811201800000086681.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811202400000075312.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811203500000049920.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811203800000057643.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811204200000017169.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
-						</div>
-						<!-- 세번째줄 -->
-						<br><br>
-						<div class="card-deck">
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811204900000090217.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811205300000070107.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811205700000061947.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811210100000053573.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811210500000051356.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
-						</div>
-						<!-- 네번째줄 -->
-						<br><br>
-						<div class="card-deck">
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811210900000034769.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811211300000049414.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811212000000084154.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811213100000043556.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811172600000000678.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
-						</div>
+						
+				<% } %>
 						<hr>
 						<ul class="pagination justify-content-center">
 							<li class="page-item"><a class="page-link" href="#!" aria-label="Previous"><span

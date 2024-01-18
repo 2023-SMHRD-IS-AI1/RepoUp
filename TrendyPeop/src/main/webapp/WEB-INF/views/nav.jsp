@@ -73,7 +73,7 @@
 									class="feather icon-align-justify"></i></span><span class="pcoded-mtext">Cody
 								</span></a>
 						<ul class="pcoded-submenu">
-							<li><a href="codyMain" target="_self"><i class="feather icon-tag"></i> Cody Main</a>
+							<li><a href="goCodyMain" target="_self"><i class="feather icon-tag"></i> Cody Main</a>
 							</li>
 							<li><a href="#!" target="_self"><i class="feather icon-thumbs-up m-r-5"></i> 추천</a>
 							</li>
