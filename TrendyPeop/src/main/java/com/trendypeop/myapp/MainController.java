@@ -63,17 +63,6 @@ public class MainController {
 		return "signIn";
 	}
 	
-	@RequestMapping("/styleMain")
-	public String styleMain() {
-		
-		return "styleMain";
-	}
-	
-	@RequestMapping("/codyMain")
-	public String codyMain() {
-		
-		return "codyMain";
-	}
 	
 	@RequestMapping("/updateUser")
 	public String updateUser() {
@@ -81,11 +70,6 @@ public class MainController {
 		return "updateUser";
 	}
 	
-	@RequestMapping("/codyDetail")
-	public String codyDetail() {
-		
-		return "codyDetail";
-	}
 	
 	
 	@RequestMapping("/updateSuccess")
@@ -135,6 +119,12 @@ public class MainController {
 		}
 
 	}
+	
+	@RequestMapping("/goMyCloset")
+	public String goMyCloset() {
+		return "myCloset";
+	}
+	
 	
 	
 	

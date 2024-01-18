@@ -3443,6 +3443,7 @@ fieldset:disabled a.btn {
     font-size: 0.875rem;
     line-height: 1.5;
     border-radius: 2px;
+    margin: 0 3px;
 }
 
 .btn-block {
@@ -17662,6 +17663,7 @@ a.text-dark:hover, a.text-dark:focus {
 .card .card-footer {
     border-top: 1px solid #e2e5e8;
     padding: 12px 20px;
+
 }
 
 .card .card-footer:not([class*="bg-"]) {
@@ -17726,7 +17728,7 @@ a.text-dark:hover, a.text-dark:focus {
     height: 24px;
     padding: 0;
     border-radius: 50%;
-    font-size: 17px;
+    font-size: 15px;
     display: inline-flex;
     align-items: center;
     justify-content: center;

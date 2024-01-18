@@ -64,7 +64,7 @@
 						<ul class="pcoded-submenu">
 							<li><a href="goStyleMain" target="_self"><i class="feather icon-tag"></i> Item Main</a>
 							</li>
-							<li><a href="#!" target="_self"><i class="feather icon-thumbs-up m-r-5"></i> 추천</a>
+							<li><a href="goRecoStyle" target="_self"><i class="feather icon-thumbs-up m-r-5"></i> 추천</a>
 							</li>
 						</ul>
 					</li>
@@ -73,17 +73,17 @@
 									class="feather icon-align-justify"></i></span><span class="pcoded-mtext">Cody
 								</span></a>
 						<ul class="pcoded-submenu">
-							<li><a href="codyMain" target="_self"><i class="feather icon-tag"></i> Cody Main</a>
+							<li><a href="goCodyMain" target="_self"><i class="feather icon-tag"></i> Cody Main</a>
 							</li>
-							<li><a href="#!" target="_self"><i class="feather icon-thumbs-up m-r-5"></i> 추천</a>
+							<li><a href="goRecoCody" target="_self"><i class="feather icon-thumbs-up m-r-5"></i> 추천</a>
 							</li>
 						</ul>
 					</li>
 					<li class="nav-item pcoded-hasmenu">
 					    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-align-justify"></i></span><span class="pcoded-mtext">My Page</span></a>
 					    <ul class="pcoded-submenu">
-					        <li><a href="#!" target="_self"><i class="feather icon-briefcase m-r-5"></i> 나만의 옷장</a></li>
-					        <li><a href="#!" target="_self"><i class="feather icon-heart m-r-5"></i> 좋아요 보기</a></li>
+					        <li><a href="goMyCloset" target="_self"><i class="feather icon-briefcase m-r-5"></i> 나만의 옷장</a></li>
+					        <li><a href="goLikeStyle" target="_self"><i class="feather icon-heart m-r-5"></i> 좋아요 보기</a></li>
 					    </ul>
 					</li>
 				</ul>

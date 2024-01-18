@@ -14,35 +14,46 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.trendypeop.myapp.entity.Cody;
 import com.trendypeop.myapp.entity.Style;
 import com.trendypeop.myapp.entity.User;
+import com.trendypeop.myapp.mapper.CodyMapper;
 import com.trendypeop.myapp.mapper.StyleMapper;
 import com.trendypeop.myapp.mapper.UserMapper;
 
 @Controller
-public class StyleController {
+public class CodyController {
 	
 	@Autowired
-	private StyleMapper styleMapper;
+	private CodyMapper codyMapper;
 	
 	
-	@RequestMapping("/goStyleMain")
-	public String goStyleMain(Model model) {
+	@RequestMapping("/goCodyMain")
+	public String goCodyMain(Model model) {
 		
-		List<Style> styleList = styleMapper.styleList();
-		model.addAttribute("styleList", styleList);
+		List<Cody> codyList = codyMapper.codyList();
+		model.addAttribute("codyList", codyList);
 		
-		return "styleMain";
+		return "codyMain";
 	}
 	
-	@RequestMapping("/goRecoStyle")
-	public String goRecoStyle() {
-		return "recommendStyle";
+	@RequestMapping("/goCodyDetail")
+	public String goCodyDetail() {
+		
+		return "codyDetail";
 	}
 	
-	@RequestMapping("/goLikeStyle")
-	public String goLikeStyle() {
-		return "likeStyle";
+	@RequestMapping("/goLikeCody")
+	public String goLikeCody() {
+		
+		return "likeCody";
 	}
+	
+	@RequestMapping("/goRecoCody")
+	public String goRecoCody() {
+		
+		return "recommendCody";
+	}
+	
 	
 }
