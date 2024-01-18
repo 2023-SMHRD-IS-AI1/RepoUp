@@ -56,9 +56,9 @@
 					<div class="col-xl-12">
                         <h4 class="mt-4 text-center">Like It</h4>
                         <button type="button" class="btn btn-sm btn-outline-primary" 
-                        onclick="location.href='golikeStyle'">Item</button>
+                        onclick="location.href='goLikeStyle'">Item</button>
                         <button type="button" class="btn btn-sm btn-outline-primary"
-                        onclick="location.href='golikeCody'">Cody</button>
+                        onclick="location.href='goLikeCody'">Cody</button>
                         <hr>
 						<!-- 첫번째줄 -->
 						<div class="card-deck">
