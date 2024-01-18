@@ -18,8 +18,11 @@ import org.json.simple.parser.ParseException;
 
 public class DataLAb {
 	@SuppressWarnings("null")
-	public static void main(String[] args) {
+	public static void data_main() {
 		Map<String, Double> ratioData = new HashMap<String, Double>();
+		
+		
+		
 		String data1 = "패딩";
 		String data2 = "원피스";
 		String data3 = "코트";
@@ -30,6 +33,7 @@ public class DataLAb {
 		String data8 = "숏패딩";
 		String data9 = "니트원피스";
 		String data10 = "톰보이코트";
+		
         String clientId = "2wfu86SPC0J9dFdG2iJq"; // 애플리케이션 클라이언트 아이디
         String clientSecret = "Yv305cvfq_"; // 애플리케이션 클라이언트 시크릿
 
