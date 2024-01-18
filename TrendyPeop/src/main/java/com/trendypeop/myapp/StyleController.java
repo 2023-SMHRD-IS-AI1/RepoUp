@@ -35,4 +35,14 @@ public class StyleController {
 		return "styleMain";
 	}
 	
+	@RequestMapping("/goRecoStyle")
+	public String goRecoStyle() {
+		return "recommendStyle";
+	}
+	
+	@RequestMapping("/goLikeStyle")
+	public String goLikeStyle() {
+		return "likeStyle";
+	}
+	
 }

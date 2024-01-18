@@ -37,4 +37,23 @@ public class CodyController {
 		return "codyMain";
 	}
 	
+	@RequestMapping("/goCodyDetail")
+	public String goCodyDetail() {
+		
+		return "codyDetail";
+	}
+	
+	@RequestMapping("/goLikeCody")
+	public String goLikeCody() {
+		
+		return "likeCody";
+	}
+	
+	@RequestMapping("/goRecoCody")
+	public String goRecoCody() {
+		
+		return "recommendCody";
+	}
+	
+	
 }
