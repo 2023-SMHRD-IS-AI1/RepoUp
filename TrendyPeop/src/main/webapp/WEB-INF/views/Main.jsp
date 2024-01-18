@@ -37,7 +37,7 @@
                         </div>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="goMain"><i class="feather icon-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="#!">TrendyPeop</a></li>
+                            <li class="breadcrumb-item"><a>TrendyPeop</a></li>
                         </ul>
                     </div>
                 </div>
