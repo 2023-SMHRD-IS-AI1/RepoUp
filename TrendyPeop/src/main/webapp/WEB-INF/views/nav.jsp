@@ -39,12 +39,12 @@
 					<div class="main-menu-header">
 						<img class="img-radius" src="resources/assets/images/user/default.png" alt="User-Profile-Image">
 						<div class="user-details">
-							<div id="more-details">${loginUser.user_id} <i class="fa fa-caret-down"></i></div>
+							<div id="more-details">${loginUser.user_nick} <i class="fa fa-caret-down"></i></div>
 						</div>
 					</div>
 					<div class="collapse" id="nav-user-link">
 						<ul class="list-unstyled">
-							<li class="list-group-item"><a href="#!"><i class="feather icon-settings m-r-5"></i>Settings</a></li>
+							<li class="list-group-item"><a href="updateUser"><i class="feather icon-settings m-r-5"></i>Settings</a></li>
 							<li class="list-group-item"><a href="logoutUser"><i class="feather icon-log-out m-r-5"></i>Logout</a></li>
 						</ul>
 					</div>
@@ -97,7 +97,7 @@
 		
 				<div class="m-header">
 					<a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
-					<a href="#!" class="b-brand">
+					<a href="goMain" class="b-brand">
 						<!-- ========   change your logo hear   ============ -->
                         <!-- 로고 길이 짧게, 배경색 없애기 -->
 						<img src="resources/assets/images/로고_누끼(160X23).png" alt="" class="logo">
@@ -107,13 +107,7 @@
 				<div class="collapse navbar-collapse">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item">
-							<a href="#!" class="pop-search"><i class="feather icon-search"></i></a>
-							<div class="search-bar">
-								<input type="text" class="form-control border-0 shadow-none" placeholder="Search hear">
-								<button type="button" class="close" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
+							
 						</li>
 					</ul>
 					<%if(loginUser == null){ %>

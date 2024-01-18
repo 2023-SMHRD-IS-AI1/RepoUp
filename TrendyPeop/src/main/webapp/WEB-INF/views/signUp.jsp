@@ -27,7 +27,7 @@
 				<div class="col-md-12">
 					<div class="card-body">
 					<form action="signUpSuccess" method="post">
-						<img src="resources/assets/images/트렌디핍_글자_로고(195x28).png" alt="" class="img-fluid mb-4">
+						<img src="resources/assets/images/로고_누끼(160X23).png" alt="" class="img-fluid mb-4">
 						<h4 class="mb-4 f-w-400">회원가입</h4>
 						
                         <div class="form-group mb-4">

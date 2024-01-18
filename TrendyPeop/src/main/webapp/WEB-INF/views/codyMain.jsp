@@ -57,19 +57,17 @@
 							Cody Main
 						</h5>
 						<hr>
+						<!-- 첫번째줄 -->
 						<div class="card-deck">
 							<div class="card">
 								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811172600000000678.jpg"
 									alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title">코디 이름</h5>
-									<small class="text-muted">코디 설명</small>
 								</div>
 								<div class="card-footer">
 									<button type="button" class="btn btn-icon btn-primary"><i
 											class="feather icon-heart"></i></button>
-									<button type="button" class="btn btn-icon btn-success"><i
-											class="feather icon-briefcase"></i></button>
 								</div>
 							</div>
 							<div class="card">
@@ -77,13 +75,10 @@
 									alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title">코디 이름</h5>
-									<small class="text-muted">코디 설명</small>
 								</div>
 								<div class="card-footer">
 									<button type="button" class="btn btn-icon btn-primary"><i
 											class="feather icon-heart"></i></button>
-									<button type="button" class="btn btn-icon btn-success"><i
-											class="feather icon-briefcase"></i></button>
 								</div>
 							</div>
 							<div class="card">
@@ -91,13 +86,10 @@
 									alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title">코디 이름</h5>
-									<small class="text-muted">코디 설명</small>
 								</div>
 								<div class="card-footer">
 									<button type="button" class="btn btn-icon btn-primary"><i
 											class="feather icon-heart"></i></button>
-									<button type="button" class="btn btn-icon btn-success"><i
-											class="feather icon-briefcase"></i></button>
 								</div>
 							</div>
 							<div class="card">
@@ -105,13 +97,10 @@
 									alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title">코디 이름</h5>
-									<small class="text-muted">코디 설명</small>
 								</div>
 								<div class="card-footer">
 									<button type="button" class="btn btn-icon btn-primary"><i
 											class="feather icon-heart"></i></button>
-									<button type="button" class="btn btn-icon btn-success"><i
-											class="feather icon-briefcase"></i></button>
 								</div>
 							</div>
 							<div class="card">
@@ -119,31 +108,25 @@
 									alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title">코디 이름</h5>
-									<small class="text-muted">코디 설명</small>
 								</div>
 								<div class="card-footer">
 									<button type="button" class="btn btn-icon btn-primary"><i
 											class="feather icon-heart"></i></button>
-									<button type="button" class="btn btn-icon btn-success"><i
-											class="feather icon-briefcase"></i></button>
 								</div>
 							</div>
 						</div>
-
-						<hr>
+						<!-- 두번째줄 -->
+						<br><br>
 						<div class="card-deck">
 							<div class="card">
 								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811201800000086681.jpg"
 									alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title">코디 이름</h5>
-									<small class="text-muted">코디 설명</small>
 								</div>
 								<div class="card-footer">
 									<button type="button" class="btn btn-icon btn-primary"><i
 											class="feather icon-heart"></i></button>
-									<button type="button" class="btn btn-icon btn-success"><i
-											class="feather icon-briefcase"></i></button>
 								</div>
 							</div>
 							<div class="card">
@@ -151,13 +134,10 @@
 									alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title">코디 이름</h5>
-									<small class="text-muted">코디 설명</small>
 								</div>
 								<div class="card-footer">
 									<button type="button" class="btn btn-icon btn-primary"><i
 											class="feather icon-heart"></i></button>
-									<button type="button" class="btn btn-icon btn-success"><i
-											class="feather icon-briefcase"></i></button>
 								</div>
 							</div>
 							<div class="card">
@@ -165,13 +145,10 @@
 									alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title">코디 이름</h5>
-									<small class="text-muted">코디 설명</small>
 								</div>
 								<div class="card-footer">
 									<button type="button" class="btn btn-icon btn-primary"><i
 											class="feather icon-heart"></i></button>
-									<button type="button" class="btn btn-icon btn-success"><i
-											class="feather icon-briefcase"></i></button>
 								</div>
 							</div>
 							<div class="card">
@@ -179,13 +156,10 @@
 									alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title">코디 이름</h5>
-									<small class="text-muted">코디 설명</small>
 								</div>
 								<div class="card-footer">
 									<button type="button" class="btn btn-icon btn-primary"><i
 											class="feather icon-heart"></i></button>
-									<button type="button" class="btn btn-icon btn-success"><i
-											class="feather icon-briefcase"></i></button>
 								</div>
 							</div>
 							<div class="card">
@@ -193,31 +167,25 @@
 									alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title">코디 이름</h5>
-									<small class="text-muted">코디 설명</small>
 								</div>
 								<div class="card-footer">
 									<button type="button" class="btn btn-icon btn-primary"><i
 											class="feather icon-heart"></i></button>
-									<button type="button" class="btn btn-icon btn-success"><i
-											class="feather icon-briefcase"></i></button>
 								</div>
 							</div>
 						</div>
-
-						<hr>
+						<!-- 세번째줄 -->
+						<br><br>
 						<div class="card-deck">
 							<div class="card">
 								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811204900000090217.jpg"
 									alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title">코디 이름</h5>
-									<small class="text-muted">코디 설명</small>
 								</div>
 								<div class="card-footer">
 									<button type="button" class="btn btn-icon btn-primary"><i
 											class="feather icon-heart"></i></button>
-									<button type="button" class="btn btn-icon btn-success"><i
-											class="feather icon-briefcase"></i></button>
 								</div>
 							</div>
 							<div class="card">
@@ -225,13 +193,10 @@
 									alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title">코디 이름</h5>
-									<small class="text-muted">코디 설명</small>
 								</div>
 								<div class="card-footer">
 									<button type="button" class="btn btn-icon btn-primary"><i
 											class="feather icon-heart"></i></button>
-									<button type="button" class="btn btn-icon btn-success"><i
-											class="feather icon-briefcase"></i></button>
 								</div>
 							</div>
 							<div class="card">
@@ -239,13 +204,10 @@
 									alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title">코디 이름</h5>
-									<small class="text-muted">코디 설명</small>
 								</div>
 								<div class="card-footer">
 									<button type="button" class="btn btn-icon btn-primary"><i
 											class="feather icon-heart"></i></button>
-									<button type="button" class="btn btn-icon btn-success"><i
-											class="feather icon-briefcase"></i></button>
 								</div>
 							</div>
 							<div class="card">
@@ -253,13 +215,10 @@
 									alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title">코디 이름</h5>
-									<small class="text-muted">코디 설명</small>
 								</div>
 								<div class="card-footer">
 									<button type="button" class="btn btn-icon btn-primary"><i
 											class="feather icon-heart"></i></button>
-									<button type="button" class="btn btn-icon btn-success"><i
-											class="feather icon-briefcase"></i></button>
 								</div>
 							</div>
 							<div class="card">
@@ -267,31 +226,25 @@
 									alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title">코디 이름</h5>
-									<small class="text-muted">코디 설명</small>
 								</div>
 								<div class="card-footer">
 									<button type="button" class="btn btn-icon btn-primary"><i
 											class="feather icon-heart"></i></button>
-									<button type="button" class="btn btn-icon btn-success"><i
-											class="feather icon-briefcase"></i></button>
 								</div>
 							</div>
 						</div>
-
-						<hr>
+						<!-- 네번째줄 -->
+						<br><br>
 						<div class="card-deck">
 							<div class="card">
 								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811210900000034769.jpg"
 									alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title">코디 이름</h5>
-									<small class="text-muted">코디 설명</small>
 								</div>
 								<div class="card-footer">
 									<button type="button" class="btn btn-icon btn-primary"><i
 											class="feather icon-heart"></i></button>
-									<button type="button" class="btn btn-icon btn-success"><i
-											class="feather icon-briefcase"></i></button>
 								</div>
 							</div>
 							<div class="card">
@@ -299,13 +252,10 @@
 									alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title">코디 이름</h5>
-									<small class="text-muted">코디 설명</small>
 								</div>
 								<div class="card-footer">
 									<button type="button" class="btn btn-icon btn-primary"><i
 											class="feather icon-heart"></i></button>
-									<button type="button" class="btn btn-icon btn-success"><i
-											class="feather icon-briefcase"></i></button>
 								</div>
 							</div>
 							<div class="card">
@@ -313,13 +263,10 @@
 									alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title">코디 이름</h5>
-									<small class="text-muted">코디 설명</small>
 								</div>
 								<div class="card-footer">
 									<button type="button" class="btn btn-icon btn-primary"><i
 											class="feather icon-heart"></i></button>
-									<button type="button" class="btn btn-icon btn-success"><i
-											class="feather icon-briefcase"></i></button>
 								</div>
 							</div>
 							<div class="card">
@@ -327,13 +274,10 @@
 									alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title">코디 이름</h5>
-									<small class="text-muted">코디 설명</small>
 								</div>
 								<div class="card-footer">
 									<button type="button" class="btn btn-icon btn-primary"><i
 											class="feather icon-heart"></i></button>
-									<button type="button" class="btn btn-icon btn-success"><i
-											class="feather icon-briefcase"></i></button>
 								</div>
 							</div>
 							<div class="card">
@@ -341,13 +285,10 @@
 									alt="Card image cap">
 								<div class="card-body">
 									<h5 class="card-title">코디 이름</h5>
-									<small class="text-muted">코디 설명</small>
 								</div>
 								<div class="card-footer">
 									<button type="button" class="btn btn-icon btn-primary"><i
 											class="feather icon-heart"></i></button>
-									<button type="button" class="btn btn-icon btn-success"><i
-											class="feather icon-briefcase"></i></button>
 								</div>
 							</div>
 						</div>

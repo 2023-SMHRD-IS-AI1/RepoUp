@@ -75,6 +75,18 @@ public class MainController {
 		return "codyMain";
 	}
 	
+	@RequestMapping("/updateUser")
+	public String updateUser() {
+		
+		return "updateUser";
+	}
+	
+	@RequestMapping("/codyDetail")
+	public String codyDetail() {
+		
+		return "codyDetail";
+	}
+	
 	
 	@RequestMapping("/updateSuccess")
 	public String updateSuccess() {
