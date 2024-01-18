@@ -6,6 +6,16 @@
 		select * from tb_cody where cody_idx between 1 and 20
 	</select>
 	
+	<insert id="insertCodyHeart" parameterType="com.trendypeop.myapp.entity.Cody">
+		insert into tb_cody_favorite(cody_idx, user_id) values(#{cody_idx}, #{user_id})
+	</insert>
 	
+	<delete id="deleteCodyHeart" parameterType="com.trendypeop.myapp.entity.Cody">
+		delete from tb_cody_favorite where cody_idx = #{cody_idx} and user_id = #{user_id}
+	</delete>
+	
+	<select id="checkCodyHeart" parameterType="com.trendypeop.myapp.entity.Cody" resultType="int">
+		select count(*) from tb_cody_favorite where cody_idx = #{cody_idx} and user_id = #{user_id}
+	</select>
 	
 </mapper>

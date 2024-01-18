@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.trendypeop.myapp.entity.Cody;
@@ -55,5 +56,25 @@ public class CodyController {
 		return "recommendCody";
 	}
 	
-	
+	@RequestMapping("/insertCodyHeart")
+	public String insertCodyHeart(@RequestParam("cody_idx") int cody_idx, @RequestParam("user_id") String user_id) {
+		
+		/* System.out.println("성공");
+		System.out.println(idx);
+		System.out.println(email);
+		System.out.println("성공2"); */
+		Cody cody = new Cody(cody_idx, user_id);
+		/* System.out.println(board.getIdx());
+		System.out.println(board.getEmail()); */
+		
+		int count = codyMapper.checkCodyHeart(cody);
+		System.out.println(count);
+		
+		if(count == 0) {
+			codyMapper.insertCodyHeart(cody);
+		} else {
+			codyMapper.deleteCodyHeart(cody);
+		}
+		return "redirect:/goCodyMain";
+	}
 }
