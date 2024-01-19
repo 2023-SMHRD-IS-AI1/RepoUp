@@ -64,8 +64,8 @@ public class MainController {
 	}
 	
 	
-	@RequestMapping("/updateUser")
-	public String updateUser() {
+	@RequestMapping("/goUpdateUser")
+	public String goUpdateUser() {
 		
 		return "updateUser";
 	}
@@ -73,9 +73,20 @@ public class MainController {
 	
 	
 	@RequestMapping("/updateSuccess")
-	public String updateSuccess() {
+	public String updateSuccess(User user, HttpSession session) {
+		System.out.println(user.toString());
 		
-		return "updateSuccess";
+		int cnt = userMapper.updateUser(user);
+
+		if (cnt > 0) {
+			user = userMapper.userSelect(user);
+			session.setAttribute("loginUser", user);
+			
+			return "updateSuccess";
+		} else {
+			System.out.println("실패");
+			return "goMain";
+		}
 	}
 
 	
@@ -88,11 +99,14 @@ public class MainController {
 		
 		if (cnt > 0) {
 			System.out.println("데이터 입력 성공");
+			model.addAttribute("user_id", user.getUser_id());
+			return "signUpSuccess";
+			
+		} else {
+			System.out.println("회원가입 실패");
+			return "signUpFail";
 		}
 		
-		model.addAttribute("user_id", user.getUser_id());
-		
-		return "signUpSuccess";
 	}
 	
 	@RequestMapping("/ConfirmId")
