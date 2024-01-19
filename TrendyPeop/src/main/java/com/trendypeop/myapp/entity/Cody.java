@@ -24,6 +24,9 @@ public class Cody {
 	private String cody_look;
 	private String cody_style_tag;
 	private String user_id;
+	private String item_name;
+	private String item_img_url;
+	private String item_url;
 	
 	public Cody(int cody_idx, String user_id) {
 		super();

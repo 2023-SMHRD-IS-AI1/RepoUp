@@ -39,7 +39,12 @@ public class CodyController {
 	}
 	
 	@RequestMapping("/goCodyDetail")
-	public String goCodyDetail() {
+	public String goCodyDetail(@RequestParam("cody_idx") int cody_idx, Model model) {
+		
+		System.out.println(cody_idx);
+		List<Cody> itemList = codyMapper.codyDetail(cody_idx);
+		model.addAttribute("itemList", itemList);
+		System.out.println(itemList);
 		
 		return "codyDetail";
 	}
