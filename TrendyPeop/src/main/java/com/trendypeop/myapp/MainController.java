@@ -133,13 +133,7 @@ public class MainController {
 		}
 
 	}
-	
-	@RequestMapping("/goMyCloset")
-	public String goMyCloset() {
-		return "myCloset";
-	}
-	
-	
+
 	
 	
 	

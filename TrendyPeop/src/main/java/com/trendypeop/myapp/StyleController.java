@@ -256,4 +256,16 @@ public class StyleController {
 		return "likeStyle";
 	}
 	
+	@RequestMapping("/goMyCloset")
+	public String goMyCloset(@RequestParam("user_id") String user_id, Model model) {
+		
+		List<Style> myClosetList = styleMapper.myClosetList(user_id);
+		model.addAttribute("myClosetList", myClosetList);
+		
+		System.out.println(myClosetList.toString());
+		
+		return "myCloset";
+	}
+	
+	
 }

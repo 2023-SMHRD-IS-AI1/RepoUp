@@ -35,4 +35,7 @@ public interface StyleMapper {
 	public List<Style> likeStyleList(String user_id);
 	
 	public List<Style> getTags(String user_id);
+	
+	public List<Style> myClosetList(String user_id);
+	
 }
