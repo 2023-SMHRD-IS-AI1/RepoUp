@@ -1,5 +1,9 @@
+<%@page import="com.trendypeop.myapp.entity.Cody"%>
+<%@page import="java.util.List"%>
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +27,10 @@
 </head>
 
 <body class="">
+<% int cnt=0;%>
+<% List<Cody> itemList = (List<Cody>) request.getAttribute("itemList"); 
+
+%>
 
 	<%@include file="./nav.jsp"%>
 
@@ -65,79 +73,50 @@
 							</h4>
 							<hr>
 							<div class="col">
-								<div class="card-deck">
+																<div class="card-deck">
 									<div class="col-md-6">
 										<div class="card" id="details">
 											<img class="img-fluid card-img-top"
-												src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811172600000000678.jpg"
+												src="<%=itemList.get(0).getCody_img_url() %>"
 												alt="Card image cap">
 											<div class="card-body">
-												<h5 class="card-title">코디 이름</h5>
+												<h5 class="card-title"><%=itemList.get(0).getCody_name() %></h5>
 												<small class="text-muted">코디 설명</small>
 											</div>
 											<div class="card-footer">해당 상품이 좋아요, 옷장찜 상태인지 확인 할 수 있는
 												기능을 넣을지 고민됨</div>
 										</div>
 									</div>
+									
 									<div class="col">
-										<div class="card-group">
+										<c:forEach items="${itemList}" var="it" varStatus="status">
+											<div class="card-group">
+											
 											<div class="card text-center" id="details">
+												<a href="${it.item_url }">
 												<img class="img-fluid card-img-top"
-													src="resources/assets/images/의상 이미지/스타일/301884058.jpg"
+													src="${it.item_img_url }"
 													alt="Card image cap">
+												</a>
 												<div class="card-body">
-													<h5 class="card-title">아이템 이름</h5>
+													<h5 class="card-title">${it.item_name}</h5>
 												</div>
 											</div>
-											<div class="card text-center" id="details">
-												<img class="img-fluid card-img-top"
-													src="resources/assets/images/의상 이미지/스타일/301898266.jpg"
-													alt="Card image cap">
-												<div class="card-body">
-													<h5 class="card-title">아이템 이름</h5>
-												</div>
+											
+											<% cnt +=1;
+											if(cnt%2==0){ 
+												if(cnt==6){
+											%>
+											</div>  <%}else{ %>
 											</div>
-										</div>
-										<hr>
-										<div class="card-group">
-											<div class="card text-center" id="details">
-												<img class="img-fluid card-img-top"
-													src="resources/assets/images/의상 이미지/스타일/301901294.jpg"
-													alt="Card image cap">
-												<div class="card-body">
-													<h5 class="card-title">아이템 이름</h5>
-												</div>
-											</div>
-											<div class="card text-center" id="details">
-												<img class="img-fluid card-img-top"
-													src="resources/assets/images/의상 이미지/스타일/301904450.jpg"
-													alt="Card image cap">
-												<div class="card-body">
-													<h5 class="card-title">아이템 이름</h5>
-												</div>
-											</div>
-										</div>
-										<hr>
-										<div class="card-group">
-											<div class="card text-center" id="details">
-												<img class="img-fluid card-img-top"
-													src="resources/assets/images/의상 이미지/스타일/301911608.jpg"
-													alt="Card image cap">
-												<div class="card-body">
-													<h5 class="card-title">아이템 이름</h5>
-												</div>
-											</div>
-											<div class="card text-center" id="details">
-												<img class="img-fluid card-img-top"
-													src="resources/assets/images/의상 이미지/스타일/301963373.jpg"
-													alt="Card image cap">
-												<div class="card-body">
-													<h5 class="card-title">아이템 이름</h5>
-												</div>
-											</div>
+											<hr>
+											<div class="card-group">
+											<%}
+											} %>
+											
+											</c:forEach>
 										</div>
 									</div>
-								</div>
 							</div>
 							<hr>
 							<br>
