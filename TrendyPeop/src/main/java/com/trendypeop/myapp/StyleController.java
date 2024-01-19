@@ -267,5 +267,25 @@ public class StyleController {
 		return "myCloset";
 	}
 	
-	
+	@RequestMapping("/deleteCloset")
+	   public String deleteCloset(@RequestParam("style_idx") int style_idx, @RequestParam("user_id") String user_id, Model model) {
+	      
+	      Style style = new Style(style_idx, user_id);
+	      
+	      int count = styleMapper.checkCloset(style);
+	      
+	      if(count == 0) {
+	         styleMapper.insertCloset(style);
+	      } else {
+	         styleMapper.deleteCloset(style);
+	      }
+	      
+	      
+	      List<Style> myClosetList = styleMapper.myClosetList(user_id);
+	      model.addAttribute("myClosetList", myClosetList);
+	      
+	      System.out.println(myClosetList.toString());
+	      
+	      return "myCloset";
+	   }
 }

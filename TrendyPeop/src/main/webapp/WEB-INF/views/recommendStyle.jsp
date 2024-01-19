@@ -49,18 +49,23 @@
 			</div>
 			<!-- [ breadcrumb ] end -->
 
-			<!-- 이미지 나열 -->
-			<!-- 헤더 -->
-			<div class="row">
-				<div class="card support-bar overflow-hidden">
-					<div class="col-xl-12">
+			<!-- 컨텐츠 영역 -->
+			<div class="card support-bar full">
+				<!-- 헤더 -->
+				<div class="row">
+					<div class="col">
 						<h4 class="mt-4">
 							<i class="feather icon-thumbs-up m-r-5"></i> Style Recommend
 						</h4>
 						<hr>
-						<!-- 첫번째줄 -->
+					</div>
+				</div>
+				<!-- 이미지 출력 -->
+				<div class="row">
+					<div class="col">
+					
 						<div class="card-deck">
-							<div class="card">
+							<div class="card" id="max">
 								<img data-toggle="modal" data-target="#item1"
 									class="img-fluid card-img-top"
 									src="resources/assets/images/의상 이미지/스타일/301884058.jpg"
@@ -216,9 +221,12 @@
 								</div>
 							</div>
 						</div>
-
-						<!-- 페이지 이동 -->
-						<hr>
+					</div>
+				</div>
+				<!-- 페이지 이동 -->
+				<div class="row">
+					<div class="col">
+						<!-- <hr>
 						<ul class="pagination justify-content-center">
 							<li class="page-item"><a class="page-link" href="#!"
 								aria-label="Previous"><span aria-hidden="true">&laquo;</span><span
@@ -229,11 +237,12 @@
 							<li class="page-item"><a class="page-link" href="#!"
 								aria-label="Next"><span aria-hidden="true">&raquo;</span><span
 									class="sr-only">Next</span></a></li>
-						</ul>
+						</ul> -->
 					</div>
 				</div>
+				<!-- 페이지 이동 끝 -->
 			</div>
-		<!-- 이미지 나열 끝 -->
+		<!-- 컨텐츠 영역 끝 -->
    </div>
 </div>
       <!-- [ Main Content ] end -->
