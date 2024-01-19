@@ -6,6 +6,13 @@
 		select * from tb_style where style_idx between 1 and 20
 	</select>
 	
+	<select id = "likeStyleList" parameterType="String" resultType="com.trendypeop.myapp.entity.Style">
+		select * 
+		from tb_style inner join tb_style_favorite 
+		on tb_style.style_idx = tb_style_favorite.style_idx 
+		where tb_style_favorite.user_id = #{user_id}
+	</select>
+	
 	<insert id="insertStyleHeart" parameterType="com.trendypeop.myapp.entity.Style">
 		insert into tb_style_favorite(style_idx, user_id) values(#{style_idx}, #{user_id})
 	</insert>

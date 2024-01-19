@@ -42,21 +42,20 @@ public class StyleController {
 	}
 	
 	@RequestMapping("/goLikeStyle")
-	public String goLikeStyle() {
+	public String goLikeStyle(@RequestParam("user_id") String user_id, Model model) {
+		
+		List<Style> likeStyleList = styleMapper.likeStyleList(user_id);
+		model.addAttribute("likeStyleList", likeStyleList);
+		
 		return "likeStyle";
 	}
 	
 	@RequestMapping("/insertStyleHeart")
 	public String insertHeart(@RequestParam("style_idx") int style_idx, @RequestParam("user_id") String user_id) {
 		
-		/* System.out.println("성공");
-		System.out.println(idx);
-		System.out.println(email);
-		System.out.println("성공2"); */
+
 		Style style = new Style(style_idx, user_id);
-		/* System.out.println(board.getIdx());
-		System.out.println(board.getEmail()); */
-		
+
 		int count = styleMapper.checkStyleHeart(style);
 		System.out.println(count);
 		
@@ -71,13 +70,7 @@ public class StyleController {
 	@RequestMapping("/insertCloset")
 	public String insertCloset(@RequestParam("style_idx") int style_idx, @RequestParam("user_id") String user_id) {
 		
-		/* System.out.println("성공");
-		System.out.println(idx);
-		System.out.println(email);
-		System.out.println("성공2"); */
 		Style style = new Style(style_idx, user_id);
-		/* System.out.println(board.getIdx());
-		System.out.println(board.getEmail()); */
 		
 		int count = styleMapper.checkCloset(style);
 		System.out.println(count);
@@ -90,6 +83,25 @@ public class StyleController {
 		
 		
 		return "redirect:/goStyleMain";
+	}
+	
+	@RequestMapping("/deleteStyleHeart")
+	public String deleteHeart(@RequestParam("style_idx") int style_idx, @RequestParam("user_id") String user_id, Model model) {
+		
+		Style style = new Style(style_idx, user_id);
+		
+		int count = styleMapper.checkStyleHeart(style);
+		
+		if(count == 0) {
+			styleMapper.insertStyleHeart(style);
+		} else {
+			styleMapper.deleteStyleHeart(style);
+		}
+		
+		List<Style> likeStyleList = styleMapper.likeStyleList(user_id);
+		model.addAttribute("likeStyleList", likeStyleList);
+		
+		return "likeStyle";
 	}
 	
 }
