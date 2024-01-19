@@ -6,6 +6,13 @@
 		select * from tb_cody where cody_idx between 1 and 20
 	</select>
 	
+	<select id = "likeCodyList" resultType="com.trendypeop.myapp.entity.Cody">
+		select * 
+		from tb_cody inner join tb_cody_favorite 
+		on tb_cody.cody_idx = tb_cody_favorite.cody_idx
+		where tb_cody_favorite.user_id = #{user_id}
+	</select>
+	
 	<insert id="insertCodyHeart" parameterType="com.trendypeop.myapp.entity.Cody">
 		insert into tb_cody_favorite(cody_idx, user_id) values(#{cody_idx}, #{user_id})
 	</insert>

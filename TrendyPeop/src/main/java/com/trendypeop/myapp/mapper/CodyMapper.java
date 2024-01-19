@@ -29,4 +29,6 @@ public interface CodyMapper {
 	
 	public List<Cody> codyDetail(int cody_idx);
 	
+	public List<Cody> likeCodyList(String user_id);
+	
 }
