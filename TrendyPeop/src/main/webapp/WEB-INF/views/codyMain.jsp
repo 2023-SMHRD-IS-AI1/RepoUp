@@ -67,8 +67,10 @@
  						<c:forEach items="${codyList }" var="c" begin="<%=j %>"
                         end="<%=j+4 %>">
 							<div class="card">
+								<a href="goCodyDetail?cody_idx=${c.cody_idx }">
 								<img class="img-fluid card-img-top" src="${c.cody_img_url}"
 									alt="Card image cap">
+								</a>
 								<div class="card-body">
 									<h5 class="card-title">${c.cody_name }</h5>
 								</div>
