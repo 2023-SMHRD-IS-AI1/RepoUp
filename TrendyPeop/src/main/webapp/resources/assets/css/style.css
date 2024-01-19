@@ -154,6 +154,7 @@ File: style.css
     margin-left: 5%;
     margin-top: 4%;
     margin-bottom: 4%;
+    max-width: 292px !important; 
 }
 
 
