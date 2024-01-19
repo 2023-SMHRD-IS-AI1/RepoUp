@@ -3,7 +3,7 @@
 <mapper namespace="com.trendypeop.myapp.mapper.CodyMapper">
 
 	<select id = "codyList" resultType="com.trendypeop.myapp.entity.Cody">
-		select * from tb_cody where cody_idx between 1 and 20
+		select * from tb_cody
 	</select>
 	
 	<select id = "likeCodyList" resultType="com.trendypeop.myapp.entity.Cody">

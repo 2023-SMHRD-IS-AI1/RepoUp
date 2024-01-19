@@ -1,3 +1,5 @@
+<%@page import="com.trendypeop.myapp.entity.Style"%>
+<%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -60,8 +62,11 @@
                   </h4>
                   <hr>
                   
-                  <% for(int i=0;i<=3;i++) {
-                      int j = i*5;
+                  <% 
+                  	List<Style> styleList = (List<Style>) request.getAttribute("styleList");
+                  
+                	for(int i=0;i<=(styleList.size()/5+1);i++) {
+                  	int j = i*5;
                   %>
                   <div class="card-deck">
                      <c:forEach items="${styleList }" var="s" begin="<%=j %>" end="<%=j+4 %>"  varStatus="status">

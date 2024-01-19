@@ -1,3 +1,5 @@
+<%@page import="com.trendypeop.myapp.entity.Cody"%>
+<%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -59,9 +61,11 @@
 						</h4>
 						<hr>
 						<%
-                  for (int i = 0; i <= 3; i++) {
-                     int j = i * 5;
-                 %>
+							List<Cody> codyList = (List<Cody>) request.getAttribute("codyList");
+		                  
+	                  		for(int i=0;i<=(codyList.size()/5+1);i++) {
+	                    	int j = i*5;
+                		%>
 						
 						<div class="card-deck">
  						<c:forEach items="${codyList }" var="c" begin="<%=j %>"

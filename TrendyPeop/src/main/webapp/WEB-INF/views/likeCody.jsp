@@ -1,3 +1,5 @@
+<%@page import="com.trendypeop.myapp.entity.Cody"%>
+<%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -61,8 +63,11 @@
                         onclick="location.href='goLikeCody?user_id=${loginUser.user_id}'">Cody</button>
                         <hr>
                         
-                        <% for(int i=0;i<=3;i++) {
-                      		int j = i*5;
+                        <% 
+                        	List<Cody> likeCodyList = (List<Cody>) request.getAttribute("likeCodyList");
+		                  
+		                	for(int i=0;i<=(likeCodyList.size()/5+1);i++) {
+		                	int j = i*5;
                   		%>
                         
 						<!-- 첫번째줄 -->

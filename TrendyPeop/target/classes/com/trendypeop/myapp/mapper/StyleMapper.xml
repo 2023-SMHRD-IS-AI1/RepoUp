@@ -3,7 +3,7 @@
 <mapper namespace="com.trendypeop.myapp.mapper.StyleMapper">
 
 	<select id = "styleList" resultType="com.trendypeop.myapp.entity.Style">
-		select * from tb_style where style_idx between 1 and 20
+		select * from tb_style
 	</select>
 	
 	<select id = "myClosetList" parameterType="String" resultType="com.trendypeop.myapp.entity.Style">

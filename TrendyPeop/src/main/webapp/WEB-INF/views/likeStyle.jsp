@@ -1,3 +1,5 @@
+<%@page import="com.trendypeop.myapp.entity.Style"%>
+<%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -61,8 +63,11 @@
                         onclick="location.href='goLikeCody?user_id=${loginUser.user_id}'">Cody</button>
                         <hr>
                         
-						<% for(int i=0;i<=3;i++) {
-                      		int j = i*5;
+						<% 
+							List<Style> likeStyleList = (List<Style>) request.getAttribute("likeStyleList");
+		                  
+                  			for(int i=0;i<=(likeStyleList.size()/5+1);i++) {
+                    		int j = i*5;
                   		%>
 						
 						<div class="card-deck">
