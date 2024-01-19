@@ -35,11 +35,11 @@
 						<div class="form-group mb-4">
 							<label class="floating-label" for="Password">Password</label>
 							<input type="password" class="form-control" name="user_pw" id="user_pw" placeholder="">
-						</div>
-						<div class="custom-control custom-checkbox text-left mb-4 mt-2">
+						</div><br><br>
+						<!-- <div class="custom-control custom-checkbox text-left mb-4 mt-2">
 							<input type="checkbox" class="custom-control-input" id="customCheck1">
 							<label class="custom-control-label" for="customCheck1">로그인 정보 저장</label>
-						</div>
+						</div> -->
 						<button class="btn btn-block btn-primary mb-4">Signin</button>
 						<p class="mb-0 text-muted">아직 계정이 없으신가요? <a href="signUp" class="f-w-400">Signup</a></p>
 					</form>
