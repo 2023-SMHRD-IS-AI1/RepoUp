@@ -32,4 +32,8 @@
 		where it.cody_idx = #{cody_idx}
 	</select>
 	
+	<select id="getTags" parameterType = "String" resultType="com.trendypeop.myapp.entity.Cody">
+		select * from tb_cody inner join tb_cody_favorite on tb_cody.cody_idx = tb_cody_favorite.cody_idx where tb_cody_favorite.user_id = #{user_id}
+	</select>
+	
 </mapper>

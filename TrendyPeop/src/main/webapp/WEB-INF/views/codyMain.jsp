@@ -78,6 +78,8 @@
 									<!-- 여기도 마찬가지, 좋아요 눌렀으면 btn-, 안눌렀으면 btn-outline-(빈하트) -->
 									<button type="button" class="btn btn-icon btn-outline-primary" onclick="location.href='insertCodyHeart?cody_idx=${c.cody_idx }&user_id=${loginUser.user_id}'"><i
 											class="feather icon-heart"></i></button>
+									<button type="button" class="btn btn-icon btn-outline-info" onclick="location.href=''"><i
+                                 	class="feather icon-search"></i></button>
 								</div>
 							</div>
 							

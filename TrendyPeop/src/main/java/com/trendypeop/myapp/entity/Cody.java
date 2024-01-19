@@ -33,4 +33,11 @@ public class Cody {
 		this.cody_idx = cody_idx;
 		this.user_id = user_id;
 	}
+	
+	public Cody(String cody_season, String cody_look, String cody_style_tag) {
+		super();
+		this.cody_season = cody_season;
+		this.cody_look = cody_look;
+		this.cody_style_tag = cody_style_tag;
+	}
 }

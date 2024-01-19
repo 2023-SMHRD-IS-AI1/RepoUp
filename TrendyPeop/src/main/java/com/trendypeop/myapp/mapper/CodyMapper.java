@@ -31,4 +31,6 @@ public interface CodyMapper {
 	
 	public List<Cody> likeCodyList(String user_id);
 	
+	public List<Cody> getTags(String user_id);
+	
 }

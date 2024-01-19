@@ -38,4 +38,9 @@
 		select count(*) from tb_closet where style_idx = #{style_idx} and user_id = #{user_id}
 	</select>
 	
+	
+	<select id="getTags" parameterType = "String" resultType="com.trendypeop.myapp.entity.Style">
+		select * from tb_style inner join tb_style_favorite on tb_style.style_idx = tb_style_favorite.style_idx where tb_style_favorite.user_id = #{user_id}
+	</select>
+	
 </mapper>

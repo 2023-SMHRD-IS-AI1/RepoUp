@@ -89,6 +89,8 @@
                                  class="feather icon-heart"></i></button>
                            <button type="button" class="btn btn-icon btn-outline-success" onclick="location.href='insertCloset?style_idx=${s.style_idx }&user_id=${loginUser.user_id}'"><i
                                  class="feather icon-briefcase"></i></button>
+                           <button type="button" class="btn btn-icon btn-outline-info" onclick="location.href=''"><i
+                                 class="feather icon-search"></i></button>
                         </div>
                      </div>
                      </c:forEach>

@@ -33,4 +33,6 @@ public interface StyleMapper {
 	public int deleteCloset(Style style);
 	
 	public List<Style> likeStyleList(String user_id);
+	
+	public List<Style> getTags(String user_id);
 }
