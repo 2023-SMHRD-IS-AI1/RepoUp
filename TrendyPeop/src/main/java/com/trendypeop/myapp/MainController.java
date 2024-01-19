@@ -39,8 +39,12 @@ public class MainController {
 
 		User loginUser = userMapper.userSelect(user);
 		session.setAttribute("loginUser", loginUser);
-		System.out.println(loginUser.toString());
-		return "Main";
+	
+		if(loginUser != null) {
+			return "Main";
+		}else {
+			return "signInFail";
+	}
 	}
 	
 	@RequestMapping("/logoutUser")
