@@ -50,7 +50,12 @@ public class CodyController {
 	}
 	
 	@RequestMapping("/goLikeCody")
-	public String goLikeCody() {
+	public String goLikeCody(@RequestParam("user_id") String user_id, Model model) {
+		
+		List<Cody> likeCodyList = codyMapper.likeCodyList(user_id);
+		model.addAttribute("likeCodyList", likeCodyList);
+		System.out.println(likeCodyList.toString());
+		
 		
 		return "likeCody";
 	}
@@ -64,13 +69,7 @@ public class CodyController {
 	@RequestMapping("/insertCodyHeart")
 	public String insertCodyHeart(@RequestParam("cody_idx") int cody_idx, @RequestParam("user_id") String user_id) {
 		
-		/* System.out.println("성공");
-		System.out.println(idx);
-		System.out.println(email);
-		System.out.println("성공2"); */
 		Cody cody = new Cody(cody_idx, user_id);
-		/* System.out.println(board.getIdx());
-		System.out.println(board.getEmail()); */
 		
 		int count = codyMapper.checkCodyHeart(cody);
 		System.out.println(count);
@@ -82,4 +81,25 @@ public class CodyController {
 		}
 		return "redirect:/goCodyMain";
 	}
+	
+	@RequestMapping("/deleteCodyHeart")
+	public String deleteCodyHeart(@RequestParam("cody_idx") int cody_idx, @RequestParam("user_id") String user_id, Model model) {
+		
+		Cody cody = new Cody(cody_idx, user_id);
+
+		int count = codyMapper.checkCodyHeart(cody);
+		System.out.println(count);
+		
+		if(count == 0) {
+			codyMapper.insertCodyHeart(cody);
+		} else {
+			codyMapper.deleteCodyHeart(cody);
+		}
+		
+		List<Cody> likeCodyList = codyMapper.likeCodyList(user_id);
+		model.addAttribute("likeCodyList", likeCodyList);
+		
+		return "likeCody";
+	}
+	
 }
