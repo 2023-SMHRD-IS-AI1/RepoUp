@@ -55,23 +55,54 @@
 				<div class="row">
 					<div class="col">
 						<h4 class="mt-4">
-							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-through-heart-fill" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M2.854 15.854A.5.5 0 0 1 2 15.5V14H.5a.5.5 0 0 1-.354-.854l1.5-1.5A.5.5 0 0 1 2 11.5h1.793l3.103-3.104a.5.5 0 1 1 .708.708L4.5 12.207V14a.5.5 0 0 1-.146.354l-1.5 1.5ZM16 3.5a.5.5 0 0 1-.854.354L14 2.707l-1.006 1.006c.236.248.44.531.6.845.562 1.096.585 2.517-.213 4.092-.793 1.563-2.395 3.288-5.105 5.08L8 13.912l-.276-.182A23.825 23.825 0 0 1 5.8 12.323L8.31 9.81a1.5 1.5 0 0 0-2.122-2.122L3.657 10.22a8.827 8.827 0 0 1-1.039-1.57c-.798-1.576-.775-2.997-.213-4.093C3.426 2.565 6.18 1.809 8 3.233c1.25-.98 2.944-.928 4.212-.152L13.292 2 12.147.854A.5.5 0 0 1 12.5 0h3a.5.5 0 0 1 .5.5v3Z"/>
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+								fill="currentColor" class="bi bi-arrow-through-heart-fill"
+								viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+									d="M2.854 15.854A.5.5 0 0 1 2 15.5V14H.5a.5.5 0 0 1-.354-.854l1.5-1.5A.5.5 0 0 1 2 11.5h1.793l3.103-3.104a.5.5 0 1 1 .708.708L4.5 12.207V14a.5.5 0 0 1-.146.354l-1.5 1.5ZM16 3.5a.5.5 0 0 1-.854.354L14 2.707l-1.006 1.006c.236.248.44.531.6.845.562 1.096.585 2.517-.213 4.092-.793 1.563-2.395 3.288-5.105 5.08L8 13.912l-.276-.182A23.825 23.825 0 0 1 5.8 12.323L8.31 9.81a1.5 1.5 0 0 0-2.122-2.122L3.657 10.22a8.827 8.827 0 0 1-1.039-1.57c-.798-1.576-.775-2.997-.213-4.093C3.426 2.565 6.18 1.809 8 3.233c1.25-.98 2.944-.928 4.212-.152L13.292 2 12.147.854A.5.5 0 0 1 12.5 0h3a.5.5 0 0 1 .5.5v3Z" />
                               </svg>
 							Cody Main
 						</h4>
-						<hr>
+					</div>
+					<div class="col" style="margin-left: auto; margin-top: auto;">
+						<div class="row" id="float">
+							<div class="col-sm" style="padding: inherit">
+								<div class="btn-group-sm mb-2 mr-2">
+									<button class="btn btn-sm btn-outline-primary dropdown-toggle"
+										type="button" data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">Primary</button>
+									<div class="dropdown-menu dropdown-menu-right">
+										<a class="dropdown-item" href="#!">Action</a> <a
+											class="dropdown-item" href="#!">Another action</a> <a
+											class="dropdown-item" href="#!">Something else here</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm" style="padding: inherit">
+								<div class="btn-group-sm mb-2 mr-2">
+									<button class="btn btn-sm btn-outline-primary dropdown-toggle"
+										type="button" data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="false">Primary</button>
+									<div class="dropdown-menu dropdown-menu-right">
+										<a class="dropdown-item" href="#!">Action</a> <a
+											class="dropdown-item" href="#!">Another action</a> <a
+											class="dropdown-item" href="#!">Something else here</a>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<!-- 이미지 시작 -->
 				<div class="row">
 					<div class="col">
+					<hr>
 						<%
-							List<Cody> codyList = (List<Cody>) request.getAttribute("codyList");
-		                  
-	                  		for(int i=0;i<=(codyList.size()/5+1);i++) {
-	                    	int j = i*5;
-                		%>
+						List<Cody> codyList = (List<Cody>) request.getAttribute("codyList");
+
+						for (int i = 0; i <= (codyList.size() / 5 + 1); i++) {
+							int j = i * 5;
+						%>
 						
 						<div class="card-deck">
  						<c:forEach items="${codyList }" var="c" begin="<%=j %>" end="<%=j+4 %>">

@@ -169,6 +169,12 @@ File: style.css
 	max-width: 293px;
 }
 
+#float{
+    float: right;
+    margin-right: inherit;
+}
+
+
 
 /*
  * Container style
