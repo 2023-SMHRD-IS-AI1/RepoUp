@@ -25,6 +25,9 @@ public class Style {
 	@NonNull private String style_tag;
 	@NonNull private String style_google;
 	private String user_id;
+	private String top_stItem;
+	private String top_stColor;
+	private String top_stTag;
 	
 	public Style(int style_idx, String user_id) {
 		super();
@@ -38,4 +41,13 @@ public class Style {
 		this.style_color = style_color;
 		this.style_tag = style_tag;
 	}
+	
+	public Style(String user_id, String style_item, String style_color, String style_tag) {
+		super();
+		this.user_id = user_id;
+		this.style_item = style_item;
+		this.style_color = style_color;
+		this.style_tag = style_tag;
+	}
+	
 }

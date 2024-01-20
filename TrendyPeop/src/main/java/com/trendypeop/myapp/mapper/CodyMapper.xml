@@ -36,4 +36,25 @@
 		select * from tb_cody inner join tb_cody_favorite on tb_cody.cody_idx = tb_cody_favorite.cody_idx where tb_cody_favorite.user_id = #{user_id}
 	</select>
 	
+	<delete id="deleteCodyReco" parameterType="String">
+		delete from tb_cody_recommendation where user_id = #{user_id}
+	</delete>
+	
+	<insert id="insertCodyReco" parameterType="com.trendypeop.myapp.entity.Cody">
+		insert into tb_cody_recommendation(user_id, cody_look, cody_style_tag) values(#{cody_season}, #{cody_look}, #{cody_style_tag})
+	</insert>
+
+	<select id = "recoList" parameterType = "com.trendypeop.myapp.entity.Cody" resultType="com.trendypeop.myapp.entity.Cody">
+		SELECT   *
+		FROM tb_cody
+		WHERE ( 
+		    cody_look IN (SELECT  cody_look FROM tb_cody_recommendation WHERE tb_cody_recommendation.user_id = #{user_id}) 
+		    AND cody_style_tag IN (SELECT cody_style_tag FROM tb_cody_recommendation WHERE tb_cody_recommendation.user_id = #{user_id})
+		)
+		AND (
+		    cody_season NOT LIKE #{cody_season}
+		)
+		ORDER BY RAND()
+	</select>
+	
 </mapper>

@@ -4,6 +4,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,29 +15,46 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.trendypeop.myapp.entity.Keyword;
+import com.trendypeop.myapp.mapper.GraphMapper;
 
 
 
 
-
-public class DataLAb {
-	@SuppressWarnings("null")
-	public static void data_main() {
+@Controller
+public class DataLAbTesting {
+	@Autowired
+	private GraphMapper graphMapper;
+	 
+	@RequestMapping("/datalabtest")
+	public @ResponseBody Keyword main_data() {
+		
 		Map<String, Double> ratioData = new HashMap<String, Double>();
 		
+//		String data1 = "패딩";
+//		String data2 = "원피스";
+//		String data3 = "코트";
+//		String data4 = "티셔츠";
+//		String data5 = "재킷";
+//		String data6 = "트위트자켓";
+//		String data7 = "여성코트";
+//		String data8 = "숏패딩";
+//		String data9 = "니트원피스";
+//		String data10 = "톰보이코트";
+		LocalDate now = LocalDate.now();
+		String now_string = now.toString();
+		System.out.println("2024-01-15");
+		String date = "2024-01-15";
+		//DataController dataController = new DataController();
+		Keyword keywordList = graphMapper.keywordListing("2024-01-15");
+		System.out.println(keywordList.getTop1());
 		
-		
-		String data1 = "패딩";
-		String data2 = "원피스";
-		String data3 = "코트";
-		String data4 = "티셔츠";
-		String data5 = "재킷";
-		String data6 = "트위트자켓";
-		String data7 = "여성코트";
-		String data8 = "숏패딩";
-		String data9 = "니트원피스";
-		String data10 = "톰보이코트";
-		
+	
         String clientId = "2wfu86SPC0J9dFdG2iJq"; // 애플리케이션 클라이언트 아이디
         String clientSecret = "Yv305cvfq_"; // 애플리케이션 클라이언트 시크릿
 
@@ -54,25 +75,43 @@ public class DataLAb {
 //                "{\"groupName\":\"%s\"," + "\"keywords\":[\"%s\"]}]," +
 //                "\"device\":\"pc\"," +
 //                "\"ages\":[\"3\",\"4\",\"5\",\"6\"]," +
-//                "\"gender\":\"f\"}", data1, data1, data2, data2, data3, data3, 
-//                						data4, data4, data5, data5);
-        
-        String requestBody = makeQuery(data1, data2, data3, data4);
-        String responseBody = post(apiUrl, requestHeaders, requestBody);
+//                "\"gender\":\"f\"}", keywordList.getTop1(), keywordList.getTop1(), keywordList.getTop2(), keywordList.getTop2(), 
+//                					keywordList.getTop3(), keywordList.getTop3(), keywordList.getTop4(), keywordList.getTop4(), 
+//                					keywordList.getTop5(), keywordList.getTop5());
+//        이쪽은 확인!!!!!!!!!!
+        ArrayList<Double> rateList = new ArrayList<Double>();
+        rateList.add(100.0);
+        		
+        String requestBody = makeQuery(keywordList.getTop1(), keywordList.getTop2(), keywordList.getTop3(), keywordList.getTop4(), date);
+        String responseBody1 = post(apiUrl, requestHeaders, requestBody);
        
-        ratioData = makeMap(responseBody, ratioData);
+        rateList = makeMap(responseBody1, rateList);
         
-        requestBody = makeQuery(data1, data5, data6, data7);
-        responseBody = post(apiUrl, requestHeaders, requestBody);
+        requestBody = makeQuery(keywordList.getTop1(), keywordList.getTop5(), keywordList.getTop6(), keywordList.getTop7(), date);
+        String responseBody2 = post(apiUrl, requestHeaders, requestBody);
         
-        ratioData = makeMap(responseBody, ratioData);
+        rateList = makeMap(responseBody2, rateList);
         
-        requestBody = makeQuery(data1, data8, data9, data10);
-        responseBody = post(apiUrl, requestHeaders, requestBody);
+        requestBody = makeQuery(keywordList.getTop1(), keywordList.getTop8(), keywordList.getTop9(), keywordList.getTop10(), date);
+        String responseBody3 = post(apiUrl, requestHeaders, requestBody);
         
-        ratioData = makeMap(responseBody, ratioData);
-       
-        System.out.println(ratioData.toString());
+        rateList = makeMap(responseBody3, rateList);
+        
+        System.out.println(rateList);
+        
+        Collections.sort(rateList, Collections.reverseOrder());
+        System.out.println(rateList);
+        keywordList.setTop1_rate(rateList.get(0));
+        keywordList.setTop2_rate(rateList.get(1));
+        keywordList.setTop3_rate(rateList.get(2));
+        keywordList.setTop4_rate(rateList.get(3));
+        keywordList.setTop5_rate(rateList.get(4));
+        keywordList.setTop6_rate(rateList.get(5));
+        keywordList.setTop7_rate(rateList.get(6));
+        keywordList.setTop8_rate(rateList.get(7));
+        keywordList.setTop9_rate(rateList.get(8));
+        keywordList.setTop10_rate(rateList.get(9));
+        
 //        JSONParser parser = new JSONParser();
 //        try {
 //			Object obj = parser.parse(responseBody);
@@ -105,13 +144,14 @@ public class DataLAb {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+        return keywordList;
 		
     }
 	
-	private static String makeQuery(String data1, String data2, String data3, String data4) {
+	private static String makeQuery(String data1, String data2, String data3, String data4, String date) {
 		
-		return String.format("{\"startDate\":\"2023-12-12\"," +
-                "\"endDate\":\"2023-12-12\"," + 
+		return String.format("{\"startDate\":\"%s\"," +
+                "\"endDate\":\"%s\"," + 
                 "\"timeUnit\":\"date\"," +
                 "\"keywordGroups\":[{\"groupName\":\"%s\"," + "\"keywords\":[\"%s\"]}," +
                 "{\"groupName\":\"%s\"," + "\"keywords\":[\"%s\"]}," +
@@ -119,11 +159,11 @@ public class DataLAb {
                 "{\"groupName\":\"%s\"," + "\"keywords\":[\"%s\"]}]," +
                 "\"device\":\"pc\"," +
                 "\"ages\":[\"3\",\"4\",\"5\",\"6\"]," +
-                "\"gender\":\"f\"}", data1, data1, data2, data2, data3, data3, 
+                "\"gender\":\"f\"}", date, date, data1, data1, data2, data2, data3, data3, 
                 						data4, data4);
 	}
 	
-	private static Map<String, Double> makeMap(String responseBody, Map<String, Double> ratioData) {
+	private static ArrayList<Double> makeMap(String responseBody, ArrayList<Double> rateList) {
 		JSONParser parser = new JSONParser();
         try {
 			Object obj = parser.parse(responseBody);
@@ -131,30 +171,36 @@ public class DataLAb {
 			
 			JSONArray resultsArray = (JSONArray) jsonObject.get("results");
 			
-			for (Object result : resultsArray) {
-	               JSONObject resultObject = (JSONObject) result;
-	               String title = (String) resultObject.get("title");
+			 for (int i = 0; i < resultsArray.size(); i++) {
+		            JSONObject resultObject = (JSONObject) resultsArray.get(i);
+		            String title = (String) resultObject.get("title");
 
 	                // "data" 배열에 접근
-	               JSONArray dataArray = (JSONArray) resultObject.get("data");
+		            JSONArray dataArray = (JSONArray) resultObject.get("data");
 	                
 	                // 각 데이터에 대한 정보 출력a
-	               for (Object data : dataArray) {
-	                   JSONObject dataObject = (JSONObject) data;
-	                   Object ratio = dataObject.get("ratio");
-	                   if(ratio.getClass().getName().equals("java.lang.Long")) {
-	                	   ratio = Double.valueOf(dataObject.get("ratio").toString());
-	                   }
-	                   ratioData.put(title, (Double) ratio);
-	               }         
+		            if (i != 0) {
+		                // 각 데이터에 대한 정보 출력
+		                for (Object data : dataArray) {
+		                    JSONObject dataObject = (JSONObject) data;
+		                    Object ratio = dataObject.get("ratio");
+
+		                    if (ratio instanceof Double) {
+		                        // Number 타입인 경우 Double로 변환하여 리스트에 추가
+		                    	rateList.add(((Number) ratio).doubleValue());
+		                    }
+		                }
+		            }         
 			}
 			
-			return ratioData;
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return null;
+			
 		}
+        
+        
+		return rateList;
         
         
 	}

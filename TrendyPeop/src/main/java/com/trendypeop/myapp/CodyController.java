@@ -68,11 +68,6 @@ public class CodyController {
 		return "likeCody";
 	}
 	
-	@RequestMapping("/goRecoCody")
-	public String goRecoCody() {
-		
-		return "recommendCody";
-	}
 	
 	@RequestMapping("/insertCodyHeart")
 	public String insertCodyHeart(@RequestParam("cody_idx") int cody_idx, @RequestParam("user_id") String user_id) {
@@ -80,7 +75,6 @@ public class CodyController {
 		Cody cody = new Cody(cody_idx, user_id);
 		
 		int count = codyMapper.checkCodyHeart(cody);
-		System.out.println(count);
 		
 		if(count == 0) {
 			codyMapper.insertCodyHeart(cody);
@@ -114,6 +108,9 @@ public class CodyController {
 		        Map<String, Integer> map1 = new HashMap<>(); // look
 		        Map<String, Integer> map2 = new HashMap<>(); // tag
 		        
+		        map1.remove("nan");
+		        map2.remove("nan");
+		        
 		        for (String item: cdLookDistinct) {
 		            map1.put(item, Collections.frequency(cdLookList, item)); // map에 K:V 형태로 넣기
 		        }
@@ -136,7 +133,7 @@ public class CodyController {
 		        entryList2.sort(new Comparator<Map.Entry<String, Integer>>() {
 		        	@Override
 		        	public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-		        		return o2.getValue() - o1.getValue();
+		        	return o2.getValue() - o1.getValue();
 		        	}
 		        }); // 내림차순으로 정렬
 		        
@@ -151,47 +148,76 @@ public class CodyController {
 		        	tagList2.add(entry.getKey());
 		        } // 내림차순으로 entryList 안에 들어가 있는 상태에서 key 값(태그 값)만 list에 따로 담기
 		        
-		        List<String> top3_cdLook = new ArrayList<String>();
-		        List<String> top3_cdTag = new ArrayList<String>();
+		        String top1_cdLook;
+		        String top2_cdLook;
+		        String top3_cdLook;
+		        
+		        String top1_cdTag;
+		        String top2_cdTag;
+		        String top3_cdTag;
 		        
 
-		        if(tagList1.size() < 3) {
-		        	for(int i = 0; i < tagList1.size(); i++) {
-		        		top3_cdLook.add(tagList1.get(i));
-		        	}
+		        if(tagList1.size() == 0) {
+		        	top1_cdLook = "n";
+			        top2_cdLook = "n";
+			        top3_cdLook = "n";
+		        } else if(tagList1.size() == 1) {
+		        	top1_cdLook = tagList1.get(0);
+		        	top2_cdLook = "n";
+				    top3_cdLook = "n";
+		        } else if(tagList1.size() == 2) {
+		        	top1_cdLook = tagList1.get(0);
+		        	top2_cdLook = tagList1.get(1);
+		        	top3_cdLook = "n";
 		        } else {
-		        	for(int i = 0; i < 3; i++) {
-		        		top3_cdLook.add(tagList1.get(i));
-		        	}
+		        	top1_cdLook = tagList1.get(0);
+		        	top2_cdLook = tagList1.get(1);
+		        	top3_cdLook = tagList1.get(2);
 		        }
 		        
-		        if(tagList2.size() < 3) {
-		        	for(int i = 0; i < tagList2.size(); i++) {
-		        		top3_cdTag.add(tagList2.get(i));
-		        	}
-		        } else {
-		        	for(int i = 0; i < 3; i++) {
-		        		top3_cdTag.add(tagList2.get(i));
-		        	}
+		        if(tagList2.size() == 0) {
+		        	top1_cdTag = "n";
+		        	top2_cdTag = "n";
+		        	top3_cdTag = "n";
+		        } else if(tagList2.size() == 1){
+		        	top1_cdTag = tagList2.get(0);
+		        	top2_cdTag = "n";
+		        	top3_cdTag = "n";
+		        }else if(tagList2.size() == 2){
+		        	top1_cdTag = tagList2.get(0);
+		        	top2_cdTag = tagList2.get(1);
+		        	top3_cdTag = "n";
+		        	
+		        }else{
+		        	top1_cdTag = tagList2.get(0);
+		        	top2_cdTag = tagList2.get(1);
+		        	top3_cdTag = tagList2.get(2);
 		        }
 		        
 		        
-		        for(int j = 0; j < top3_cdLook.size(); j++) {
-		        	System.out.println(top3_cdLook.get(j));
-		        }
+		        
+		        System.out.println(top1_cdLook);
+		        System.out.println(top2_cdLook);
+		        System.out.println(top3_cdLook);
 		        
 		        System.out.println("=======================");
-				
-		        for(int j = 0; j < top3_cdTag.size(); j++) {
-		        	System.out.println(top3_cdTag.get(j));
-		        }
 		        
+		        System.out.println(top1_cdTag);
+		        System.out.println(top2_cdTag);
+		        System.out.println(top3_cdTag);
+
 		        System.out.println("=======================");
-		
-		
-		
-		
-		
+		        
+
+		        codyMapper.deleteCodyReco(user_id);
+		        Cody cody1 = new Cody(user_id, top1_cdLook, top1_cdTag);
+		        codyMapper.insertCodyReco(cody1);
+		        Cody cody2 = new Cody(user_id, top2_cdLook, top2_cdTag);
+		        codyMapper.insertCodyReco(cody2);
+		        Cody cody3 = new Cody(user_id, top3_cdLook, top3_cdTag);
+		        codyMapper.insertCodyReco(cody3);
+
+
 		
 		return "redirect:/goCodyMain";
 	}
@@ -214,6 +240,18 @@ public class CodyController {
 		model.addAttribute("likeCodyList", likeCodyList);
 		
 		return "likeCody";
+	}
+	
+	@RequestMapping("/goRecoCody")
+	public String goRecoCody(@RequestParam("user_id") String user_id, @RequestParam("cody_season") String cody_season, Model model) {
+		
+		Cody cody = new Cody(cody_season, user_id);
+		
+		List<Cody> recoList = codyMapper.recoList(cody);
+		model.addAttribute("recoList", recoList);	
+		System.out.println(recoList.toString());
+		
+		return "recommendCody";
 	}
 	
 }
