@@ -1,3 +1,5 @@
+<%@page import="com.trendypeop.myapp.entity.Style"%>
+<%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -48,154 +50,89 @@
 				</div>
 			</div>
 			<!-- [ breadcrumb ] end -->
-			
-			<!-- 이미지 나열 -->
-			<!-- 헤더 -->
-			<div class="row">
-				<div class="card support-bar overflow-hidden">
-					<div class="col-xl-12">
+
+			<!-- 컨텐츠 영역 -->
+			<div class="card support-bar full">
+				<!-- 헤더 -->
+				<div class="row">
+					<div class="col">
 						<h4 class="mt-4 text-center">
 							<!-- <i class="feather icon-briefcase m-r-5"></i> -->
 							My Closet
 						</h4>
 						<hr>
-						<!-- 첫번째줄 -->
+					</div>
+				</div>
+				
+				<!-- 이미지 출력 -->
+				<div class="row">
+					<div class="col">
+						<%
+						List<Style> myClosetList = (List<Style>) request.getAttribute("myClosetList");
+
+						for (int i = 0; i <= (myClosetList.size() / 5 + 1); i++) {
+							int j = i * 5;
+						%>
 						<div class="card-deck">
-							<div class="card">
-								<img data-toggle="modal" data-target="#item1" class="img-fluid card-img-top"
-									src="resources/assets/images/의상 이미지/스타일/301884058.jpg" alt="Card image cap">
-								<div class="card-footer">
-									<div class="modal fade bd-example-modal-lg" id="item1" tabindex="-1" role="dialog"
-										aria-labelledby="myLargeModalLabel" aria-hidden="true">
-										<div class="modal-dialog modal-lg">
-											<div class="modal-content">
-												<div class="modal-body">
-													<button type="button" class="close" data-dismiss="modal"
-														aria-label="Close"><span
-															aria-hidden="true">&times;</span></button>
-													<img class="img-fluid card-img-top"
-														src="resources/assets/images/의상 이미지/스타일/301884058.jpg"
-														alt="Card image cap">
+							<c:forEach items="${myClosetList }" var="c" begin="<%=j %>"
+								end="<%=j+4 %>" varStatus="status">
+
+								<div class="card" id="max">
+									<img data-toggle="modal" data-target="#item${status.index }"
+										class="img-fluid card-img-top" src="${c.style_img_url}"
+										alt="Card image cap">
+									<div class="card-footer">
+										<div class="modal fade bd-example-modal-lg"
+											id="item${status.index }" tabindex="-1" role="dialog"
+											aria-labelledby="myLargeModalLabel" aria-hidden="true">
+											<div class="modal-dialog modal-lg">
+												<div class="modal-content">
+													<div class="modal-body">
+														<button type="button" class="close" data-dismiss="modal"
+															aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+														<img class="img-fluid card-img-top"
+															src="${c.style_img_url}" alt="Card image cap">
+													</div>
 												</div>
 											</div>
 										</div>
+										<button type="button" class="btn btn-icon btn-success"
+											onclick="location.href='deleteCloset?style_idx=${c.style_idx }&user_id=${loginUser.user_id}'">
+											<i class="feather icon-briefcase"></i>
+										</button>
 									</div>
-									<button type="button" class="btn btn-icon btn-success"><i
-											class="feather icon-briefcase"></i></button>
 								</div>
-							</div>
-							<div class="card">
-								<img data-toggle="modal" data-target="#item2" class="img-fluid card-img-top"
-									src="resources/assets/images/의상 이미지/스타일/301898266.jpg" alt="Card image cap">
-								<div class="card-footer">
-									<div class="modal fade bd-example-modal-lg" id="item2" tabindex="-1" role="dialog"
-										aria-labelledby="myLargeModalLabel" aria-hidden="true">
-										<div class="modal-dialog modal-lg">
-											<div class="modal-content">
-												<div class="modal-body">
-													<button type="button" class="close" data-dismiss="modal"
-														aria-label="Close"><span
-															aria-hidden="true">&times;</span></button>
-													<img class="img-fluid card-img-top"
-														src="resources/assets/images/의상 이미지/스타일/301898266.jpg"
-														alt="Card image cap">
-												</div>
-											</div>
-										</div>
-									</div>
-                                    <button type="button" class="btn btn-icon btn-success"><i
-                                        class="feather icon-briefcase"></i></button>
-								</div>
-							</div>
-							<div class="card">
-								<img data-toggle="modal" data-target="#item3" class="img-fluid card-img-top"
-									src="resources/assets/images/의상 이미지/스타일/301901294.jpg" alt="Card image cap">
-								<div class="card-footer">
-									<div class="modal fade bd-example-modal-lg" id="item3" tabindex="-1" role="dialog"
-										aria-labelledby="myLargeModalLabel" aria-hidden="true">
-										<div class="modal-dialog modal-lg">
-											<div class="modal-content">
-												<div class="modal-body">
-													<button type="button" class="close" data-dismiss="modal"
-														aria-label="Close"><span
-															aria-hidden="true">&times;</span></button>
-													<img class="img-fluid card-img-top"
-														src="resources/assets/images/의상 이미지/스타일/301901294.jpg"
-														alt="Card image cap">
-												</div>
-											</div>
-										</div>
-									</div>
-									<button type="button" class="btn btn-icon btn-success"><i
-                                        class="feather icon-briefcase"></i></button>
-								</div>
-							</div>
-							<div class="card">
-								<img data-toggle="modal" data-target="#item4" class="img-fluid card-img-top"
-									src="resources/assets/images/의상 이미지/스타일/301904450.jpg" alt="Card image cap">
-								<div class="card-footer">
-									<div class="modal fade bd-example-modal-lg" id="item4" tabindex="-1" role="dialog"
-										aria-labelledby="myLargeModalLabel" aria-hidden="true">
-										<div class="modal-dialog modal-lg">
-											<div class="modal-content">
-												<div class="modal-body">
-													<button type="button" class="close" data-dismiss="modal"
-														aria-label="Close"><span
-															aria-hidden="true">&times;</span></button>
-													<img class="img-fluid card-img-top"
-														src="resources/assets/images/의상 이미지/스타일/301904450.jpg"
-														alt="Card image cap">
-												</div>
-											</div>
-										</div>
-									</div>
-									<button type="button" class="btn btn-icon btn-success"><i
-                                        class="feather icon-briefcase"></i></button>
-								</div>
-							</div>
-							<div class="card">
-								<img data-toggle="modal" data-target="#item5" class="img-fluid card-img-top"
-									src="resources/assets/images/의상 이미지/스타일/301911608.jpg" alt="Card image cap">
-								<div class="card-footer">
-									<div class="modal fade bd-example-modal-lg" id="item5" tabindex="-1" role="dialog"
-										aria-labelledby="myLargeModalLabel" aria-hidden="true">
-										<div class="modal-dialog modal-lg">
-											<div class="modal-content">
-												<div class="modal-body">
-													<button type="button" class="close" data-dismiss="modal"
-														aria-label="Close"><span
-															aria-hidden="true">&times;</span></button>
-													<img class="img-fluid card-img-top"
-														src="resources/assets/images/의상 이미지/스타일/301911608.jpg"
-														alt="Card image cap">
-												</div>
-											</div>
-										</div>
-									</div>
-									<button type="button" class="btn btn-icon btn-success"><i
-                                        class="feather icon-briefcase"></i></button>
-								</div>
-							</div>
+							</c:forEach>
 						</div>
 						<br><br>
-						<!-- 페이지 이동 -->
-						<hr>
+						<%
+						}
+						%>
+					</div>
+				</div>
+				<!-- 이미지 출력 끝 -->
+				<!-- 페이지 이동 -->
+				<div class="row">
+					<div class="col">
+						<!-- <hr>
 						<ul class="pagination justify-content-center">
-							<li class="page-item"><a class="page-link" href="#!" aria-label="Previous"><span
-										aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a>
-							</li>
+							<li class="page-item"><a class="page-link" href="#!"
+								aria-label="Previous"><span aria-hidden="true">&laquo;</span><span
+									class="sr-only">Previous</span></a></li>
 							<li class="page-item"><a class="page-link" href="#!">1</a></li>
 							<li class="page-item"><a class="page-link" href="#!">2</a></li>
 							<li class="page-item"><a class="page-link" href="#!">3</a></li>
-							<li class="page-item"><a class="page-link" href="#!" aria-label="Next"><span
-										aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
-						</ul>
+							<li class="page-item"><a class="page-link" href="#!"
+								aria-label="Next"><span aria-hidden="true">&raquo;</span><span
+									class="sr-only">Next</span></a></li>
+						</ul> -->
 					</div>
 				</div>
+				<!-- 페이지 이동 끝 -->
 			</div>
-
-			<!-- 이미지 나열 끝 -->
-			
+			<!-- 컨텐츠 영역 끝 -->
 		</div>
 	</div>
 	<!-- [ Main Content ] end -->

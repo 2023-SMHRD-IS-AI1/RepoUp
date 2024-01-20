@@ -31,4 +31,11 @@ public class Style {
 		this.style_idx = style_idx;
 		this.user_id = user_id;
 	}
+	
+	public Style(String style_item, String style_color, String style_tag) {
+		super();
+		this.style_item = style_item;
+		this.style_color = style_color;
+		this.style_tag = style_tag;
+	}
 }

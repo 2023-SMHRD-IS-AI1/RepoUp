@@ -31,4 +31,11 @@ public interface StyleMapper {
 	public int insertCloset(Style style);
 
 	public int deleteCloset(Style style);
+	
+	public List<Style> likeStyleList(String user_id);
+	
+	public List<Style> getTags(String user_id);
+	
+	public List<Style> myClosetList(String user_id);
+	
 }

@@ -44,7 +44,7 @@
 					</div>
 					<div class="collapse" id="nav-user-link">
 						<ul class="list-unstyled">
-							<li class="list-group-item"><a href="updateUser"><i class="feather icon-settings m-r-5"></i>Settings</a></li>
+							<li class="list-group-item"><a href="goUpdateUser"><i class="feather icon-settings m-r-5"></i>Settings</a></li>
 							<li class="list-group-item"><a href="logoutUser"><i class="feather icon-log-out m-r-5"></i>Logout</a></li>
 						</ul>
 					</div>
@@ -82,8 +82,8 @@
 					<li class="nav-item pcoded-hasmenu">
 					    <a href="#!" class="nav-link"><span class="pcoded-micon"><i class="feather icon-align-justify"></i></span><span class="pcoded-mtext">My Page</span></a>
 					    <ul class="pcoded-submenu">
-					        <li><a href="goMyCloset" target="_self"><i class="feather icon-briefcase m-r-5"></i> 나만의 옷장</a></li>
-					        <li><a href="goLikeStyle" target="_self"><i class="feather icon-heart m-r-5"></i> 좋아요 보기</a></li>
+					        <li><a href="goMyCloset?user_id=${loginUser.user_id}" target="_self"><i class="feather icon-briefcase m-r-5"></i> 나만의 옷장</a></li>
+					        <li><a href="goLikeStyle?user_id=${loginUser.user_id}" target="_self"><i class="feather icon-heart m-r-5"></i> 좋아요 보기</a></li>
 					    </ul>
 					</li>
 				</ul>

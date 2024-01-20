@@ -3,7 +3,14 @@
 <mapper namespace="com.trendypeop.myapp.mapper.CodyMapper">
 
 	<select id = "codyList" resultType="com.trendypeop.myapp.entity.Cody">
-		select * from tb_cody where cody_idx between 1 and 20
+		select * from tb_cody
+	</select>
+	
+	<select id = "likeCodyList" resultType="com.trendypeop.myapp.entity.Cody">
+		select * 
+		from tb_cody inner join tb_cody_favorite 
+		on tb_cody.cody_idx = tb_cody_favorite.cody_idx
+		where tb_cody_favorite.user_id = #{user_id}
 	</select>
 	
 	<insert id="insertCodyHeart" parameterType="com.trendypeop.myapp.entity.Cody">
@@ -16,6 +23,17 @@
 	
 	<select id="checkCodyHeart" parameterType="com.trendypeop.myapp.entity.Cody" resultType="int">
 		select count(*) from tb_cody_favorite where cody_idx = #{cody_idx} and user_id = #{user_id}
+	</select>
+	
+	<select id = "codyDetail" parameterType="int" resultType="com.trendypeop.myapp.entity.Cody">
+		select * 
+		from tb_item as it inner join tb_cody as cd 
+		on cd.cody_idx=it.cody_idx 
+		where it.cody_idx = #{cody_idx}
+	</select>
+	
+	<select id="getTags" parameterType = "String" resultType="com.trendypeop.myapp.entity.Cody">
+		select * from tb_cody inner join tb_cody_favorite on tb_cody.cody_idx = tb_cody_favorite.cody_idx where tb_cody_favorite.user_id = #{user_id}
 	</select>
 	
 </mapper>

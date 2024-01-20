@@ -1,3 +1,5 @@
+<%@page import="com.trendypeop.myapp.entity.Cody"%>
+<%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -49,78 +51,53 @@
 			</div>
 			<!-- [ breadcrumb ] end -->
 			
-			<!-- 이미지 나열 -->
-			<!-- 헤더 -->
-			<div class="row">
-				<div class="card support-bar overflow-hidden">
-					<div class="col-xl-12">
+			<!-- 컨텐츠 영역 -->
+			<div class="card support-bar full">
+				<!-- 헤더 -->
+				<div class="row">
+					<div class="col">
                         <h4 class="mt-4 text-center">Like It</h4>
                         <button type="button" class="btn btn-sm btn-outline-primary" 
-                        onclick="location.href='golikeStyle'">Item</button>
+                        onclick="location.href='goLikeStyle?user_id=${loginUser.user_id}'">Item</button>
                         <button type="button" class="btn btn-sm btn-outline-primary"
-                        onclick="location.href='golikeCody'">Cody</button>
+                        onclick="location.href='goLikeCody?user_id=${loginUser.user_id}'">Cody</button>
                         <hr>
-						<!-- 첫번째줄 -->
+                    </div>
+                </div>
+                <!-- 이미지 생성 -->
+                <div class="row">
+                	<div class="col">
+                        <% 
+                        	List<Cody> likeCodyList = (List<Cody>) request.getAttribute("likeCodyList");
+		                  
+		                	for(int i=0;i<=(likeCodyList.size()/5+1);i++) {
+		                	int j = i*5;
+                  		%>
 						<div class="card-deck">
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811172600000000678.jpg"
+						<c:forEach items="${likeCodyList }" var="c" begin="<%=j %>" end="<%=j+4 %>"  varStatus="status">
+							<div class="card" id="max">
+								<img class="img-fluid card-img-top" src="${c.cody_img_url }"
 									alt="Card image cap">
 								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
+									<h5 class="card-title">${c.cody_name }</h5>
 								</div>
 								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
+									<button type="button" class="btn btn-icon btn-primary" onclick="location.href='deleteCodyHeart?cody_idx=${c.cody_idx }&user_id=${loginUser.user_id}'"><i
 											class="feather icon-heart"></i></button>
 								</div>
 							</div>
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811172900000032724.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811172900000032724.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811200700000019599.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
-							<div class="card">
-								<img class="img-fluid card-img-top" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811201000000023455.jpg"
-									alt="Card image cap">
-								<div class="card-body">
-									<h5 class="card-title">코디 이름</h5>
-								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-primary"><i
-											class="feather icon-heart"></i></button>
-								</div>
-							</div>
+							
+						</c:forEach>
 						</div>
-						
-						<!-- 페이지 이동 -->
-						<hr>
+						<br><br>
+						<%} %>
+					</div>
+				</div>
+				<!-- 이미지 생성 끝 -->
+				<!-- 페이지 이동 -->
+				<div class="row">
+					<div class="col">
+						<!-- <hr>
 						<ul class="pagination justify-content-center">
 							<li class="page-item"><a class="page-link" href="#!" aria-label="Previous"><span
 										aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a>
@@ -130,13 +107,12 @@
 							<li class="page-item"><a class="page-link" href="#!">3</a></li>
 							<li class="page-item"><a class="page-link" href="#!" aria-label="Next"><span
 										aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
-						</ul>
+						</ul> -->
 					</div>
 				</div>
+				<!-- 페이징 끝 -->
 			</div>
-
-			<!-- 이미지 나열 끝 -->
-			
+			<!-- 컨텐츠 영역 끝 -->
 		</div>
 	</div>
 	<!-- [ Main Content ] end -->

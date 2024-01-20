@@ -3,7 +3,21 @@
 <mapper namespace="com.trendypeop.myapp.mapper.StyleMapper">
 
 	<select id = "styleList" resultType="com.trendypeop.myapp.entity.Style">
-		select * from tb_style where style_idx between 1 and 20
+		select * from tb_style
+	</select>
+	
+	<select id = "myClosetList" parameterType="String" resultType="com.trendypeop.myapp.entity.Style">
+		select * 
+		from tb_style inner join tb_closet 
+		on tb_style.style_idx = tb_closet.style_idx 
+		where tb_closet.user_id = #{user_id}
+	</select>
+	
+	<select id = "likeStyleList" parameterType="String" resultType="com.trendypeop.myapp.entity.Style">
+		select * 
+		from tb_style inner join tb_style_favorite 
+		on tb_style.style_idx = tb_style_favorite.style_idx 
+		where tb_style_favorite.user_id = #{user_id}
 	</select>
 	
 	<insert id="insertStyleHeart" parameterType="com.trendypeop.myapp.entity.Style">
@@ -29,6 +43,11 @@
 	
 	<select id="checkCloset" parameterType="com.trendypeop.myapp.entity.Style" resultType="int">
 		select count(*) from tb_closet where style_idx = #{style_idx} and user_id = #{user_id}
+	</select>
+	
+	
+	<select id="getTags" parameterType = "String" resultType="com.trendypeop.myapp.entity.Style">
+		select * from tb_style inner join tb_style_favorite on tb_style.style_idx = tb_style_favorite.style_idx where tb_style_favorite.user_id = #{user_id}
 	</select>
 	
 </mapper>

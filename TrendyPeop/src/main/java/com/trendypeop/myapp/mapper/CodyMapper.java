@@ -26,4 +26,11 @@ public interface CodyMapper {
 	public int insertCodyHeart(Cody cody);
 
 	public int deleteCodyHeart(Cody cody);
+	
+	public List<Cody> codyDetail(int cody_idx);
+	
+	public List<Cody> likeCodyList(String user_id);
+	
+	public List<Cody> getTags(String user_id);
+	
 }
