@@ -68,5 +68,18 @@
 		)
 		ORDER BY RAND()
 	</select>
+	
+	
+	<select id="filterStyleCate" parameterType = "String" resultType="com.trendypeop.myapp.entity.Style">
+		select * from tb_style where style_cate = #{style_cate}
+	</select>
+	
+	<select id="filterStyleColor" parameterType = "String" resultType="com.trendypeop.myapp.entity.Style">
+		select * from tb_style where style_color = #{style_color}
+	</select>
+	
+	<select id="filterStyleTag" parameterType = "String" resultType="com.trendypeop.myapp.entity.Style">
+		select * from tb_style where style_tag = #{style_tag}
+	</select>
 
 </mapper>

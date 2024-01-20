@@ -35,6 +35,34 @@ public class StyleController {
 	private StyleMapper styleMapper;
 	
 	
+	@RequestMapping("/filterStyleCate")
+	public String filterStyleCate(@RequestParam("style_cate") String style_cate, Model model) {
+
+		List<Style> styleCateFilterList = styleMapper.filterStyleCate(style_cate);
+		model.addAttribute("styleCateFilterList", styleCateFilterList);
+		
+		return "styleCateFilter";
+	}
+	
+	@RequestMapping("/filterStyleColor")
+	public String filterStyleColor(@RequestParam("style_color") String style_color, Model model) {
+
+		List<Style> styleColorFilterList = styleMapper.filterStyleColor(style_color);
+		model.addAttribute("styleColorFilterList", styleColorFilterList);
+		
+		return "styleColorFilter";
+	}
+	
+	@RequestMapping("/filterStyleTag")
+	public String filterStyleTag(@RequestParam("style_tag") String style_tag, Model model) {
+
+		List<Style> styleTagFilterList = styleMapper.filterStyleTag(style_tag);
+		model.addAttribute("styleTagFilterList", styleTagFilterList);
+		
+		return "styleTagFilter";
+	}
+	
+	
 	@RequestMapping("/goStyleMain")
 	public String goStyleMain(Model model) {
 		

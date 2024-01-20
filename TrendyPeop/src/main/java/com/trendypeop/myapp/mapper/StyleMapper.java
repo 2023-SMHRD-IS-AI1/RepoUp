@@ -44,4 +44,10 @@ public interface StyleMapper {
 
 	public int deleteStyleReco(String user_id);
 	
+	public List<Style> filterStyleCate(String style_cate);
+
+	public List<Style> filterStyleColor(String style_color);
+
+	public List<Style> filterStyleTag(String style_tag);
+	
 }

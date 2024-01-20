@@ -37,6 +37,25 @@ public class CodyController {
 	private CodyMapper codyMapper;
 	
 	
+	@RequestMapping("/filterCodyLook")
+	public String filterCodyLook(@RequestParam("cody_look") String cody_look, Model model) {
+
+		List<Cody> codyLookFilterList = codyMapper.filterCodyLook(cody_look);
+		model.addAttribute("codyLookFilterList", codyLookFilterList);
+		
+		return "codyLookFilter";
+	}
+	
+	@RequestMapping("/filterCodyStyleTag")
+	public String filterCodyStyleTag(@RequestParam("cody_style_tag") String cody_style_tag, Model model) {
+
+		List<Cody> codyStyleTagFilterList = codyMapper.filterCodyStyleTag(cody_style_tag);
+		model.addAttribute("codyStyleTagFilterList", codyStyleTagFilterList);
+		
+		return "codyStyleTagFilter";
+	}
+	
+	
 	@RequestMapping("/goCodyMain")
 	public String goCodyMain(Model model) {
 		

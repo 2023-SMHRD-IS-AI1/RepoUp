@@ -57,4 +57,12 @@
 		ORDER BY RAND()
 	</select>
 	
+	<select id="filterCodyLook" parameterType = "String" resultType="com.trendypeop.myapp.entity.Cody">
+		select * from tb_cody where cody_look = #{cody_look}
+	</select>
+	
+	<select id="filterCodyStyleTag" parameterType = "String" resultType="com.trendypeop.myapp.entity.Cody">
+		select * from tb_cody where cody_style_tag = #{cody_style_tag}
+	</select>
+	
 </mapper>
