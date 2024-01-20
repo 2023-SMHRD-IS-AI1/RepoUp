@@ -49,17 +49,22 @@
 			</div>
 			<!-- [ breadcrumb ] end -->
 
-			<!-- 이미지 나열 -->
-			<div class="row">
-				<div class="card support-bar overflow-hidden">
-					<div class="col-xl-12 ">
+			<!-- 컨텐츠 영역 -->
+			<div class="card support-bar full">
+				<!-- 헤더 -->
+				<div class="row">
+					<div class="col">
 						<h4 class="mt-4">
 							<i class="feather icon-thumbs-up m-r-5"></i> Cody recommend
 						</h4>
 						<hr>
-						<!-- 첫번째줄 -->
+					</div>
+				</div>
+				<!-- 이미지 업로드 -->
+				<div class="row">
+					<div class="col">
 						<div class="card-deck">
-							<div class="card">
+							<div class="card" id="max">
 								<img class="img-fluid card-img-top"
 									src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811172600000000678.jpg"
 									alt="Card image cap">
@@ -125,7 +130,13 @@
 								</div>
 							</div>
 						</div>
-
+						<br><br>
+					</div>
+				</div>
+				<!-- 이미지 업로드 끝 -->
+				<!-- 페이징 -->
+				<!-- <div class="row">
+					<div class="col">
 						<hr>
 						<ul class="pagination justify-content-center">
 							<li class="page-item"><a class="page-link" href="#!"
@@ -139,9 +150,10 @@
 									class="sr-only">Next</span></a></li>
 						</ul>
 					</div>
-				</div>
+				</div> -->
+				<!-- 페이징 끝 -->
 			</div>
-			<!-- 이미지 나열 끝 -->
+			<!-- 컨텐츠 영역 끝 -->
 		</div>
 	</div>
 	<!-- [ Main Content ] end -->
