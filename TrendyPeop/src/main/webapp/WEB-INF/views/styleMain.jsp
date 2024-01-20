@@ -142,6 +142,24 @@
 											</div>
 										</div>
 										<!-- 좋아요 안되어있으면 btn-outline-(빈) 속성, 좋아요 했으면 btn-(채워진) 으로 들어가야함 -->
+										<%
+										if (loginUser == null) {
+										%>
+										<button type="button" class="btn btn-icon btn-outline-primary"
+											onclick="user()">
+											<i class="feather icon-heart"></i>
+										</button>
+										<button type="button" class="btn btn-icon btn-outline-success"
+											onclick="user()">
+											<i class="feather icon-briefcase"></i>
+										</button>
+										<button type="button" class="btn btn-icon btn-outline-info"
+											onclick="location.href='${s.style_google}'">
+											<i class="feather icon-search"></i>
+										</button>
+										<%
+										} else {
+										%>
 										<button type="button" class="btn btn-icon btn-outline-primary"
 											onclick="location.href='insertStyleHeart?style_idx=${s.style_idx }&user_id=${loginUser.user_id}'">
 											<i class="feather icon-heart"></i>
@@ -154,6 +172,9 @@
 											onclick="location.href='${s.style_google}'">
 											<i class="feather icon-search"></i>
 										</button>
+										<%
+										}
+										%>
 									</div>
 								</div>
 							</c:forEach>
@@ -206,6 +227,11 @@
 			<!-- 컨텐츠 영역 끝 -->
 		</div>
 	</div>
+	<script>
+		function user() {
+			alert("로그인후 사용 가능합니다.")
+		}
+	</script>
 	<!-- [ Main Content ] end -->
 
 

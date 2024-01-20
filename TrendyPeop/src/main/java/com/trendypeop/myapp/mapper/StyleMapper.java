@@ -38,4 +38,10 @@ public interface StyleMapper {
 	
 	public List<Style> myClosetList(String user_id);
 	
+	public List<Style> recoList(String user_id);
+
+	public int insertStyleReco(Style style);
+
+	public int deleteStyleReco(String user_id);
+	
 }
