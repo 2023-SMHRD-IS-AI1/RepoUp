@@ -46,74 +46,38 @@
         <!-- [ breadcrumb ] end -->
         <!-- [ Main Content ] start -->
         <div class="row">
-            <div class="col-lg-7 col-md-12">
-                <!-- support-section start -->
-                <div class="row">
-                    <div class="col-sm-6">
-                        
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card support-bar overflow-hidden">
-                            
+            <div class="col">
+                <div class="card support-bar full">
+                    <div class="row" style="padding: inherit;">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="mt-4">
+                                        2024 01 Best!
+                                    </h4>
+                                </div>
+                                <div class="card-body" style="background-color: #f3f3f3;">
+                                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner" style="margin-left: 40%;">
+                                            <div class="carousel-item active">
+                                                <img class="img-fluid d-block" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811172900000032724.jpg" alt="First slide">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img class="img-fluid d-block" src="resources/assets/images/의상 이미지/코디맵/l_3_2024010811203500000049920.jpg" alt="Second slide">
+                                            </div>
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a>
+                                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- support-section end -->
-            </div>
-            <div class="col-lg-5 col-md-12">
-                <!-- page statustic card start -->
-                <div class="row">
-                    <div class="col-sm-6">
-                        
-                    </div>
-                    <div class="col-sm-6">
-                        
-                    </div>
-                    <div class="col-sm-6">
-                        
-                    </div>
-                    <div class="col-sm-6">
-                        
-                    </div>
-                </div>
-                <!-- page statustic card end -->
-            </div>
-            <!-- prject ,team member start -->
-            <div class="col-xl-6 col-md-12">
-                <div class="card table-card">
+                    <br>
                     
+                    <br>
                 </div>
             </div>
-            <div class="col-xl-6 col-md-12">
-                <div class="card latest-update-card">
-                    
-                </div>
-            </div>
-            <!-- prject ,team member start -->
-            <!-- seo start -->
-            <div class="col-xl-4 col-md-12">
-                
-            </div>
-            <div class="col-xl-4 col-md-6">
-                
-            </div>
-            <div class="col-xl-4 col-md-6">
-                
-            </div>
-            <!-- seo end -->
-
-            <!-- Latest Customers start -->
-            <div class="col-lg-8 col-md-12">
-                <div class="card table-card review-card">
-                    
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12">
-                <div class="card user-card2">
-                    
-                </div>
-            </div>
-            <!-- Latest Customers end -->
         </div>
         <!-- [ Main Content ] end -->
     </div>
