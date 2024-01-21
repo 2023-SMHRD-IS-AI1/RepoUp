@@ -102,6 +102,10 @@
 											onclick="location.href='deleteCloset?style_idx=${c.style_idx }&user_id=${loginUser.user_id}'">
 											<i class="feather icon-briefcase"></i>
 										</button>
+										<button type="button" class="btn btn-icon btn-info"
+											onclick="location.href='gostyleRecoDetail?style_idx=${c.style_idx }'">
+											<i class="feather icon-search"></i>
+										</button>
 									</div>
 								</div>
 							</c:forEach>
