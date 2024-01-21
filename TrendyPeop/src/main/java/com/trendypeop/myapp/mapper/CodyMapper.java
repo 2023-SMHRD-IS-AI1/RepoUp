@@ -50,5 +50,6 @@ public interface CodyMapper {
 	public List<Cody> detailRecoList3(int style_idx);
 	
 	public List<Cody> detailRecoList4(int style_idx);
-	
+
+	public List<Cody> bestCody();
 }

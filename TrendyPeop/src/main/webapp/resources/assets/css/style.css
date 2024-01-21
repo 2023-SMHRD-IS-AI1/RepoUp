@@ -159,7 +159,7 @@ File: style.css
 
 .full{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: inherit;
     justify-content: center;
     justify-content: space-around;
     padding: 1%;
@@ -797,6 +797,7 @@ mark,
 .img-fluid {
     max-width: 100%;
     height: auto;
+    margin-left: auto;
 }
 
 .img-thumbnail {
@@ -6696,6 +6697,7 @@ a.close.disabled {
     display: none;
     float: left;
     width: 100%;
+    max-width: 300px;
     margin-right: -100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
