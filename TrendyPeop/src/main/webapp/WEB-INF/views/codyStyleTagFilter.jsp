@@ -2,33 +2,31 @@
 <%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>TrendyPeop</title>
 <!-- Meta -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="description" content="" />
-<meta name="keywords" content="">
-<meta name="author" content="Phoenixcoded" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Phoenixcoded" />
+    
+    <!-- Favicon icon -->
+    <link rel="icon" href="resources/assets/images/favicon.png" type="image/x-icon">
 
-<!-- Favicon icon -->
-<link rel="icon" href="resources/assets/images/favicon.png"
-	type="image/x-icon">
-
-<!-- vendor css -->
-<link rel="stylesheet" href="resources/assets/css/style.css">
-
+    <!-- vendor css -->
+    <link rel="stylesheet" href="resources/assets/css/style.css">
+    
 </head>
 
 <body class="">
-
-	<%@include file="./nav.jsp"%>
-
+	
+<%@include file="./nav.jsp" %>
+	
 	<!-- [ Main Content ] start -->
 
 	<div class="pcoded-main-container">
@@ -42,8 +40,7 @@
 								<h5 class="m-b-10">Fashion Trend Dashboard</h5>
 							</div>
 							<ul class="breadcrumb">
-								<li class="breadcrumb-item"><a href="goMain"><i
-										class="feather icon-home"></i></a></li>
+								<li class="breadcrumb-item"><a href="goMain"><i class="feather icon-home"></i></a></li>
 								<li class="breadcrumb-item"><a>TrendyPeop</a></li>
 							</ul>
 						</div>
@@ -105,53 +102,36 @@
 				<!-- 이미지 시작 -->
 				<div class="row">
 					<div class="col">
-						<hr>
-						<% List<Cody> codyList = (List<Cody>) request.getAttribute("codyList");
-		                  
-                  		for(int i=0;i<=(codyList.size()/5+1);i++) {
-                    	int j = i*5; %>
+					<hr>
+						<%
+						List<Cody> codyStyleTagFilterList = (List<Cody>) request.getAttribute("codyStyleTagFilterList");            // 여기 바꿔야 함
 
+						for (int i = 0; i <= (codyStyleTagFilterList.size() / 5 + 1); i++) {
+							int j = i * 5;
+						%>
+						
 						<div class="card-deck">
-							<c:forEach items="${codyList }" var="c" begin="<%=j %>"
-								end="<%=j+4 %>">
-								<div class="card" id="max">
-									<a href="goCodyDetail?cody_idx=${c.cody_idx }"> <img
-										class="img-fluid card-img-top" src="${c.cody_img_url}"
-										alt="Card image cap">
-									</a>
-									<div class="card-body">
-										<h5 class="card-title">${c.cody_name }</h5>
-									</div>
-									<div class="card-footer">
-										<!-- 여기도 마찬가지, 좋아요 눌렀으면 btn-, 안눌렀으면 btn-outline-(빈하트) -->
-										<%
-										if (loginUser == null) {
-										%>
-										<button type="button" class="btn btn-icon btn-outline-primary"
-											onclick="user()">
-											<i class="feather icon-heart"></i>
-										</button>
-										<button type="button" class="btn btn-icon btn-outline-info"
-											onclick="location.href='goCodyDetail?cody_idx=${c.cody_idx }'">
-											<i class="feather icon-search"></i>
-										</button>
-										<% } else { %>
-										<button type="button" class="btn btn-icon btn-outline-primary"
-											onclick="location.href='insertCodyHeart?cody_idx=${c.cody_idx }&user_id=${loginUser.user_id}'">
-											<i class="feather icon-heart"></i>
-										</button>
-										<button type="button" class="btn btn-icon btn-outline-info"
-											onclick="location.href='goCodyDetail?cody_idx=${c.cody_idx }'">
-											<i class="feather icon-search"></i>
-										</button>
-										<% }  %>
-									</div>
+ 						<c:forEach items="${codyStyleTagFilterList }" var="c" begin="<%=j %>" end="<%=j+4 %>">
+							<div class="card" id="max">
+								<a href="goCodyDetail?cody_idx=${c.cody_idx }">
+								<img class="img-fluid card-img-top" src="${c.cody_img_url}"
+									alt="Card image cap">
+								</a>
+								<div class="card-body">
+									<h5 class="card-title">${c.cody_name }</h5>
 								</div>
-
+								<div class="card-footer">
+									<!-- 여기도 마찬가지, 좋아요 눌렀으면 btn-, 안눌렀으면 btn-outline-(빈하트) -->
+									<button type="button" class="btn btn-icon btn-outline-primary" onclick="location.href='insertCodyHeart?cody_idx=${c.cody_idx }&user_id=${loginUser.user_id}'"><i
+											class="feather icon-heart"></i></button>
+									<button type="button" class="btn btn-icon btn-outline-info" onclick="location.href='goCodyDetail?cody_idx=${c.cody_idx }'"><i
+                                 	class="feather icon-search"></i></button>
+								</div>
+							</div>
+							
 							</c:forEach>
 						</div>
-						<br>
-						<br>
+						<br><br>
 						<% } %>
 					</div>
 				</div>
@@ -175,28 +155,23 @@
 				<!-- 페이징 끝 -->
 			</div>
 			<!-- 컨텐츠 영역 끝 -->
-		</div>
-	</div>
-	<script>
-		function user() {
-			alert("로그인후 사용 가능합니다.")
-		}
-	</script>
-	<!-- [ Main Content ] end -->
+    </div>
+</div>
+		<!-- [ Main Content ] end -->
 
 
-	<!-- Required Js -->
-	<script src="resources/assets/js/vendor-all.min.js"></script>
-	<script src="resources/assets/js/plugins/bootstrap.min.js"></script>
-	<script src="resources/assets/js/ripple.js"></script>
-	<script src="resources/assets/js/pcoded.min.js"></script>
+    <!-- Required Js -->
+    <script src="resources/assets/js/vendor-all.min.js"></script>
+    <script src="resources/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="resources/assets/js/ripple.js"></script>
+    <script src="resources/assets/js/pcoded.min.js"></script>
 
-	<!-- Apex Chart -->
-	<script src="resources/assets/js/plugins/apexcharts.min.js"></script>
+<!-- Apex Chart -->
+<script src="resources/assets/js/plugins/apexcharts.min.js"></script>
 
 
-	<!-- custom-chart js -->
-	<script src="resources/assets/js/pages/dashboard-main.js"></script>
+<!-- custom-chart js -->
+<script src="resources/assets/js/pages/dashboard-main.js"></script>
 </body>
 
 </html>

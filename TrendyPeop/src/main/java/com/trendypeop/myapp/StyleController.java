@@ -35,6 +35,34 @@ public class StyleController {
 	private StyleMapper styleMapper;
 	
 	
+	@RequestMapping("/filterStyleCate")
+	public String filterStyleCate(@RequestParam("style_cate") String style_cate, Model model) {
+
+		List<Style> styleCateFilterList = styleMapper.filterStyleCate(style_cate);
+		model.addAttribute("styleCateFilterList", styleCateFilterList);
+		
+		return "styleCateFilter";
+	}
+	
+	@RequestMapping("/filterStyleColor")
+	public String filterStyleColor(@RequestParam("style_color") String style_color, Model model) {
+
+		List<Style> styleColorFilterList = styleMapper.filterStyleColor(style_color);
+		model.addAttribute("styleColorFilterList", styleColorFilterList);
+		
+		return "styleColorFilter";
+	}
+	
+	@RequestMapping("/filterStyleTag")
+	public String filterStyleTag(@RequestParam("style_tag") String style_tag, Model model) {
+
+		List<Style> styleTagFilterList = styleMapper.filterStyleTag(style_tag);
+		model.addAttribute("styleTagFilterList", styleTagFilterList);
+		
+		return "styleTagFilter";
+	}
+	
+	
 	@RequestMapping("/goStyleMain")
 	public String goStyleMain(Model model) {
 		
@@ -44,10 +72,7 @@ public class StyleController {
 		return "styleMain";
 	}
 	
-	@RequestMapping("/goRecoStyle")
-	public String goRecoStyle() {
-		return "recommendStyle";
-	}
+
 	
 	@RequestMapping("/goLikeStyle")
 	public String goLikeStyle(@RequestParam("user_id") String user_id, Model model) {
@@ -106,6 +131,10 @@ public class StyleController {
 		        Map<String, Integer> map2 = new HashMap<>(); // color
 		        Map<String, Integer> map3 = new HashMap<>(); // tag
 		        
+		        map1.remove("nan");
+		        map2.remove("nan");
+		        map3.remove("nan");
+		        
 		        for (String item: stItemDistinct) {
 		            map1.put(item, Collections.frequency(stItemList, item)); // map에 K:V 형태로 넣기
 		        }
@@ -159,61 +188,103 @@ public class StyleController {
 		        	tagList3.add(entry.getKey());
 		        } // 내림차순으로 entryList 안에 들어가 있는 상태에서 key 값(태그 값)만 list에 따로 담기
 		        
-		        List<String> top3_stItem = new ArrayList<String>();
-		        List<String> top3_stColor = new ArrayList<String>();
-		        List<String> top3_stTag = new ArrayList<String>();
-		        
 
-		        if(tagList1.size() < 3) {
-		        	for(int i = 0; i < tagList1.size(); i++) {
-		        		top3_stItem.add(tagList1.get(i));
-		        	}
+		        String top1_stItem;
+		        String top2_stItem;
+		        String top3_stItem;
+		        
+		        String top1_stColor;
+		        String top2_stColor;
+		        String top3_stColor;
+		        
+		        String top1_stTag;
+		        String top2_stTag;
+		        String top3_stTag;
+		        
+		        if(tagList1.size() == 0) {
+		        	top1_stItem = "n";
+		        	top2_stItem = "n";
+		        	top3_stItem = "n";
+		        } else if(tagList1.size() == 1) {
+		        	top1_stItem = tagList1.get(0);
+		        	top2_stItem = "n";
+		        	top3_stItem = "n";
+		        } else if(tagList1.size() == 2) {
+		        	top1_stItem = tagList1.get(0);
+		        	top2_stItem = tagList1.get(1);
+		        	top3_stItem = "n";
 		        } else {
-		        	for(int i = 0; i < 3; i++) {
-		        		top3_stItem.add(tagList1.get(i));
-		        	}
+		        	top1_stItem = tagList1.get(0);
+		        	top2_stItem = tagList1.get(1);
+		        	top3_stItem = tagList1.get(2);
 		        }
 		        
-		        if(tagList2.size() < 3) {
-		        	for(int i = 0; i < tagList2.size(); i++) {
-		        		top3_stColor.add(tagList2.get(i));
-		        	}
-		        } else {
-		        	for(int i = 0; i < 3; i++) {
-		        		top3_stColor.add(tagList2.get(i));
-		        	}
+		        if(tagList2.size() == 0) {
+		        	top1_stColor = "n";
+		        	top2_stColor = "n";
+		        	top3_stColor = "n";
+		        } else if(tagList2.size() == 1){
+		        	top1_stColor = tagList2.get(0);
+		        	top2_stColor = "n";
+		        	top3_stColor = "n";
+		        }else if(tagList2.size() == 2){
+		        	top1_stColor = tagList2.get(0);
+		        	top2_stColor = tagList2.get(1);
+		        	top3_stColor = "n";
+		        	
+		        }else{
+		        	top1_stColor = tagList2.get(0);
+		        	top2_stColor = tagList2.get(1);
+		        	top3_stColor = tagList2.get(2);
 		        }
 		        
-		        if(tagList3.size() < 3) {
-		        	for(int i = 0; i < tagList3.size(); i++) {
-		        		top3_stTag.add(tagList3.get(i));
-		        	}
-		        } else {
-		        	for(int i = 0; i < 3; i++) {
-		        		top3_stTag.add(tagList3.get(i));
-		        	}
+		        if(tagList3.size() == 0) {
+		        	top1_stTag = "n";
+		        	top2_stTag = "n";
+		        	top3_stTag = "n";
+		        } else if(tagList3.size() == 1){
+		        	top1_stTag = tagList3.get(0);
+		        	top2_stTag = "n";
+		        	top3_stTag = "n";
+		        }else if(tagList3.size() == 2){
+		        	top1_stTag = tagList3.get(0);
+		        	top2_stTag = tagList3.get(1);
+		        	top3_stTag = "n";
+		        	
+		        }else{
+		        	top1_stTag = tagList3.get(0);
+		        	top2_stTag = tagList3.get(1);
+		        	top3_stTag = tagList3.get(2);
 		        }
-		        
-		        
-		        for(int j = 0; j < top3_stItem.size(); j++) {
-		        	System.out.println(top3_stItem.get(j));
-		        }
+		       
+		        System.out.println(top1_stItem);
+		        System.out.println(top2_stItem);
+		        System.out.println(top3_stItem);
 		        
 		        System.out.println("=======================");
-				
-		        for(int j = 0; j < top3_stColor.size(); j++) {
-		        	System.out.println(top3_stColor.get(j));
-		        }
+		        
+		        System.out.println(top1_stColor);
+		        System.out.println(top2_stColor);
+		        System.out.println(top3_stColor);
+
+		        System.out.println("=======================");
 		        
 		        System.out.println("=======================");
 		        
-		        for(int j = 0; j < top3_stTag.size(); j++) {
-		        	System.out.println(top3_stTag.get(j));
-		        }
+		        System.out.println(top1_stTag);
+		        System.out.println(top2_stTag);
+		        System.out.println(top3_stTag);
 		        
 		        System.out.println("=======================");
-		
-		
+		        
+		        
+		        styleMapper.deleteStyleReco(user_id);
+		        Style style1 = new Style(user_id, top1_stItem, top1_stColor, top1_stTag);
+		        styleMapper.insertStyleReco(style1);
+		        Style style2 = new Style(user_id, top2_stItem, top2_stColor, top2_stTag);
+		        styleMapper.insertStyleReco(style2);
+		        Style style3 = new Style(user_id, top3_stItem, top3_stColor, top3_stTag);
+		        styleMapper.insertStyleReco(style3);
 		
 		
 		return "redirect:/goStyleMain";
@@ -288,4 +359,15 @@ public class StyleController {
 	      
 	      return "myCloset";
 	   }
+	
+	@RequestMapping("/goRecoStyle")
+	public String goRecoCody(@RequestParam("user_id") String user_id, Model model) {
+
+		System.out.println(user_id.toString());
+		List<Style> recoList1 = styleMapper.recoList(user_id);
+		model.addAttribute("recoList1", recoList1);	
+		System.out.println(recoList1.toString());
+		
+		return "recommendStyle";
+	}
 }

@@ -49,5 +49,37 @@
 	<select id="getTags" parameterType = "String" resultType="com.trendypeop.myapp.entity.Style">
 		select * from tb_style inner join tb_style_favorite on tb_style.style_idx = tb_style_favorite.style_idx where tb_style_favorite.user_id = #{user_id}
 	</select>
+
+	<delete id="deleteStyleReco" parameterType="String">
+		delete from tb_style_recommendation where user_id = #{user_id}
+	</delete>
 	
+	<insert id="insertStyleReco" parameterType="com.trendypeop.myapp.entity.Style">
+		insert into tb_style_recommendation(user_id, style_item, style_color, style_tag) values(#{user_id}, #{style_item}, #{style_color}, #{style_tag})
+	</insert>
+	
+	<select id = "recoList" parameterType = "String" resultType="com.trendypeop.myapp.entity.Style">
+		SELECT *
+		FROM tb_style
+		WHERE ( 
+		    style_item IN (SELECT style_item FROM tb_style_recommendation WHERE tb_style_recommendation.user_id = #{user_id}) 
+		    AND style_color IN (SELECT style_color FROM tb_style_recommendation WHERE tb_style_recommendation.user_id = #{user_id})
+		    AND style_tag IN (SELECT style_tag FROM tb_style_recommendation WHERE tb_style_recommendation.user_id = #{user_id})
+		)
+		ORDER BY RAND()
+	</select>
+	
+	
+	<select id="filterStyleCate" parameterType = "String" resultType="com.trendypeop.myapp.entity.Style">
+		select * from tb_style where style_cate = #{style_cate}
+	</select>
+	
+	<select id="filterStyleColor" parameterType = "String" resultType="com.trendypeop.myapp.entity.Style">
+		select * from tb_style where style_color = #{style_color}
+	</select>
+	
+	<select id="filterStyleTag" parameterType = "String" resultType="com.trendypeop.myapp.entity.Style">
+		select * from tb_style where style_tag = #{style_tag}
+	</select>
+
 </mapper>

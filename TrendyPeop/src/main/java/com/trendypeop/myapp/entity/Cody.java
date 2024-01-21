@@ -27,10 +27,18 @@ public class Cody {
 	private String item_name;
 	private String item_img_url;
 	private String item_url;
+	private String top_cdLook;
+	private String top_cdTag;
 	
 	public Cody(int cody_idx, String user_id) {
 		super();
 		this.cody_idx = cody_idx;
+		this.user_id = user_id;
+	}
+	
+	public Cody(String cody_season, String user_id) {
+		super();
+		this.cody_season = cody_season;
 		this.user_id = user_id;
 	}
 	

@@ -141,13 +141,13 @@
 					<div class="col">
 						<hr>
 						<%
-						List<Style> styleList = (List<Style>) request.getAttribute("styleList");
+						List<Style> styleCateFilterList = (List<Style>) request.getAttribute("styleCateFilterList");            // 여기 바꿔야 함
 
-						for (int i = 0; i <= (styleList.size() / 5 + 1); i++) {
+						for (int i = 0; i <= (styleCateFilterList.size() / 5 + 1); i++) {
 							int j = i * 5;
 						%>
 						<div class="card-deck">
-							<c:forEach items="${styleList }" var="s" begin="<%=j %>"
+							<c:forEach items="${styleCateFilterList }" var="s" begin="<%=j %>"
 								end="<%=j+4 %>" varStatus="status">
 								<div class="card" id="max">
 									<img data-toggle="modal" data-target="#item${status.index }"
@@ -171,24 +171,6 @@
 											</div>
 										</div>
 										<!-- 좋아요 안되어있으면 btn-outline-(빈) 속성, 좋아요 했으면 btn-(채워진) 으로 들어가야함 -->
-										<%
-										if (loginUser == null) {
-										%>
-										<button type="button" class="btn btn-icon btn-outline-primary"
-											onclick="user()">
-											<i class="feather icon-heart"></i>
-										</button>
-										<button type="button" class="btn btn-icon btn-outline-success"
-											onclick="user()">
-											<i class="feather icon-briefcase"></i>
-										</button>
-										<button type="button" class="btn btn-icon btn-outline-info"
-											onclick="location.href='${s.style_google}'">
-											<i class="feather icon-search"></i>
-										</button>
-										<%
-										} else {
-										%>
 										<button type="button" class="btn btn-icon btn-outline-primary"
 											onclick="location.href='insertStyleHeart?style_idx=${s.style_idx }&user_id=${loginUser.user_id}'">
 											<i class="feather icon-heart"></i>
@@ -201,9 +183,6 @@
 											onclick="location.href='${s.style_google}'">
 											<i class="feather icon-search"></i>
 										</button>
-										<%
-										}
-										%>
 									</div>
 								</div>
 							</c:forEach>
@@ -256,11 +235,6 @@
 			<!-- 컨텐츠 영역 끝 -->
 		</div>
 	</div>
-	<script>
-		function user() {
-			alert("로그인후 사용 가능합니다.")
-		}
-	</script>
 	<!-- [ Main Content ] end -->
 
 

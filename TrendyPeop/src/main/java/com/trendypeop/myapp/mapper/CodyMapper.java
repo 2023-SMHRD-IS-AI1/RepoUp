@@ -33,4 +33,14 @@ public interface CodyMapper {
 	
 	public List<Cody> getTags(String user_id);
 	
+	public List<Cody> recoList(Cody cody);
+	
+	public int insertCodyReco(Cody cody);
+
+	public int deleteCodyReco(String user_id);
+	
+	public List<Cody> filterCodyLook(String cody_look);
+
+	public List<Cody> filterCodyStyleTag(String cody_style_tag);
+	
 }
