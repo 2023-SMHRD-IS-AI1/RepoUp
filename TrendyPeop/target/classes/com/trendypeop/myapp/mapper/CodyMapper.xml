@@ -64,5 +64,33 @@
 	<select id="filterCodyStyleTag" parameterType = "String" resultType="com.trendypeop.myapp.entity.Cody">
 		select * from tb_cody where cody_style_tag = #{cody_style_tag}
 	</select>
+		
+	<select id = "detailRecoList1" parameterType="int" resultType="com.trendypeop.myapp.entity.Cody">
+		select * 
+		from tb_cody inner join tb_style 
+		on tb_cody.cody_idx = tb_style.top1
+		where tb_style.style_idx = #{style_idx}
+	</select>
+	
+	<select id = "detailRecoList2" parameterType="int" resultType="com.trendypeop.myapp.entity.Cody">
+		select * 
+		from tb_cody inner join tb_style 
+		on tb_cody.cody_idx = tb_style.top2
+		where tb_style.style_idx = #{style_idx}
+	</select>
+	
+	<select id = "detailRecoList3" parameterType="int" resultType="com.trendypeop.myapp.entity.Cody">
+		select * 
+		from tb_cody inner join tb_style 
+		on tb_cody.cody_idx = tb_style.top3
+		where tb_style.style_idx = #{style_idx}
+	</select>
+	
+	<select id = "detailRecoList4" parameterType="int" resultType="com.trendypeop.myapp.entity.Cody">
+		select * 
+		from tb_cody inner join tb_style 
+		on tb_cody.cody_idx = tb_style.top4
+		where tb_style.style_idx = #{style_idx}
+	</select>
 	
 </mapper>

@@ -20,6 +20,8 @@ public class Cody {
 	@NonNull private int cody_idx;
 	@NonNull private String cody_name;
 	@NonNull private String cody_img_url;
+	private int style_idx;
+	private String style_img_url;
 	private String cody_season;
 	private String cody_look;
 	private String cody_style_tag;

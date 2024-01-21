@@ -273,4 +273,27 @@ public class CodyController {
 		return "recommendCody";
 	}
 	
+	@RequestMapping("/gostyleRecoDetail")
+	public String gostyleRecoDetail(@RequestParam("style_idx") int style_idx, Model model) {
+		
+		System.out.println("test");
+		
+		List<Cody> detailRecoList1 = codyMapper.detailRecoList1(style_idx);
+		model.addAttribute("detailRecoList1", detailRecoList1);	
+		
+		List<Cody> detailRecoList2 = codyMapper.detailRecoList2(style_idx);
+		model.addAttribute("detailRecoList2", detailRecoList2);	
+		
+		List<Cody> detailRecoList3 = codyMapper.detailRecoList3(style_idx);
+		model.addAttribute("detailRecoList3", detailRecoList3);	
+		
+		List<Cody> detailRecoList4 = codyMapper.detailRecoList4(style_idx);
+		model.addAttribute("detailRecoList4", detailRecoList4);	
+		
+		System.out.println(detailRecoList4.toString());
+		
+		return "styleRecoDetail";
+	}
+	
+	
 }

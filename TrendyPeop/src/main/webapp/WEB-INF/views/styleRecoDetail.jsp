@@ -27,11 +27,12 @@
 </head>
 
 <body class="">
+
 	<%
-	int cnt = 0;
-	%>
-	<%
-	List<Cody> itemList = (List<Cody>) request.getAttribute("itemList");
+	List<Cody> detailRecoList1 = (List<Cody>) request.getAttribute("detailRecoList1");
+	List<Cody> detailRecoList2 = (List<Cody>) request.getAttribute("detailRecoList2");
+	List<Cody> detailRecoList3 = (List<Cody>) request.getAttribute("detailRecoList3");
+	List<Cody> detailRecoList4 = (List<Cody>) request.getAttribute("detailRecoList4");
 	%>
 
 	<%@include file="./nav.jsp"%>
@@ -79,10 +80,10 @@
 									<div class="col-md-6">
 										<div class="card">
 											<img class="img-fluid card-img-top"
-												src="<%=itemList.get(0).getCody_img_url()%>"
+												src="<%=detailRecoList1.get(0).getStyle_img_url()%>"
 												alt="Card image cap">
 											<div class="card-body">
-												<h5 class="card-title"><%=itemList.get(0).getCody_name()%></h5>
+												<h5 class="card-title"></h5>
 												<small class="text-muted">코디 설명</small>
 											</div>
 											<div class="card-footer">해당 상품이 좋아요, 옷장찜 상태인지 확인 할 수 있는
@@ -91,48 +92,59 @@
 									</div>
 
 									<div class="col">
-										<c:forEach items="${itemList}" var="it" varStatus="status">
-											<%
-											if (cnt % 2 == 0) {
-											%>
-											<div class="card-group">
-												<div class="card text-center" id="details">
-													<a href="${it.item_url }"> <img
-														class="img-fluid card-img-top" src="${it.item_img_url }"
-														alt="Card image cap">
-													</a>
-													<div class="card-body">
-														<h5 class="card-title">${it.item_name}</h5>
-													</div>
-													<%
-													} else {
-													%>
-													<div class="card text-center" id="details">
-														<a href="${it.item_url }"> <img
-															class="img-fluid card-img-top" src="${it.item_img_url }"
-															alt="Card image cap">
-														</a>
-														<div class="card-body">
-															<h5 class="card-title">${it.item_name}</h5>
-														</div>
-													</div>
-													<%
-													}
-													%>
-													<%
-													if (cnt % 2 == 0) {
-													%>
+
+										<div class="card-group">
+											<div class="card text-center" id="details">
+												<a
+													href="goCodyDetail?cody_idx=<%=detailRecoList1.get(0).getCody_idx()%>">
+													<img class="img-fluid card-img-top"
+													src="<%=detailRecoList1.get(0).getCody_img_url()%>"
+													alt="Card image cap">
+												</a>
+												<div class="card-body">
+													<h5 class="card-title"><%=detailRecoList1.get(0).getCody_name()%></h5>
 												</div>
-												<br>
-												<%
-												} else {
-												%>
 											</div>
-											<%
-											}
-											cnt += 1;
-											%>
-										</c:forEach>
+
+											<div class="card text-center" id="details">
+												<a
+													href="goCodyDetail?cody_idx=<%=detailRecoList2.get(0).getCody_idx()%>">
+													<img class="img-fluid card-img-top"
+													src="<%=detailRecoList2.get(0).getCody_img_url()%>"
+													alt="Card image cap">
+												</a>
+												<div class="card-body">
+													<h5 class="card-title"><%=detailRecoList2.get(0).getCody_name()%></h5>
+												</div>
+											</div>
+											<br>
+										</div>
+										<div class="card-group">
+											<div class="card text-center" id="details">
+												<a
+													href="goCodyDetail?cody_idx=<%=detailRecoList3.get(0).getCody_idx()%>">
+													<img class="img-fluid card-img-top"
+													src="<%=detailRecoList3.get(0).getCody_img_url()%>"
+													alt="Card image cap">
+												</a>
+												<div class="card-body">
+													<h5 class="card-title"><%=detailRecoList3.get(0).getCody_name()%></h5>
+												</div>
+											</div>
+
+											<div class="card text-center" id="details">
+												<a
+													href="goCodyDetail?cody_idx=<%=detailRecoList4.get(0).getCody_idx()%>">
+													<img class="img-fluid card-img-top"
+													src="<%=detailRecoList4.get(0).getCody_img_url()%>"
+													alt="Card image cap">
+												</a>
+												<div class="card-body">
+													<h5 class="card-title"><%=detailRecoList4.get(0).getCody_name()%></h5>
+												</div>
+											</div>
+											<br>
+										</div>
 									</div>
 								</div>
 							</div>
