@@ -23,11 +23,6 @@ public class MainController {
 	private UserMapper userMapper;
 	
 	
-	@RequestMapping("/")
-	public String main() {
-		return "Main";
-	}
-	
 	@RequestMapping("/goMain")
 	public String goMain() {
 		
