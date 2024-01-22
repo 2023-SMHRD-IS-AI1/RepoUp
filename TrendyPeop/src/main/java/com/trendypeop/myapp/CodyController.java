@@ -86,144 +86,165 @@ public class CodyController {
 	}
 
 	@RequestMapping("/insertCodyHeart")
-	public String insertCodyHeart(@RequestParam("cody_idx") int cody_idx, @RequestParam("user_id") String user_id) {
-
+	@ResponseBody
+	public Map<String, Object> insertCodyHeart(@RequestParam("cody_idx") int cody_idx, @RequestParam("user_id") String user_id) {
+		
+		System.out.println("test1");
+		System.out.println(cody_idx);		
+		System.out.println(user_id);
+		System.out.println("test2");
+		
+		Map<String, Object> response = new HashMap<>(); 
 		Cody cody = new Cody(cody_idx, user_id);
-
+		
 		int count = codyMapper.checkCodyHeart(cody);
-
-		if (count == 0) {
+		
+		if(count == 0) {
 			codyMapper.insertCodyHeart(cody);
+	        response.put("success", true);
 		} else {
 			codyMapper.deleteCodyHeart(cody);
+			response.put("success", false);
 		}
+		
+		
+		
+				// 여기까지는 코디 좋아요 & 취소 코드
+		
+				// 밑으로는 코디 좋아요 태그 분석 코드
+				// "nan"도 태그로 인식 -> 추천 시 주의!!!
+				
+				
+				
+				List<Cody> list = codyMapper.getTags(user_id);
+				
+				List<String> cdLookList = new ArrayList<String>();
+				List<String> cdTagList = new ArrayList<String>();
+				
+				for(int i = 0; i < list.size(); i++) {
+					cdLookList.add(list.get(i).getCody_look());
+					cdTagList.add(list.get(i).getCody_style_tag());
+				} // 만약 3가지 컬럼 따로 가져와서 조합할 거라면 리스트 3개 만들고 컬럼 하나씩 가져와야 함!
+				
 
-		// 여기까지는 코디 좋아요 & 취소 코드
+				Set<String> cdLookDistinct = new HashSet<>(cdLookList);
+				Set<String> cdTagDistinct = new HashSet<>(cdTagList);
+		        
+		        Map<String, Integer> map1 = new HashMap<>(); // look
+		        Map<String, Integer> map2 = new HashMap<>(); // tag
+		        
+		        map1.remove("nan");
+		        map2.remove("nan");
+		        
+		        for (String item: cdLookDistinct) {
+		            map1.put(item, Collections.frequency(cdLookList, item)); // map에 K:V 형태로 넣기
+		        }
+		        
+		        for (String color: cdTagDistinct) {
+		            map2.put(color, Collections.frequency(cdTagList, color)); // map에 K:V 형태로 넣기
+		        }
+		        
+		        
+		        List<Map.Entry<String, Integer>> entryList1 = new LinkedList<>(map1.entrySet());
+		        List<Map.Entry<String, Integer>> entryList2 = new LinkedList<>(map2.entrySet());
+		        
+		        entryList1.sort(new Comparator<Map.Entry<String, Integer>>() {
+		            @Override
+		            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+		        	return o2.getValue() - o1.getValue();
+		            }
+		        });
+		        
+		        entryList2.sort(new Comparator<Map.Entry<String, Integer>>() {
+		        	@Override
+		        	public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+		        	return o2.getValue() - o1.getValue();
+		        	}
+		        }); // 내림차순으로 정렬
+		        
+		        List<String> tagList1 = new ArrayList<String>();
+		        List<String> tagList2 = new ArrayList<String>();
+		        
+		        for(Map.Entry<String, Integer> entry : entryList1){
+		            tagList1.add(entry.getKey());
+		        }
+		        
+		        for(Map.Entry<String, Integer> entry : entryList2){
+		        	tagList2.add(entry.getKey());
+		        } // 내림차순으로 entryList 안에 들어가 있는 상태에서 key 값(태그 값)만 list에 따로 담기
+		        
+		        String top1_cdLook;
+		        String top2_cdLook;
+		        String top3_cdLook;
+		        
+		        String top1_cdTag;
+		        String top2_cdTag;
+		        String top3_cdTag;
+		        
 
-		// 밑으로는 코디 좋아요 태그 분석 코드
-		// "nan"도 태그로 인식 -> 추천 시 주의!!!
+		        if(tagList1.size() == 0) {
+		        	top1_cdLook = "n";
+			        top2_cdLook = "n";
+			        top3_cdLook = "n";
+		        } else if(tagList1.size() == 1) {
+		        	top1_cdLook = tagList1.get(0);
+		        	top2_cdLook = "n";
+				    top3_cdLook = "n";
+		        } else if(tagList1.size() == 2) {
+		        	top1_cdLook = tagList1.get(0);
+		        	top2_cdLook = tagList1.get(1);
+		        	top3_cdLook = "n";
+		        } else {
+		        	top1_cdLook = tagList1.get(0);
+		        	top2_cdLook = tagList1.get(1);
+		        	top3_cdLook = tagList1.get(2);
+		        }
+		        
+		        if(tagList2.size() == 0) {
+		        	top1_cdTag = "n";
+		        	top2_cdTag = "n";
+		        	top3_cdTag = "n";
+		        } else if(tagList2.size() == 1){
+		        	top1_cdTag = tagList2.get(0);
+		        	top2_cdTag = "n";
+		        	top3_cdTag = "n";
+		        }else if(tagList2.size() == 2){
+		        	top1_cdTag = tagList2.get(0);
+		        	top2_cdTag = tagList2.get(1);
+		        	top3_cdTag = "n";
+		        	
+		        }else{
+		        	top1_cdTag = tagList2.get(0);
+		        	top2_cdTag = tagList2.get(1);
+		        	top3_cdTag = tagList2.get(2);
+		        }
+		        
+		        
+		        
+		        System.out.println(top1_cdLook);
+		        System.out.println(top2_cdLook);
+		        System.out.println(top3_cdLook);
+		        
+		        System.out.println("=======================");
+		        
+		        System.out.println(top1_cdTag);
+		        System.out.println(top2_cdTag);
+		        System.out.println(top3_cdTag);
 
-		List<Cody> list = codyMapper.getTags(user_id);
+		        System.out.println("=======================");
+		        
 
-		List<String> cdLookList = new ArrayList<String>();
-		List<String> cdTagList = new ArrayList<String>();
+		        codyMapper.deleteCodyReco(user_id);
+		        Cody cody1 = new Cody(user_id, top1_cdLook, top1_cdTag);
+		        codyMapper.insertCodyReco(cody1);
+		        Cody cody2 = new Cody(user_id, top2_cdLook, top2_cdTag);
+		        codyMapper.insertCodyReco(cody2);
+		        Cody cody3 = new Cody(user_id, top3_cdLook, top3_cdTag);
+		        codyMapper.insertCodyReco(cody3);
 
-		for (int i = 0; i < list.size(); i++) {
-			cdLookList.add(list.get(i).getCody_look());
-			cdTagList.add(list.get(i).getCody_style_tag());
-		} // 만약 3가지 컬럼 따로 가져와서 조합할 거라면 리스트 3개 만들고 컬럼 하나씩 가져와야 함!
 
-		Set<String> cdLookDistinct = new HashSet<>(cdLookList);
-		Set<String> cdTagDistinct = new HashSet<>(cdTagList);
-
-		Map<String, Integer> map1 = new HashMap<>(); // look
-		Map<String, Integer> map2 = new HashMap<>(); // tag
-
-		map1.remove("nan");
-		map2.remove("nan");
-
-		for (String item : cdLookDistinct) {
-			map1.put(item, Collections.frequency(cdLookList, item)); // map에 K:V 형태로 넣기
-		}
-
-		for (String color : cdTagDistinct) {
-			map2.put(color, Collections.frequency(cdTagList, color)); // map에 K:V 형태로 넣기
-		}
-
-		List<Map.Entry<String, Integer>> entryList1 = new LinkedList<>(map1.entrySet());
-		List<Map.Entry<String, Integer>> entryList2 = new LinkedList<>(map2.entrySet());
-
-		entryList1.sort(new Comparator<Map.Entry<String, Integer>>() {
-			@Override
-			public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-				return o2.getValue() - o1.getValue();
-			}
-		});
-
-		entryList2.sort(new Comparator<Map.Entry<String, Integer>>() {
-			@Override
-			public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-				return o2.getValue() - o1.getValue();
-			}
-		}); // 내림차순으로 정렬
-
-		List<String> tagList1 = new ArrayList<String>();
-		List<String> tagList2 = new ArrayList<String>();
-
-		for (Map.Entry<String, Integer> entry : entryList1) {
-			tagList1.add(entry.getKey());
-		}
-
-		for (Map.Entry<String, Integer> entry : entryList2) {
-			tagList2.add(entry.getKey());
-		} // 내림차순으로 entryList 안에 들어가 있는 상태에서 key 값(태그 값)만 list에 따로 담기
-
-		String top1_cdLook;
-		String top2_cdLook;
-		String top3_cdLook;
-
-		String top1_cdTag;
-		String top2_cdTag;
-		String top3_cdTag;
-
-		if (tagList1.size() == 0) {
-			top1_cdLook = "n";
-			top2_cdLook = "n";
-			top3_cdLook = "n";
-		} else if (tagList1.size() == 1) {
-			top1_cdLook = tagList1.get(0);
-			top2_cdLook = "n";
-			top3_cdLook = "n";
-		} else if (tagList1.size() == 2) {
-			top1_cdLook = tagList1.get(0);
-			top2_cdLook = tagList1.get(1);
-			top3_cdLook = "n";
-		} else {
-			top1_cdLook = tagList1.get(0);
-			top2_cdLook = tagList1.get(1);
-			top3_cdLook = tagList1.get(2);
-		}
-
-		if (tagList2.size() == 0) {
-			top1_cdTag = "n";
-			top2_cdTag = "n";
-			top3_cdTag = "n";
-		} else if (tagList2.size() == 1) {
-			top1_cdTag = tagList2.get(0);
-			top2_cdTag = "n";
-			top3_cdTag = "n";
-		} else if (tagList2.size() == 2) {
-			top1_cdTag = tagList2.get(0);
-			top2_cdTag = tagList2.get(1);
-			top3_cdTag = "n";
-
-		} else {
-			top1_cdTag = tagList2.get(0);
-			top2_cdTag = tagList2.get(1);
-			top3_cdTag = tagList2.get(2);
-		}
-
-		System.out.println(top1_cdLook);
-		System.out.println(top2_cdLook);
-		System.out.println(top3_cdLook);
-
-		System.out.println("=======================");
-
-		System.out.println(top1_cdTag);
-		System.out.println(top2_cdTag);
-		System.out.println(top3_cdTag);
-
-		System.out.println("=======================");
-
-		codyMapper.deleteCodyReco(user_id);
-		Cody cody1 = new Cody(user_id, top1_cdLook, top1_cdTag);
-		codyMapper.insertCodyReco(cody1);
-		Cody cody2 = new Cody(user_id, top2_cdLook, top2_cdTag);
-		codyMapper.insertCodyReco(cody2);
-		Cody cody3 = new Cody(user_id, top3_cdLook, top3_cdTag);
-		codyMapper.insertCodyReco(cody3);
-
-		return "redirect:/goCodyMain";
+		
+		return response;
 	}
 
 	@RequestMapping("/deleteCodyHeart")
