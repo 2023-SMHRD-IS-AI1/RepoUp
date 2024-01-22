@@ -140,4 +140,15 @@
 		ON tb_cody.cody_idx =best_cody.cody_idx
 	</select>
 
+	<select id="randomCody"
+		parameterType="String"
+		resultType="com.trendypeop.myapp.entity.Cody">
+		SELECT *
+		FROM tb_cody
+		WHERE cody_season = #{cody_season}
+		ORDER BY RAND()
+		LIMIT 1
+	</select>
+	
+	
 </mapper>

@@ -53,7 +53,9 @@
 <body class="">
 
 	<%@include file="./nav.jsp"%>
-	<% Keyword keywordList = (Keyword) request.getAttribute("keywordList"); %>
+	<%
+	Keyword keywordList = (Keyword) request.getAttribute("keywordList");
+	%>
 
 
 	<!-- [ Main Content ] start -->
@@ -165,21 +167,40 @@
 						</div>
 						<div class="row" style="padding: inherit;">
 							<div class="col-7">
+								<%
+								List<Keyword> article_list = (List<Keyword>) request.getAttribute("article_list");
+								%>
 								<div class="card">
 									<div class="card-header">
 										<h4 class="mt-3">Fashion News</h4>
 									</div>
-									<div class="card-body"></div>
+									<div class="card-body">
+										<c:forEach items="${article_list}" var="c">
+											<a href="${c.news_url }"></a>
+											<h5>"${c.news_title }"</h5>
+										</c:forEach>
+									</div>
 								</div>
 							</div>
+							<%	List<Cody> randomCody = (List<Cody>) request.getAttribute("randomCody"); %>
+							
 							<div class="col-5">
 								<div class="card">
 									<div class="card-header">
 										<h4 class="mt-3">오늘의 코디 추천</h4>
 									</div>
-									<div class="card-body"></div>
+									<div class="card-body">
+									
+									<button type="button" class="btn btn-icon btn-outline-info"
+											onclick="location.href='goCodyDetail?cody_idx=<%= randomCody.get(0).getCody_idx() %>'">
+											<i class="feather icon-search"></i>
+										</button>
+										
+									</div>
 								</div>
 							</div>
+							
+							
 						</div>
 					</div>
 				</div>
@@ -284,7 +305,7 @@
 	<!-- Best Cody 슬라이드 -->
 	<!-- custom-chart js -->
 	<script src="resources/assets/js/pages/dashboard-main.js"></script>
-	
+
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var owl = $('.owl-carousel');
@@ -314,17 +335,18 @@
 			})
 		});
 	</script>
-	
+
 	<!-- 패션 검색어 트렌드 -->
 	<script>
-	const ctx = document.getElementById('myChart').getContext('2d');
-	const myChart = new Chart(ctx, {
+	const canvasArea = document.getElementById('myChart').getContext('2d');
+	const myChart = new Chart(canvasArea, {
 									type: 'bar',
 									data: {
 											labels: ['<%=keywordList.getTop1()%>', '<%=keywordList.getTop2()%>', '<%=keywordList.getTop3()%>', 
 													'<%=keywordList.getTop4()%>', '<%=keywordList.getTop5()%>', '<%=keywordList.getTop6()%>', 
 													'<%=keywordList.getTop7()%>', '<%=keywordList.getTop8()%>', '<%=keywordList.getTop9()%>', 
-													'<%=keywordList.getTop10()%>' ],
+													'<%=keywordList.getTop10()%>
+		' ],
 				datasets : [ {
 					label : 'Daily Search',
 					data : [

@@ -52,4 +52,6 @@ public interface CodyMapper {
 	public List<Cody> detailRecoList4(int style_idx);
 
 	public List<Cody> bestCody();
+
+	List<Cody> randomCody(String season);
 }

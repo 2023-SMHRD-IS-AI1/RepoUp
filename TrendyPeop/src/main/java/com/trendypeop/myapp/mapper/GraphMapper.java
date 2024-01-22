@@ -16,5 +16,7 @@ public interface GraphMapper {
 
 	public Keyword keywordListing(String collected_at);
 
+	public List<Keyword> article_list();
+
 }
    
