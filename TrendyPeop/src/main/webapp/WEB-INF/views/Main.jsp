@@ -1,3 +1,4 @@
+<%@page import="com.trendypeop.myapp.entity.Keyword"%>
 <%@page import="com.trendypeop.myapp.entity.Cody"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -112,7 +113,7 @@
 						</div>
 						<br> <br>
 					</div>
-				</div>
+				</div>	
 			</div>
 			<!-- [ Main Content ] end -->
 		</div>
