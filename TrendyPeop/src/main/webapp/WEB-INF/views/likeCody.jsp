@@ -94,25 +94,11 @@
 					</div>
 				</div>
 				<!-- 이미지 생성 끝 -->
-				<!-- 페이지 이동 -->
-				<div class="row">
-					<div class="col">
-						<!-- <hr>
-						<ul class="pagination justify-content-center">
-							<li class="page-item"><a class="page-link" href="#!" aria-label="Previous"><span
-										aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a>
-							</li>
-							<li class="page-item"><a class="page-link" href="#!">1</a></li>
-							<li class="page-item"><a class="page-link" href="#!">2</a></li>
-							<li class="page-item"><a class="page-link" href="#!">3</a></li>
-							<li class="page-item"><a class="page-link" href="#!" aria-label="Next"><span
-										aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
-						</ul> -->
-					</div>
-				</div>
-				<!-- 페이징 끝 -->
 			</div>
 			<!-- 컨텐츠 영역 끝 -->
+			<button type="button" class="btn btn-icon btn-primary" id="scrollToTopBtn">
+				<a href="#" style="color: white;"><i class="feather icon-arrow-up"></i></a>
+			</button>
 		</div>
 	</div>
 	<!-- [ Main Content ] end -->
