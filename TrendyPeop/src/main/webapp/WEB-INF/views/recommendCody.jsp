@@ -65,32 +65,39 @@
 				<!-- 이미지 업로드 -->
 				<div class="row">
 					<div class="col">
-						<%  List<Cody> recoList = (List<Cody>) request.getAttribute("recoList");
-		                  
-		                	for(int i=0;i<10;i++) {
-		                	int j = i*5; %>
-					
+						<%
+						List<Cody> recoList = (List<Cody>) request.getAttribute("recoList");
+
+						for (int i = 0; i < 10; i++) {
+							int j = i * 5;
+						%>
+
 						<div class="card-deck">
-						<c:forEach items="${recoList }" var="c" begin="<%=j %>" end="<%=j+4 %>"  varStatus="status">
-							<div class="card" id="max">
-								<a href="goCodyDetail?cody_idx=${c.cody_idx }">
-								<img class="img-fluid card-img-top" src="${c.cody_img_url}"
-									alt="Card image cap">
-								</a>
-								<div class="card-body">
-									<h5 class="card-title">${c.cody_name }</h5>
+							<c:forEach items="${recoList }" var="c" begin="<%=j %>"
+								end="<%=j+4 %>" varStatus="status">
+								<div class="card" id="max">
+									<a href="goCodyDetail?cody_idx=${c.cody_idx }"> <img
+										class="img-fluid card-img-top" src="${c.cody_img_url}"
+										alt="Card image cap">
+									</a>
+									<div class="card-body">
+										<h5 class="card-title">${c.cody_name }</h5>
+									</div>
+									<div class="card-footer">
+										<button type="button" class="btn btn-icon btn-outline-primary"
+											onclick="insertCodyHeart('${c.cody_idx}', '${loginUser.user_id}')">
+											<i class="feather icon-heart"></i>
+										</button>
+									</div>
 								</div>
-								<div class="card-footer">
-									<button type="button" class="btn btn-icon btn-outline-primary" onclick="location.href='insertCodyHeart?cody_idx=${c.cody_idx }&user_id=${loginUser.user_id}'">
-										<i class="feather icon-heart"></i>
-									</button>
-								</div>
-							</div>
-							
-						</c:forEach>
+
+							</c:forEach>
 						</div>
-						<br><br>
-						<%} %>
+						<br>
+						<br>
+						<%
+						}
+						%>
 					</div>
 				</div>
 				<!-- 이미지 업로드 끝 -->
@@ -131,6 +138,30 @@
 
 	<!-- custom-chart js -->
 	<script src="resources/assets/js/pages/dashboard-main.js"></script>
+
+	<script>
+		function insertCodyHeart(cody_idx, user_id) {
+
+			console.log('cody_idx:', cody_idx);
+			console.log('user_id:', user_id);
+			//Ajax로 전송
+			$.ajax({
+				url : './insertCodyHeart',
+				data : {
+					cody_idx : cody_idx,
+					user_id : user_id
+				},
+				type : 'POST',
+				dataType : 'json',
+				success : function(result) {
+					if (result.success) {
+						pass;
+					}
+				}
+			}); //End Ajax
+		}
+	</script>
+
 </body>
 
 </html>
