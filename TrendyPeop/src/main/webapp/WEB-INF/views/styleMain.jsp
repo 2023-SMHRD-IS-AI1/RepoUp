@@ -190,14 +190,14 @@
 										} else {
 										%>
 										<button type="button" class="btn btn-icon btn-outline-primary"
-											onclick="location.href='insertStyleHeart?style_idx=${s.style_idx }&user_id=${loginUser.user_id}'">
+											onclick="insertStyleHeart('${s.style_idx}', '${loginUser.user_id}')">
 											<i class="feather icon-heart"></i>
 										</button>
-										<button type="button" class="btn btn-icon btn-outline-success"
-											onclick="location.href='insertCloset?style_idx=${s.style_idx }&user_id=${loginUser.user_id}'">
+										<button type="button" class="btn btn-icon btn-outline-success" id="insertStyleHeart"
+											onclick="insertStyleCloset('${s.style_idx}', '${loginUser.user_id}')">
 											<i class="feather icon-briefcase"></i>
 										</button>
-										<button type="button" class="btn btn-icon btn-outline-info"
+										<button type="button" class="btn btn-icon btn-outline-info" id="insertStyleCloset"
 											onclick="location.href='${s.style_google}'">
 											<i class="feather icon-search"></i>
 										</button>
@@ -276,6 +276,52 @@
 
 	<!-- custom-chart js -->
 	<script src="resources/assets/js/pages/dashboard-main.js"></script>
+	
+	<script>
+		
+	function insertStyleHeart(style_idx, user_id) {
+		
+		console.log('style_idx:', style_idx);
+        console.log('user_id:', user_id);
+        //Ajax로 전송
+        $.ajax({
+            url : './insertStyleHeart',
+            data : {
+            	style_idx : style_idx,
+                user_id : user_id
+            },
+            type : 'POST',
+            dataType : 'json',
+            success : function(result1) {
+                if (result1.success) {
+                    pass;
+                }
+            }
+        }); //End Ajax
+    }
+	
+function insertStyleCloset(style_idx, user_id) {
+		
+		console.log('style_idx:', style_idx);
+        console.log('user_id:', user_id);
+        //Ajax로 전송
+        $.ajax({
+            url : './insertCloset',
+            data : {
+            	style_idx : style_idx,
+                user_id : user_id
+            },
+            type : 'POST',
+            dataType : 'json',
+            success : function(result2) {
+                if (result2.success) {
+                    pass;
+                }
+            }
+        }); //End Ajax
+    }
+	</script>
+	
 </body>
 
 </html>

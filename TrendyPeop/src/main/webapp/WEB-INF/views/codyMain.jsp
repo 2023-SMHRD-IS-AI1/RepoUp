@@ -136,8 +136,8 @@
 											<i class="feather icon-search"></i>
 										</button>
 										<% } else { %>
-										<button type="button" class="btn btn-icon btn-outline-primary"
-											onclick="location.href='insertCodyHeart?cody_idx=${c.cody_idx }&user_id=${loginUser.user_id}'">
+										<button type="button" class="btn btn-icon btn-outline-primary" id="insertCodyHeart"
+											onclick="insertCodyHeart('${c.cody_idx}', '${loginUser.user_id}')">
 											<i class="feather icon-heart"></i>
 										</button>
 										<button type="button" class="btn btn-icon btn-outline-info"
@@ -197,6 +197,31 @@
 
 	<!-- custom-chart js -->
 	<script src="resources/assets/js/pages/dashboard-main.js"></script>
+	
+	<script>
+		
+	function insertCodyHeart(cody_idx, user_id) {
+		
+		console.log('cody_idx:', cody_idx);
+        console.log('user_id:', user_id);
+        //Ajax로 전송
+        $.ajax({
+            url : './insertCodyHeart',
+            data : {
+                cody_idx : cody_idx,
+                user_id : user_id
+            },
+            type : 'POST',
+            dataType : 'json',
+            success : function(result) {
+                if (result.success) {
+                    pass;
+                } 
+            }
+        }); //End Ajax
+    }
+	</script>
+	
 </body>
 
 </html>

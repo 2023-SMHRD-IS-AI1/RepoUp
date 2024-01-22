@@ -84,9 +84,15 @@ public class StyleController {
 	}
 	
 	@RequestMapping("/insertStyleHeart")
-	public String insertHeart(@RequestParam("style_idx") int style_idx, @RequestParam("user_id") String user_id) {
+	@ResponseBody
+	public Map<String, Object> insertHeart(@RequestParam("style_idx") int style_idx, @RequestParam("user_id") String user_id) {
 		
+		System.out.println("test1");
+		System.out.println(style_idx);		
+		System.out.println(user_id);
+		System.out.println("test2");
 
+		Map<String, Object> response = new HashMap<>(); 
 		Style style = new Style(style_idx, user_id);
 
 		int count = styleMapper.checkStyleHeart(style);
@@ -94,8 +100,10 @@ public class StyleController {
 		
 		if(count == 0) {
 			styleMapper.insertStyleHeart(style);
+			response.put("success", true);
 		} else {
 			styleMapper.deleteStyleHeart(style);
+			response.put("success", false);
 		}
 		
 		
@@ -287,7 +295,7 @@ public class StyleController {
 		        styleMapper.insertStyleReco(style3);
 		
 		
-		return "redirect:/goStyleMain";
+		return response;
 	}
 	
 	@RequestMapping("/insertCloset")
