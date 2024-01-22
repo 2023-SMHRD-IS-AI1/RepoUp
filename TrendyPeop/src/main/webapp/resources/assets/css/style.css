@@ -171,7 +171,10 @@ File: style.css
 
 #float{
     float: right;
-    margin-right: inherit;
+}
+
+#margin-right{
+	margin-right: inherit;
 }
 
 
@@ -17599,7 +17602,7 @@ a.text-dark:hover, a.text-dark:focus {
     font-size: 0.9375rem;
     font-weight: 600;
     display: inline-block;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     line-height: 1.1;
     position: relative;
 }
