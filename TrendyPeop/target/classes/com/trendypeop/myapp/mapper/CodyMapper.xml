@@ -2,67 +2,142 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.trendypeop.myapp.mapper.CodyMapper">
 
-	<select id = "codyList" resultType="com.trendypeop.myapp.entity.Cody">
+	<select id="codyList"
+		resultType="com.trendypeop.myapp.entity.Cody">
 		select * from tb_cody
 	</select>
-	
-	<select id = "likeCodyList" resultType="com.trendypeop.myapp.entity.Cody">
-		select * 
-		from tb_cody inner join tb_cody_favorite 
+
+	<select id="likeCodyList"
+		resultType="com.trendypeop.myapp.entity.Cody">
+		select *
+		from tb_cody inner join tb_cody_favorite
 		on tb_cody.cody_idx = tb_cody_favorite.cody_idx
-		where tb_cody_favorite.user_id = #{user_id}
+		where
+		tb_cody_favorite.user_id = #{user_id}
 	</select>
-	
-	<insert id="insertCodyHeart" parameterType="com.trendypeop.myapp.entity.Cody">
-		insert into tb_cody_favorite(cody_idx, user_id) values(#{cody_idx}, #{user_id})
-	</insert>
-	
-	<delete id="deleteCodyHeart" parameterType="com.trendypeop.myapp.entity.Cody">
-		delete from tb_cody_favorite where cody_idx = #{cody_idx} and user_id = #{user_id}
-	</delete>
-	
-	<select id="checkCodyHeart" parameterType="com.trendypeop.myapp.entity.Cody" resultType="int">
-		select count(*) from tb_cody_favorite where cody_idx = #{cody_idx} and user_id = #{user_id}
-	</select>
-	
-	<select id = "codyDetail" parameterType="int" resultType="com.trendypeop.myapp.entity.Cody">
-		select * 
-		from tb_item as it inner join tb_cody as cd 
-		on cd.cody_idx=it.cody_idx 
-		where it.cody_idx = #{cody_idx}
-	</select>
-	
-	<select id="getTags" parameterType = "String" resultType="com.trendypeop.myapp.entity.Cody">
-		select * from tb_cody inner join tb_cody_favorite on tb_cody.cody_idx = tb_cody_favorite.cody_idx where tb_cody_favorite.user_id = #{user_id}
-	</select>
-	
-	<delete id="deleteCodyReco" parameterType="String">
-		delete from tb_cody_recommendation where user_id = #{user_id}
-	</delete>
-	
-	<insert id="insertCodyReco" parameterType="com.trendypeop.myapp.entity.Cody">
-		insert into tb_cody_recommendation(user_id, cody_look, cody_style_tag) values(#{cody_season}, #{cody_look}, #{cody_style_tag})
+
+	<insert id="insertCodyHeart"
+		parameterType="com.trendypeop.myapp.entity.Cody">
+		insert into tb_cody_favorite(cody_idx, user_id)
+		values(#{cody_idx}, #{user_id})
 	</insert>
 
-	<select id = "recoList" parameterType = "com.trendypeop.myapp.entity.Cody" resultType="com.trendypeop.myapp.entity.Cody">
-		SELECT   *
+	<delete id="deleteCodyHeart"
+		parameterType="com.trendypeop.myapp.entity.Cody">
+		delete from tb_cody_favorite where cody_idx =
+		#{cody_idx} and user_id = #{user_id}
+	</delete>
+
+	<select id="checkCodyHeart"
+		parameterType="com.trendypeop.myapp.entity.Cody" resultType="int">
+		select
+		count(*) from tb_cody_favorite where cody_idx = #{cody_idx} and
+		user_id = #{user_id}
+	</select>
+
+	<select id="codyDetail" parameterType="int"
+		resultType="com.trendypeop.myapp.entity.Cody">
+		select *
+		from tb_item as it inner join tb_cody as cd
+		on cd.cody_idx=it.cody_idx
+		where it.cody_idx = #{cody_idx}
+	</select>
+
+	<select id="getTags" parameterType="String"
+		resultType="com.trendypeop.myapp.entity.Cody">
+		select * from tb_cody inner join tb_cody_favorite on
+		tb_cody.cody_idx = tb_cody_favorite.cody_idx where
+		tb_cody_favorite.user_id = #{user_id}
+	</select>
+
+	<delete id="deleteCodyReco" parameterType="String">
+		delete from
+		tb_cody_recommendation where user_id = #{user_id}
+	</delete>
+
+	<insert id="insertCodyReco"
+		parameterType="com.trendypeop.myapp.entity.Cody">
+		insert into tb_cody_recommendation(user_id, cody_look,
+		cody_style_tag) values(#{cody_season}, #{cody_look},
+		#{cody_style_tag})
+	</insert>
+
+	<select id="recoList"
+		parameterType="com.trendypeop.myapp.entity.Cody"
+		resultType="com.trendypeop.myapp.entity.Cody">
+		SELECT *
 		FROM tb_cody
-		WHERE ( 
-		    cody_look IN (SELECT  cody_look FROM tb_cody_recommendation WHERE tb_cody_recommendation.user_id = #{user_id}) 
-		    AND cody_style_tag IN (SELECT cody_style_tag FROM tb_cody_recommendation WHERE tb_cody_recommendation.user_id = #{user_id})
+		WHERE (
+		cody_look IN (SELECT cody_look FROM tb_cody_recommendation WHERE
+		tb_cody_recommendation.user_id = #{user_id})
+		AND cody_style_tag IN (SELECT cody_style_tag FROM tb_cody_recommendation
+		WHERE tb_cody_recommendation.user_id = #{user_id})
 		)
 		AND (
-		    cody_season NOT LIKE #{cody_season}
+		cody_season NOT LIKE #{cody_season}
 		)
 		ORDER BY RAND()
 	</select>
-	
-	<select id="filterCodyLook" parameterType = "String" resultType="com.trendypeop.myapp.entity.Cody">
+
+	<select id="filterCodyLook" parameterType="String"
+		resultType="com.trendypeop.myapp.entity.Cody">
 		select * from tb_cody where cody_look = #{cody_look}
 	</select>
-	
-	<select id="filterCodyStyleTag" parameterType = "String" resultType="com.trendypeop.myapp.entity.Cody">
-		select * from tb_cody where cody_style_tag = #{cody_style_tag}
+
+	<select id="filterCodyStyleTag" parameterType="String"
+		resultType="com.trendypeop.myapp.entity.Cody">
+		select * from tb_cody where cody_style_tag =
+		#{cody_style_tag}
 	</select>
-	
+
+	<select id="detailRecoList1" parameterType="int"
+		resultType="com.trendypeop.myapp.entity.Cody">
+		select *
+		from tb_cody inner join tb_style
+		on tb_cody.cody_idx = tb_style.top1
+		where tb_style.style_idx =
+		#{style_idx}
+	</select>
+
+	<select id="detailRecoList2" parameterType="int"
+		resultType="com.trendypeop.myapp.entity.Cody">
+		select *
+		from tb_cody inner join tb_style
+		on tb_cody.cody_idx = tb_style.top2
+		where tb_style.style_idx =
+		#{style_idx}
+	</select>
+
+	<select id="detailRecoList3" parameterType="int"
+		resultType="com.trendypeop.myapp.entity.Cody">
+		select *
+		from tb_cody inner join tb_style
+		on tb_cody.cody_idx = tb_style.top3
+		where tb_style.style_idx =
+		#{style_idx}
+	</select>
+
+	<select id="detailRecoList4" parameterType="int"
+		resultType="com.trendypeop.myapp.entity.Cody">
+		select *
+		from tb_cody inner join tb_style
+		on tb_cody.cody_idx = tb_style.top4
+		where tb_style.style_idx =
+		#{style_idx}
+	</select>
+
+	<select id="bestCody"
+		resultType="com.trendypeop.myapp.entity.Cody">
+		SELECT *
+		FROM tb_cody
+		JOIN (
+		SELECT cody_idx
+		FROM tb_cody_favorite
+		GROUP BY cody_idx
+		ORDER BY COUNT(cody_idx) DESC
+		LIMIT 5
+		) AS best_cody
+		ON tb_cody.cody_idx =best_cody.cody_idx
+	</select>
+
 </mapper>

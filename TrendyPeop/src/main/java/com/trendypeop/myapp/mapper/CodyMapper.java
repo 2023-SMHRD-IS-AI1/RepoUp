@@ -43,4 +43,13 @@ public interface CodyMapper {
 
 	public List<Cody> filterCodyStyleTag(String cody_style_tag);
 	
+	public List<Cody> detailRecoList1(int style_idx);
+
+	public List<Cody> detailRecoList2(int style_idx);
+	
+	public List<Cody> detailRecoList3(int style_idx);
+	
+	public List<Cody> detailRecoList4(int style_idx);
+
+	public List<Cody> bestCody();
 }
