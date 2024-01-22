@@ -43,6 +43,10 @@ public class Keyword {
 	private Double top9_rate;
 	private Double top10_rate;
 	
+	private String news_title;
+	private String news_url;
+	
+	
 //	public Keyword(String now_string) {
 //		super();
 //		this.collected_at = now_string;

@@ -31,6 +31,8 @@ public class Cody {
 	private String item_url;
 	private String top_cdLook;
 	private String top_cdTag;
+	private String season;
+	
 	
 	public Cody(int cody_idx, String user_id) {
 		super();

@@ -6,4 +6,9 @@
 		select * from datalab where collected_at = #{collected_at}
 	</select>
 	
+	<select id="article_list" resultType= "com.trendypeop.myapp.entity.Keyword">
+		select * from tb_news ORDER BY RAND() LIMIT 5
+	</select>
+	
+	
 </mapper>
