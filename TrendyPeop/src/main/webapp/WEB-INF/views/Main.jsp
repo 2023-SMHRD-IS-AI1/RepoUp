@@ -288,13 +288,13 @@
 				autoplay : true, // 자동재생 여부
 				autoplayTimeout : 3200, // 재생간격
 				autoplayHoverPause : false,
-
+				
 				navigation : false,
 				navigationText : [ "prev", "next" ],
 
 				//Pagination
 				pagination : false
-
+				
 			});
 
 			$('.customNextBtn').click(function() {
