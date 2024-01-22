@@ -199,8 +199,6 @@
 			    
 			    //Pagination
 			    pagination : false
-
-
 				
 			});
 
