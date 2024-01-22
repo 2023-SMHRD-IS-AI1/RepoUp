@@ -2,31 +2,33 @@
 <%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>TrendyPeop</title>
 <!-- Meta -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="">
-    <meta name="author" content="Phoenixcoded" />
-    
-    <!-- Favicon icon -->
-    <link rel="icon" href="resources/assets/images/favicon.png" type="image/x-icon">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="description" content="" />
+<meta name="keywords" content="">
+<meta name="author" content="Phoenixcoded" />
 
-    <!-- vendor css -->
-    <link rel="stylesheet" href="resources/assets/css/style.css">
-    
+<!-- Favicon icon -->
+<link rel="icon" href="resources/assets/images/favicon.png"
+	type="image/x-icon">
+
+<!-- vendor css -->
+<link rel="stylesheet" href="resources/assets/css/style.css">
+
 </head>
 
 <body class="">
-	
-<%@include file="./nav.jsp" %>
-	
+
+	<%@include file="./nav.jsp"%>
+
 	<!-- [ Main Content ] start -->
 
 	<div class="pcoded-main-container">
@@ -40,7 +42,8 @@
 								<h5 class="m-b-10">Fashion Trend Dashboard</h5>
 							</div>
 							<ul class="breadcrumb">
-								<li class="breadcrumb-item"><a href="goMain"><i class="feather icon-home"></i></a></li>
+								<li class="breadcrumb-item"><a href="goMain"><i
+										class="feather icon-home"></i></a></li>
 								<li class="breadcrumb-item"><a>TrendyPeop</a></li>
 							</ul>
 						</div>
@@ -84,15 +87,24 @@
 										type="button" data-toggle="dropdown" aria-haspopup="true"
 										aria-expanded="false">Style</button>
 									<div class="dropdown-menu dropdown-menu-right">
-										<a class="dropdown-item" href="filterCodyStyleTag?cody_style_tag=캐주얼">캐주얼</a>
-										<a class="dropdown-item" href="filterCodyStyleTag?cody_style_tag=스트릿">스트릿</a>
-										<a class="dropdown-item" href="filterCodyStyleTag?cody_style_tag=아메카지">아메카지</a>
-										<a class="dropdown-item" href="filterCodyStyleTag?cody_style_tag=비즈니스캐주얼">비즈니스캐주얼</a>
-										<a class="dropdown-item" href="filterCodyStyleTag?cody_style_tag=걸리시">걸리시</a>
-										<a class="dropdown-item" href="filterCodyStyleTag?cody_style_tag=로맨틱">로맨틱</a>
-										<a class="dropdown-item" href="filterCodyStyleTag?cody_style_tag=시크">시크</a>
-										<a class="dropdown-item" href="filterCodyStyleTag?cody_style_tag=댄디">댄디</a>
-										<a class="dropdown-item" href="filterCodyStyleTag?cody_style_tag=홈웨어">홈웨어</a>
+										<a class="dropdown-item"
+											href="filterCodyStyleTag?cody_style_tag=캐주얼">캐주얼</a> <a
+											class="dropdown-item"
+											href="filterCodyStyleTag?cody_style_tag=스트릿">스트릿</a> <a
+											class="dropdown-item"
+											href="filterCodyStyleTag?cody_style_tag=아메카지">아메카지</a> <a
+											class="dropdown-item"
+											href="filterCodyStyleTag?cody_style_tag=비즈니스캐주얼">비즈니스캐주얼</a>
+										<a class="dropdown-item"
+											href="filterCodyStyleTag?cody_style_tag=걸리시">걸리시</a> <a
+											class="dropdown-item"
+											href="filterCodyStyleTag?cody_style_tag=로맨틱">로맨틱</a> <a
+											class="dropdown-item"
+											href="filterCodyStyleTag?cody_style_tag=시크">시크</a> <a
+											class="dropdown-item"
+											href="filterCodyStyleTag?cody_style_tag=댄디">댄디</a> <a
+											class="dropdown-item"
+											href="filterCodyStyleTag?cody_style_tag=홈웨어">홈웨어</a>
 									</div>
 								</div>
 							</div>
@@ -102,37 +114,46 @@
 				<!-- 이미지 시작 -->
 				<div class="row">
 					<div class="col">
-					<hr>
+						<hr>
 						<%
-						List<Cody> codyLookFilterList = (List<Cody>) request.getAttribute("codyLookFilterList");            // 여기 바꿔야 함
+						List<Cody> codyLookFilterList = (List<Cody>) request.getAttribute("codyLookFilterList"); // 여기 바꿔야 함
 
 						for (int i = 0; i <= (codyLookFilterList.size() / 5 + 1); i++) {
 							int j = i * 5;
 						%>
-						
+
 						<div class="card-deck">
- 						<c:forEach items="${codyLookFilterList }" var="c" begin="<%=j %>" end="<%=j+4 %>">
-							<div class="card" id="max">
-								<a href="goCodyDetail?cody_idx=${c.cody_idx }">
-								<img class="img-fluid card-img-top" src="${c.cody_img_url}"
-									alt="Card image cap">
-								</a>
-								<div class="card-body">
-									<h5 class="card-title">${c.cody_name }</h5>
+							<c:forEach items="${codyLookFilterList }" var="c" begin="<%=j %>"
+								end="<%=j+4 %>">
+								<div class="card" id="max">
+									<a href="goCodyDetail?cody_idx=${c.cody_idx }"> <img
+										class="img-fluid card-img-top" src="${c.cody_img_url}"
+										alt="Card image cap">
+									</a>
+									<div class="card-body">
+										<h5 class="card-title">${c.cody_name }</h5>
+									</div>
+									<div class="card-footer">
+										<!-- 여기도 마찬가지, 좋아요 눌렀으면 btn-, 안눌렀으면 btn-outline-(빈하트) -->
+										<button type="button" class="btn btn-icon btn-outline-primary"
+											id="insertCodyHeart"
+											onclick="insertCodyHeart('${c.cody_idx}', '${loginUser.user_id}')">
+											<i class="feather icon-heart"></i>
+										</button>
+										<button type="button" class="btn btn-icon btn-outline-info"
+											onclick="location.href='goCodyDetail?cody_idx=${c.cody_idx }'">
+											<i class="feather icon-search"></i>
+										</button>
+									</div>
 								</div>
-								<div class="card-footer">
-									<!-- 여기도 마찬가지, 좋아요 눌렀으면 btn-, 안눌렀으면 btn-outline-(빈하트) -->
-									<button type="button" class="btn btn-icon btn-outline-primary" onclick="location.href='insertCodyHeart?cody_idx=${c.cody_idx }&user_id=${loginUser.user_id}'"><i
-											class="feather icon-heart"></i></button>
-									<button type="button" class="btn btn-icon btn-outline-info" onclick="location.href='goCodyDetail?cody_idx=${c.cody_idx }'"><i
-                                 	class="feather icon-search"></i></button>
-								</div>
-							</div>
-							
+
 							</c:forEach>
 						</div>
-						<br><br>
-						<% } %>
+						<br>
+						<br>
+						<%
+						}
+						%>
 					</div>
 				</div>
 				<!-- 이미지 끝 -->
@@ -155,23 +176,47 @@
 				<!-- 페이징 끝 -->
 			</div>
 			<!-- 컨텐츠 영역 끝 -->
-    </div>
-</div>
-		<!-- [ Main Content ] end -->
+		</div>
+	</div>
+	<!-- [ Main Content ] end -->
 
 
-    <!-- Required Js -->
-    <script src="resources/assets/js/vendor-all.min.js"></script>
-    <script src="resources/assets/js/plugins/bootstrap.min.js"></script>
-    <script src="resources/assets/js/ripple.js"></script>
-    <script src="resources/assets/js/pcoded.min.js"></script>
+	<!-- Required Js -->
+	<script src="resources/assets/js/vendor-all.min.js"></script>
+	<script src="resources/assets/js/plugins/bootstrap.min.js"></script>
+	<script src="resources/assets/js/ripple.js"></script>
+	<script src="resources/assets/js/pcoded.min.js"></script>
 
-<!-- Apex Chart -->
-<script src="resources/assets/js/plugins/apexcharts.min.js"></script>
+	<!-- Apex Chart -->
+	<script src="resources/assets/js/plugins/apexcharts.min.js"></script>
 
 
-<!-- custom-chart js -->
-<script src="resources/assets/js/pages/dashboard-main.js"></script>
+	<!-- custom-chart js -->
+	<script src="resources/assets/js/pages/dashboard-main.js"></script>
+
+	<script>
+		function insertCodyHeart(cody_idx, user_id) {
+
+			console.log('cody_idx:', cody_idx);
+			console.log('user_id:', user_id);
+			//Ajax로 전송
+			$.ajax({
+				url : './insertCodyHeart',
+				data : {
+					cody_idx : cody_idx,
+					user_id : user_id
+				},
+				type : 'POST',
+				dataType : 'json',
+				success : function(result) {
+					if (result.success) {
+						pass;
+					}
+				}
+			}); //End Ajax
+		}
+	</script>
+
 </body>
 
 </html>

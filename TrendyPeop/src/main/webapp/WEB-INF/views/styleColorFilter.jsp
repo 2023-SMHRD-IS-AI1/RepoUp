@@ -77,12 +77,15 @@
 										<a class="dropdown-item" href="filterStyleCate?style_cate=청바지">청바지</a>
 										<a class="dropdown-item" href="filterStyleCate?style_cate=셔츠">셔츠</a>
 										<a class="dropdown-item" href="filterStyleCate?style_cate=코트">코트</a>
-										<a class="dropdown-item" href="filterStyleCate?style_cate=캐주얼상의">캐주얼상의</a>
-										<a class="dropdown-item" href="filterStyleCate?style_cate=팬츠">팬츠</a>
-										<a class="dropdown-item" href="filterStyleCate?style_cate=블라우스">블라우스</a>
-										<a class="dropdown-item" href="filterStyleCate?style_cate=스커트">스커트</a>
-										<a class="dropdown-item" href="filterStyleCate?style_cate=니트웨어">니트웨어</a>
-										<a class="dropdown-item" href="filterStyleCate?style_cate=재킷">재킷</a>
+										<a class="dropdown-item"
+											href="filterStyleCate?style_cate=캐주얼상의">캐주얼상의</a> <a
+											class="dropdown-item" href="filterStyleCate?style_cate=팬츠">팬츠</a>
+										<a class="dropdown-item"
+											href="filterStyleCate?style_cate=블라우스">블라우스</a> <a
+											class="dropdown-item" href="filterStyleCate?style_cate=스커트">스커트</a>
+										<a class="dropdown-item"
+											href="filterStyleCate?style_cate=니트웨어">니트웨어</a> <a
+											class="dropdown-item" href="filterStyleCate?style_cate=재킷">재킷</a>
 										<a class="dropdown-item" href="filterStyleCate?style_cate=베스트">베스트</a>
 										<a class="dropdown-item" href="filterStyleCate?style_cate=점퍼">점퍼</a>
 										<a class="dropdown-item" href="filterStyleCate?style_cate=패딩">패딩</a>
@@ -96,23 +99,32 @@
 										type="button" data-toggle="dropdown" aria-haspopup="true"
 										aria-expanded="false">Color</button>
 									<div class="dropdown-menu dropdown-menu-right">
-										<a class="dropdown-item" href="filterStyleColor?style_color=블랙">블랙</a>
-										<a class="dropdown-item" href="filterStyleColor?style_color=화이트">화이트</a>
-										<a class="dropdown-item" href="filterStyleColor?style_color=브라운">브라운</a>
-										<a class="dropdown-item" href="filterStyleColor?style_color=그레이">그레이</a>
-										<a class="dropdown-item" href="filterStyleColor?style_color=베이지">베이지</a>
-										<a class="dropdown-item" href="filterStyleColor?style_color=블루">블루</a>
-										<a class="dropdown-item" href="filterStyleColor?style_color=네이비">네이비</a>
-										<a class="dropdown-item" href="filterStyleColor?style_color=카키">카키</a>
-										<a class="dropdown-item" href="filterStyleColor?style_color=스카이블루">스카이블루</a>
-										<a class="dropdown-item" href="filterStyleColor?style_color=라벤더">라벤더</a>
-										<a class="dropdown-item" href="filterStyleColor?style_color=민트">민트</a>
-										<a class="dropdown-item" href="filterStyleColor?style_color=레드">레드</a>
-										<a class="dropdown-item" href="filterStyleColor?style_color=오렌지">오렌지</a>
-										<a class="dropdown-item" href="filterStyleColor?style_color=옐로우">옐로우</a>
-										<a class="dropdown-item" href="filterStyleColor?style_color=핑크">핑크</a>
-										<a class="dropdown-item" href="filterStyleColor?style_color=퍼플">퍼플</a>
-										<a class="dropdown-item" href="filterStyleColor?style_color=그린">그린</a>
+										<a class="dropdown-item"
+											href="filterStyleColor?style_color=블랙">블랙</a> <a
+											class="dropdown-item" href="filterStyleColor?style_color=화이트">화이트</a>
+										<a class="dropdown-item"
+											href="filterStyleColor?style_color=브라운">브라운</a> <a
+											class="dropdown-item" href="filterStyleColor?style_color=그레이">그레이</a>
+										<a class="dropdown-item"
+											href="filterStyleColor?style_color=베이지">베이지</a> <a
+											class="dropdown-item" href="filterStyleColor?style_color=블루">블루</a>
+										<a class="dropdown-item"
+											href="filterStyleColor?style_color=네이비">네이비</a> <a
+											class="dropdown-item" href="filterStyleColor?style_color=카키">카키</a>
+										<a class="dropdown-item"
+											href="filterStyleColor?style_color=스카이블루">스카이블루</a> <a
+											class="dropdown-item" href="filterStyleColor?style_color=라벤더">라벤더</a>
+										<a class="dropdown-item"
+											href="filterStyleColor?style_color=민트">민트</a> <a
+											class="dropdown-item" href="filterStyleColor?style_color=레드">레드</a>
+										<a class="dropdown-item"
+											href="filterStyleColor?style_color=오렌지">오렌지</a> <a
+											class="dropdown-item" href="filterStyleColor?style_color=옐로우">옐로우</a>
+										<a class="dropdown-item"
+											href="filterStyleColor?style_color=핑크">핑크</a> <a
+											class="dropdown-item" href="filterStyleColor?style_color=퍼플">퍼플</a>
+										<a class="dropdown-item"
+											href="filterStyleColor?style_color=그린">그린</a>
 									</div>
 								</div>
 							</div>
@@ -141,14 +153,14 @@
 					<div class="col">
 						<hr>
 						<%
-						List<Style> styleColorFilterList = (List<Style>) request.getAttribute("styleColorFilterList");            // 여기 바꿔야 함
+						List<Style> styleColorFilterList = (List<Style>) request.getAttribute("styleColorFilterList"); // 여기 바꿔야 함
 
 						for (int i = 0; i <= (styleColorFilterList.size() / 5 + 1); i++) {
 							int j = i * 5;
 						%>
 						<div class="card-deck">
-							<c:forEach items="${styleColorFilterList }" var="s" begin="<%=j %>"
-								end="<%=j+4 %>" varStatus="status">
+							<c:forEach items="${styleColorFilterList }" var="s"
+								begin="<%=j %>" end="<%=j+4 %>" varStatus="status">
 								<div class="card" id="max">
 									<img data-toggle="modal" data-target="#item${status.index }"
 										class="img-fluid card-img-top" src="${s.style_img_url}"
@@ -172,11 +184,12 @@
 										</div>
 										<!-- 좋아요 안되어있으면 btn-outline-(빈) 속성, 좋아요 했으면 btn-(채워진) 으로 들어가야함 -->
 										<button type="button" class="btn btn-icon btn-outline-primary"
-											onclick="location.href='insertStyleHeart?style_idx=${s.style_idx }&user_id=${loginUser.user_id}'">
+											onclick="insertStyleHeart('${s.style_idx}', '${loginUser.user_id}')">
 											<i class="feather icon-heart"></i>
 										</button>
 										<button type="button" class="btn btn-icon btn-outline-success"
-											onclick="location.href='insertCloset?style_idx=${s.style_idx }&user_id=${loginUser.user_id}'">
+											id="insertStyleHeart"
+											onclick="insertStyleCloset('${s.style_idx}', '${loginUser.user_id}')">
 											<i class="feather icon-briefcase"></i>
 										</button>
 										<button type="button" class="btn btn-icon btn-outline-info"
@@ -250,6 +263,51 @@
 
 	<!-- custom-chart js -->
 	<script src="resources/assets/js/pages/dashboard-main.js"></script>
+
+	<script>
+		function insertStyleHeart(style_idx, user_id) {
+
+			console.log('style_idx:', style_idx);
+			console.log('user_id:', user_id);
+			//Ajax로 전송
+			$.ajax({
+				url : './insertStyleHeart',
+				data : {
+					style_idx : style_idx,
+					user_id : user_id
+				},
+				type : 'POST',
+				dataType : 'json',
+				success : function(result1) {
+					if (result1.success) {
+						pass;
+					}
+				}
+			}); //End Ajax
+		}
+
+		function insertStyleCloset(style_idx, user_id) {
+
+			console.log('style_idx:', style_idx);
+			console.log('user_id:', user_id);
+			//Ajax로 전송
+			$.ajax({
+				url : './insertCloset',
+				data : {
+					style_idx : style_idx,
+					user_id : user_id
+				},
+				type : 'POST',
+				dataType : 'json',
+				success : function(result2) {
+					if (result2.success) {
+						pass;
+					}
+				}
+			}); //End Ajax
+		}
+	</script>
+
 </body>
 
 </html>
