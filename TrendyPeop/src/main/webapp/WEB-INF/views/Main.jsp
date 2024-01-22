@@ -26,6 +26,9 @@
 <link rel="stylesheet"
 	href="resources/assets/css/owl.theme.default.min.css">
 
+<!-- 데이터 분석 그래프 -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <!-- 색상분석 파이차트 -->
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -45,13 +48,13 @@
 }
 </style>
 
-
-
 </head>
 
 <body class="">
 
 	<%@include file="./nav.jsp"%>
+	<% Keyword keywordList = (Keyword) request.getAttribute("keywordList"); %>
+
 
 	<!-- [ Main Content ] start -->
 	<div class="pcoded-main-container">
@@ -87,8 +90,8 @@
 									<%
 									List<Cody> bestCody = (List<Cody>) request.getAttribute("bestCody");
 									%>
-									<div class="cardbody" 
-									style="padding: 40px 40px 30px 40px; margin: 0 200px;">
+									<div class="cardbody"
+										style="padding: 40px 40px 30px 40px; margin: 0 10%;">
 										<div class="bestCody">
 											<div class="owl-carousel owl-theme owl-loaded">
 												<div class="owl-stage-outer">
@@ -147,35 +150,34 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-4">
-								<div class="card">
-									<div class="card-header">
-										<h4 class="mt-3">Fashion News</h4>
-									</div>
-									<div class="card-body">
-										
-									</div>
-								</div>
-							</div>
-							<div class="col-4">
-								<div class="card">
-									<div class="card-header">
-										<h4 class="mt-3">오늘의 코디 추천</h4>
-									</div>
-									<div class="card-body">
-										
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row" style="padding: inherit;">
 							<div class="col-8">
 								<div class="card">
 									<div class="card-header">
 										<h4 class="mt-4">패션 검색어 트렌드</h4>
 									</div>
 									<div class="card-body">
+										<div style="width: 700px; height: 400px;">
+											<canvas id='myChart'></canvas>
+										</div>
 									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row" style="padding: inherit;">
+							<div class="col-7">
+								<div class="card">
+									<div class="card-header">
+										<h4 class="mt-3">Fashion News</h4>
+									</div>
+									<div class="card-body"></div>
+								</div>
+							</div>
+							<div class="col-5">
+								<div class="card">
+									<div class="card-header">
+										<h4 class="mt-3">오늘의 코디 추천</h4>
+									</div>
+									<div class="card-body"></div>
 								</div>
 							</div>
 						</div>
@@ -183,6 +185,11 @@
 				</div>	
 			</div>
 			<!-- [ Main Content ] end -->
+			<button type="button" class="btn btn-icon btn-primary"
+				id="scrollToTopBtn">
+				<a href="#" style="color: white;"><i
+					class="feather icon-arrow-up"></i></a>
+			</button>
 		</div>
 	</div>
 	<!-- [ Main Content ] end -->
@@ -274,10 +281,10 @@
 	<script src="resources/assets/js/plugins/apexcharts.min.js"></script>
 
 
-	<!-- Best Cody -->
+	<!-- Best Cody 슬라이드 -->
 	<!-- custom-chart js -->
 	<script src="resources/assets/js/pages/dashboard-main.js"></script>
-
+	
 	<script type="text/javascript">
 		$(document).ready(function() {
 			var owl = $('.owl-carousel');
@@ -305,6 +312,67 @@
 			$('.customPrevBtn').click(function() {
 				owl.trigger('prev.owl.carousel', [ 300 ]);
 			})
+		});
+	</script>
+	
+	<!-- 패션 검색어 트렌드 -->
+	<script>
+	const ctx = document.getElementById('myChart').getContext('2d');
+	const myChart = new Chart(ctx, {
+									type: 'bar',
+									data: {
+											labels: ['<%=keywordList.getTop1()%>', '<%=keywordList.getTop2()%>', '<%=keywordList.getTop3()%>', 
+													'<%=keywordList.getTop4()%>', '<%=keywordList.getTop5()%>', '<%=keywordList.getTop6()%>', 
+													'<%=keywordList.getTop7()%>', '<%=keywordList.getTop8()%>', '<%=keywordList.getTop9()%>', 
+													'<%=keywordList.getTop10()%>' ],
+				datasets : [ {
+					label : 'Daily Search',
+					data : [
+	<%=keywordList.getTop1_rate()%>
+		,
+	<%=keywordList.getTop2_rate()%>
+		,
+	<%=keywordList.getTop3_rate()%>
+		,
+	<%=keywordList.getTop4_rate()%>
+		,
+	<%=keywordList.getTop5_rate()%>
+		,
+	<%=keywordList.getTop6_rate()%>
+		,
+	<%=keywordList.getTop7_rate()%>
+		,
+	<%=keywordList.getTop8_rate()%>
+		,
+	<%=keywordList.getTop9_rate()%>
+		,
+	<%=keywordList.getTop10_rate()%>
+		],
+					backgroundColor : [ 'rgba(255, 99, 132, 0.2)',
+							'rgba(54, 162, 235, 0.2)',
+							'rgba(255, 206, 86, 0.2)',
+							'rgba(75, 192, 192, 0.2)',
+							'rgba(153, 102, 255, 0.2)',
+							'rgba(255, 159, 64, 0.2)' ],
+					borderColor : [ 'rgba(255, 99, 132, 1)',
+							'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)',
+							'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)',
+							'rgba(255, 159, 64, 1)' ],
+					borderWidth : 1
+				} ]
+			},
+			options : {
+				maintainAspectRatio : false,
+				scales : {
+					y : {
+						beginAtZero : true,
+						max : 120,
+						ticks : {
+							stepSize : 15
+						}
+					}
+				}
+			}
 		});
 	</script>
 </body>
