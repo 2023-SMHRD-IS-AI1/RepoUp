@@ -36,15 +36,7 @@ public class CodyController {
 	@Autowired
 	private CodyMapper codyMapper;
 
-	@RequestMapping("/")
-	public String main(Model model) {
-
-		List<Cody> bestCody = codyMapper.bestCody();
-		model.addAttribute("bestCody", bestCody);
-
-		return "Main";
-	}
-
+	
 	@RequestMapping("/filterCodyLook")
 	public String filterCodyLook(@RequestParam("cody_look") String cody_look, Model model) {
 

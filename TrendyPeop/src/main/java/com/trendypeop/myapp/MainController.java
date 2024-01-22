@@ -2,6 +2,7 @@ package com.trendypeop.myapp;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.trendypeop.myapp.entity.Cody;
 import com.trendypeop.myapp.entity.User;
+import com.trendypeop.myapp.mapper.CodyMapper;
 import com.trendypeop.myapp.mapper.UserMapper;
 
 @Controller
@@ -22,6 +25,17 @@ public class MainController {
 	@Autowired
 	private UserMapper userMapper;
 	
+	@Autowired
+	private CodyMapper codyMapper;
+
+	@RequestMapping("/")
+	public String main(Model model) {
+
+		List<Cody> bestCody = codyMapper.bestCody();
+		model.addAttribute("bestCody", bestCody);
+
+		return "Main";
+	}
 	
 	@RequestMapping("/goMain")
 	public String goMain() {
@@ -36,7 +50,7 @@ public class MainController {
 		session.setAttribute("loginUser", loginUser);
 	
 		if(loginUser != null) {
-			return "Main";
+			return "redirect:/";
 		}else {
 			return "signInFail";
 	}
@@ -45,7 +59,7 @@ public class MainController {
 	@RequestMapping("/logoutUser")
 	public String logoutUser(HttpSession session) {
 		session.invalidate();
-		return "Main";
+		return "redirect:/";
 	}
 	
 	
