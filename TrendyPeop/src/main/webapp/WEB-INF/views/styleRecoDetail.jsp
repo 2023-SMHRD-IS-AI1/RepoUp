@@ -84,10 +84,7 @@
 												alt="Card image cap">
 											<div class="card-body">
 												<h5 class="card-title"></h5>
-												<small class="text-muted">코디 설명</small>
 											</div>
-											<div class="card-footer">해당 상품이 좋아요, 옷장찜 상태인지 확인 할 수 있는
-												기능을 넣을지 고민됨</div>
 										</div>
 									</div>
 

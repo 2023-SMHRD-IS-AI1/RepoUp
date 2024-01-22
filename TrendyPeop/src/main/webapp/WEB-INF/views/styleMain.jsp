@@ -214,46 +214,12 @@
 						%>
 					</div>
 				</div>
-
-				<%--                   <% for(int i = 0; i < styleList.size(); i++){ %>
-                     <div class="card">
-                           
-                              <img class="img-fluid card-img-top" src="<%=styleList.get(i).getStyle_img_url() %>" alt="Card image cap">
-                              
-                              <div class="card-body">
-                                 <h5 class="card-title">의류 이름</h5>
-                                 <small class="text-muted">의류 설명</small>
-                              </div>
-                              
-                              <div class="card-footer">
-                                 <button type="button" class="btn btn-icon btn-primary"><i
-                                       class="feather icon-heart"></i></button>
-                                 <button type="button" class="btn btn-icon btn-success"><i
-                                       class="feather icon-briefcase"></i></button>
-                              </div>
-                              
-                     </div>
-                  <% } %> --%>
-
-				<!-- 페이지 이동 -->
-				<div class="row">
-					<div class="col">
-						<!-- <hr>
-                  <ul class="pagination justify-content-center">
-                     <li class="page-item"><a class="page-link" href="#!" aria-label="Previous"><span
-                              aria-hidden="true">&laquo;</span><span class="sr-only">Previous</span></a>
-                     </li>
-                     <li class="page-item"><a class="page-link" href="#!">1</a></li>
-                     <li class="page-item"><a class="page-link" href="#!">2</a></li>
-                     <li class="page-item"><a class="page-link" href="#!">3</a></li>
-                     <li class="page-item"><a class="page-link" href="#!" aria-label="Next"><span
-                              aria-hidden="true">&raquo;</span><span class="sr-only">Next</span></a></li>
-                  </ul> -->
-					</div>
-				</div>
-				<!-- 페이지 끝 -->
+				<!-- 이미지 출력 끝 -->
 			</div>
 			<!-- 컨텐츠 영역 끝 -->
+			<button type="button" class="btn btn-icon btn-primary" id="scrollToTopBtn">
+				<a href="#" style="color: white;"><i class="feather icon-arrow-up"></i></a>
+			</button>
 		</div>
 	</div>
 	<script>
