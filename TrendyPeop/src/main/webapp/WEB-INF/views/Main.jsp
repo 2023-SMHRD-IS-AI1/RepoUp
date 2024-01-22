@@ -317,8 +317,8 @@
 	
 	<!-- 패션 검색어 트렌드 -->
 	<script>
-	const ctx = document.getElementById('myChart').getContext('2d');
-	const myChart = new Chart(ctx, {
+	const canvasArea = document.getElementById('myChart').getContext('2d');
+	const myChart = new Chart(canvasArea, {
 									type: 'bar',
 									data: {
 											labels: ['<%=keywordList.getTop1()%>', '<%=keywordList.getTop2()%>', '<%=keywordList.getTop3()%>', 
