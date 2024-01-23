@@ -175,10 +175,10 @@
 										<h4 class="mt-3">Fashion News</h4>
 									</div>
 									<div class="card-body">
-										<c:forEach items="${article_list}" var="c">
-											<a href="${c.news_url }"></a>
-											<h5>"${c.news_title }"</h5>
-										</c:forEach>
+										<% for (int i = 0; i < 5; i++) { %>
+										<a style="color: black;" href="<%=article_list.get(i).getNews_url()%>"><%=article_list.get(i).getNews_title()%></a>
+										<hr>
+										<% } %>
 									</div>
 								</div>
 							</div>
@@ -191,9 +191,10 @@
 									</div>
 									<div class="card-body">
 									
-									<button type="button" class="btn btn-icon btn-outline-info"
+									<button type="button" class="btn btn-outline-info" id="float"
+											style="margin-left: auto; margin-top: auto;"
 											onclick="location.href='goCodyDetail?cody_idx=<%= randomCody.get(0).getCody_idx() %>'">
-											<i class="feather icon-search"></i>
+											<!-- <i class="feather icon-search"></i> -->추천 코디
 										</button>
 										
 									</div>
