@@ -177,6 +177,17 @@ File: style.css
 	margin-right: inherit;
 }
 
+#scrollToTopBtn {
+	display: inline-flex;
+	position: fixed;
+	bottom: 50px;
+	right: 50px;
+	border: none;
+	cursor: pointer;
+	width: 50px;
+	height: 50px;
+	font-size: 30px;
+	}
 
 
 /*

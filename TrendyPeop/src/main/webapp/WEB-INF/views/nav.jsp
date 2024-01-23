@@ -7,13 +7,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>TrendyPeop</title>
-<!-- vendor css -->
-<link rel="stylesheet" href="resources/assets/css/style.css">
-<!-- Favicon icon -->
-<link rel="icon" href="resources/assets/images/favicon.png"
-	type="image/x-icon">
 
 </head>
 <body>
@@ -71,64 +64,70 @@
 				<%} %>
 
 				<ul class="nav pcoded-inner-navbar ">
-					<li class="nav-item pcoded-menu-caption"><label>Pages</label>
-					</li>
+					<li class="nav-item pcoded-menu-caption"><label>Pages</label></li>
 					<li class="nav-item"><a href="goMain" class="nav-link "><span
 							class="pcoded-micon"><i class="feather icon-home"></i></span><span
 							class="pcoded-mtext">Main</span></a></li>
 					<li class="nav-item pcoded-hasmenu"><a href="#!"
 						class="nav-link"><span class="pcoded-micon"><i
-								class="feather icon-align-justify"></i></span> <span
+							class="feather icon-align-justify"></i></span><span
 							class="pcoded-mtext">Item</span></a>
 						<ul class="pcoded-submenu">
-							<li><a href="goStyleMain" target="_self"><i
-									class="feather icon-tag"></i> Item Main</a></li>
-							<% if (loginUser == null) { %>
-							<li><a href="" onclick="user()" target="_self"><i
-									class="feather icon-thumbs-up m-r-5"></i> 추천</a></li>
+							<li><a href="goStyleMain" target="_self"><i class="feather icon-tag"></i> Item Main</a></li>
+							<% if (loginUser == null) {%>
+								<li><a href="" onclick="user()" target="_self"><i
+										class="feather icon-thumbs-up m-r-5"></i> 추천</a></li>
 							<% } else { %>
-							<li><a href="goRecoStyle?user_id=${loginUser.user_id}"
-								target="_self"><i class="feather icon-thumbs-up m-r-5"></i>
-									추천</a></li>
+								<li><a href="goRecoStyle?user_id=${loginUser.user_id}"
+									target="_self"><i class="feather icon-thumbs-up m-r-5"></i>추천</a></li>
 							<% } %>
-						</ul></li>
-					<li class="nav-item pcoded-hasmenu"><a href="#!"
-						class="nav-link"><span class="pcoded-micon"><i
-								class="feather icon-align-justify"></i></span><span
-							class="pcoded-mtext">Cody </span></a>
+						</ul>
+					</li>
+					<li class="nav-item pcoded-hasmenu"><a href="#!" class="nav-link">
+					<span class="pcoded-micon"><i class="feather icon-align-justify"></i></span>
+					<span class="pcoded-mtext">Cody </span></a>
 						<ul class="pcoded-submenu">
-							<li><a href="goCodyMain" target="_self"><i
-									class="feather icon-tag"></i> Cody Main</a></li>
-							<% if (loginUser == null) { %>
-							<li><a href="" onclick="user()" target="_self"><i
-									class="feather icon-thumbs-up m-r-5"></i> 추천</a></li>
-							<% } else { %>
-							<li><a
-								href="goRecoCody?user_id=${loginUser.user_id}&cody_season=<%=season %>"
-								target="_self"><i class="feather icon-thumbs-up m-r-5"></i>추천</a></li>
-							<% } %>
-						</ul></li>
+							<li><a href="goCodyMain" target="_self"><i class="feather icon-tag"></i> Cody Main</a></li>
+								<% if (loginUser == null) { %>
+								<li><a href="" onclick="user()" target="_self"><i class="feather icon-thumbs-up m-r-5"></i> 추천</a></li>
+								<% } else { %>
+								<li><a href="goRecoCody?user_id=${loginUser.user_id}&cody_season=<%=season %>" target="_self"><i class="feather icon-thumbs-up m-r-5"></i>추천</a></li>
+								<% } %>
+						</ul>
+					</li>
 					<li class="nav-item pcoded-hasmenu"><a href="#!"
 						class="nav-link"><span class="pcoded-micon"><i
 								class="feather icon-align-justify"></i></span><span
 							class="pcoded-mtext">My Page</span></a>
 						<ul class="pcoded-submenu">
-							<% if (loginUser == null) { %>
+							<%
+							if (loginUser == null) {
+							%>
 							<li><a href="" onclick="user()" target="_self"><i
 									class="feather icon-briefcase m-r-5"></i> 나만의 옷장</a></li>
-							<% } else { %>
+							<%
+							} else {
+							%>
 							<li><a href="goMyCloset?user_id=${loginUser.user_id}"
 								target="_self"><i class="feather icon-briefcase m-r-5"></i>
 									나만의 옷장</a></li>
-							<% } %>
-							<% if (loginUser == null) { %>
+							<%
+							}
+							%>
+							<%
+							if (loginUser == null) {
+							%>
 							<li><a href="" onclick="user()" target="_self"><i
 									class="feather icon-heart m-r-5"></i> 좋아요 보기</a></li>
-							<% } else { %>
+							<%
+							} else {
+							%>
 							<li><a href="goLikeStyle?user_id=${loginUser.user_id}"
 								target="_self"><i class="feather icon-heart m-r-5"></i> 좋아요
 									보기</a></li>
-							<% } %>
+							<%
+							}
+							%>
 						</ul></li>
 				</ul>
 
