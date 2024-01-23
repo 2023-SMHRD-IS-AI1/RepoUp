@@ -129,7 +129,6 @@
 																class=""><img
 																src="<%=bestCody.get(4).getCody_img_url()%>"></a>
 														</div>
-
 													</div>
 												</div>
 											</div>
@@ -138,9 +137,8 @@
 								</div>
 							</div>
 						</div>
-						<br>
 						<div class="row" style="padding: inherit;">
-							<div class="col-4">
+							<div class="col-5">
 								<div class="card">
 									<div class="card-header">
 										<h4 class="mt-3">2023년 12월 Best Color</h4>
@@ -152,12 +150,12 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-8">
+							<div class="col-7">
 								<div class="card">
 									<div class="card-header">
 										<h4 class="mt-4">패션 검색어 트렌드</h4>
 									</div>
-									<div class="card-body">
+									<div class="card-body" style="margin: auto;">
 										<div style="width: 700px; height: 400px;">
 											<canvas id='myChart'></canvas>
 										</div>
@@ -346,8 +344,7 @@
 											labels: ['<%=keywordList.getTop1()%>', '<%=keywordList.getTop2()%>', '<%=keywordList.getTop3()%>', 
 													'<%=keywordList.getTop4()%>', '<%=keywordList.getTop5()%>', '<%=keywordList.getTop6()%>', 
 													'<%=keywordList.getTop7()%>', '<%=keywordList.getTop8()%>', '<%=keywordList.getTop9()%>', 
-													'<%=keywordList.getTop10()%>
-		' ],
+													'<%=keywordList.getTop10()%>' ],
 				datasets : [ {
 					label : 'Daily Search',
 					data : [
