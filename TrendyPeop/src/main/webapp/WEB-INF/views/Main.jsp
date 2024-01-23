@@ -244,25 +244,17 @@
 		var colorTrendChart = new Chart(ctx, {
 			type : 'pie',
 			data: {
-	            labels: ['Pink', 'Light Blue', 'Blue', 'Brown', 'Navy'],
+	            labels: ['pink', 'blue', 'green', 'yellow', 'purple', 'red', 'orange'],
 	            datasets: [{
-	                label: '색상 트렌드 비율',
-	                data: [21.7, 15.8, 14.7, 14.0, 12.4],
-	                backgroundColor: [
-	                    'rgba(255, 192, 203, 1)', // Pink
-	                    'rgba(173, 216, 230, 1)', // Light Blue  
-	                    'rgba(0, 105, 180, 1)', // Blue
-	                    'rgba(139, 69, 19, 1)', // Brown
-	                    'rgba(0, 0, 128, 1)' // Navy
-	                ],
-	                borderColor: [
-	                    'rgba(255, 192, 203, 1)',
-	                    'rgba(173, 216, 230, 1)',
-	                    'rgba(0, 105, 180, 1)',
-	                    'rgba(139, 69, 19, 1)',
-	                    'rgba(0, 0, 128, 1)', 
-	                ],
-	                borderWidth: 1
+	            	label: '색상 트렌드 비율',
+	                   data: [1821606, 3541406, 1994494, 742633, 694929, 339377, 238845],
+	                   backgroundColor: [
+	                      'lightpink', 'skyblue', 'yellowgreen', 'yellow', 'mediumpurple', 'tomato', 'orange'
+	                   ],
+	                   borderColor: [
+	                      'lightpink', 'skyblue', 'yellowgreen', 'yellow', 'mediumpurple', 'tomato', 'orange'
+	                   ],
+	                   borderWidth: 1
 	            }]
 	        },
 			options : {
@@ -471,6 +463,124 @@
         let intervalId = setInterval(updateTemperature, 100); // 0.1초마다 온도를 업데이트
     }
    </script>
+
+<script>
+
+let posColor ="#FFBE98";
+ 
+  //2. 내가 원하는 색깔 선택시 바뀜 --> changeHeaderColor 만듬
+  //3. 텍스트 색깔도 바뀜
+  
+//|| e.target.classList[i]=="nav-link" ||e.target.classList[i]=="pcoded-mtext"
+document.getElementById("navColor").addEventListener('mouseover', e => {
+    console.log(e)
+    for(let i=0;i<e.target.classList.length;i++){
+        if(e.target.classList[i]=="nav-item"|| e.target.classList[i]=="nav-link"){
+        let childList = e.target.childNodes
+        for(let j=0;j<childList.length;j++){
+            childList[j].style.backgroundColor=posColor;
+        }
+        e.target.style.backgroundColor=posColor
+    
+        }
+    }
+});
+
+document.getElementById("navColor").addEventListener('mouseout', e => {
+    console.log(e)
+    for(let i=0;i<e.target.classList.length;i++){
+        if(e.target.classList[i]=="nav-item"|| e.target.classList[i]=="nav-link"){
+             e.target.style.backgroundColor="white"
+
+             let childList = e.target.childNodes
+            for(let j=0;j<childList.length;j++){
+                childList[j].style.backgroundColor="white"
+            }
+        }
+    }
+});
+
+
+    function changeHeaderColor(color) {
+        document.body.style.backgroundColor = color;
+        document.root.style.backgroundColor = color;
+        document.element.style.backgroundColor = color;
+       
+     
+        //document.a.style.backgroundColor = color;
+       
+
+
+    // 추가적으로 다른 상단 요소의 색상을 변경하려면 여기에 코드를 추가하세요
+    //document.querySelector('pcoded-trigger').style.backgroundColor = color;
+   // document.querySelector('.pcoded-inner-navbar li > a ').style.backgroundColor = color;
+}
+    
+
+    function animateImages() {
+        var images = document.getElementById("pantone-images");
+        var width = images.scrollWidth - images.clientWidth;
+        var start = Date.now();
+
+        function step() {
+            var elapsed = Date.now() - start;
+            var position = (elapsed / 20) % (width * 2);
+            if (position < width) {
+                images.scrollLeft = position;
+            } else {
+                images.scrollLeft = width * 2 - position;
+            }
+            requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.pantone-image').forEach(function(image) {
+            image.addEventListener('click', function () {
+                var color = image.getAttribute('data-color');
+                changeHeaderColor(color);
+                posColor =color;
+            });
+        });
+
+        animateImages();
+    });
+
+    function changeHeaderColor(color) {
+    // 바디 배경색 변경
+    document.body.style.backgroundColor = color;
+
+    // 'nav-item pcoded-menu-caption' 클래스를 가진 요소들의 색상 변경
+    var menuCaptions = document.querySelectorAll('.nav-item.pcoded-menu-caption');
+    menuCaptions.forEach(function(element) {
+        element.style.backgroundColor = color;
+    });
+
+    // 'nav-link has-ripple' 클래스를 가진 요소들의 색상 변경
+    var navLinks = document.querySelectorAll('.nav-link.has-ripple');
+    navLinks.forEach(function(element) {
+        element.style.backgroundColor = color;
+    });
+
+    
+}
+
+   // 'nav-link has-ripple' 클래스를 가진 요소들의 색상 변경
+   var navLinks = document.querySelectorAll('mobile-menu on');
+    navLinks.forEach(function(element) {
+        element.style.backgroundColor = color;
+    });
+
+  
+    var navLinks = document.querySelectorAll('.pcoded-navbar.menu-light .pcoded-inner-navbar > li.pcoded-trigger > a');
+    navLinks.forEach(function(element) {
+        element.style.backgroundColor = color;
+    });
+
+
+
+</script>
 
 </body>
 
