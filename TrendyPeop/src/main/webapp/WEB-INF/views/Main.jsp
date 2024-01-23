@@ -145,11 +145,12 @@
 									<div class="card-header">
 										<h4 class="mt-3">2023년 12월 Best Color</h4>
 									</div>
-									<div class="card-body" >
-									<br><br>
+									<div class="card-body">
+										<br><br>
 										<div style="width: 80%; height: 80%; margin: auto;">
 											<canvas id="colorTrendChart"></canvas>
-										</div><br><br>
+										</div>
+										<br><br>
 									</div>
 								</div>
 							</div>
@@ -244,25 +245,17 @@
 		var colorTrendChart = new Chart(ctx, {
 			type : 'pie',
 			data: {
-	            labels: ['Pink', 'Light Blue', 'Blue', 'Brown', 'Navy'],
+	            labels: ['pink', 'blue', 'green', 'yellow', 'purple', 'red', 'orange'],
 	            datasets: [{
-	                label: '색상 트렌드 비율',
-	                data: [21.7, 15.8, 14.7, 14.0, 12.4],
-	                backgroundColor: [
-	                    'rgba(255, 192, 203, 1)', // Pink
-	                    'rgba(173, 216, 230, 1)', // Light Blue  
-	                    'rgba(0, 105, 180, 1)', // Blue
-	                    'rgba(139, 69, 19, 1)', // Brown
-	                    'rgba(0, 0, 128, 1)' // Navy
-	                ],
-	                borderColor: [
-	                    'rgba(255, 192, 203, 1)',
-	                    'rgba(173, 216, 230, 1)',
-	                    'rgba(0, 105, 180, 1)',
-	                    'rgba(139, 69, 19, 1)',
-	                    'rgba(0, 0, 128, 1)', 
-	                ],
-	                borderWidth: 1
+	            	label: '색상 트렌드 비율',
+	                   data: [1821606, 3541406, 1994494, 742633, 694929, 339377, 238845],
+	                   backgroundColor: [
+	                      'lightpink', 'skyblue', 'yellowgreen', 'yellow', 'mediumpurple', 'tomato', 'orange'
+	                   ],
+	                   borderColor: [
+	                      'lightpink', 'skyblue', 'yellowgreen', 'yellow', 'mediumpurple', 'tomato', 'orange'
+	                   ],
+	                   borderWidth: 1
 	            }]
 	        },
 			options : {

@@ -83,6 +83,10 @@ public class MainController {
 	   
 	        String clientId = "EUOsprwxSj6kFEPTAUbW"; // 애플리케이션 클라이언트 아이디
 	        String clientSecret = "rR3tjTJTAg"; // 애플리케이션 클라이언트 시크릿
+<<<<<<< HEAD
+=======
+	        // 현재 다은 버전 로그인
+>>>>>>> branch 'master' of https://github.com/2023-SMHRD-IS-AI1/RepoUp.git
 
 	        String apiUrl = "https://openapi.naver.com/v1/datalab/search";
 
