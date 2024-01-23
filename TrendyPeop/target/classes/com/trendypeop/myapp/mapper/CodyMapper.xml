@@ -4,7 +4,7 @@
 
 	<select id="codyList"
 		resultType="com.trendypeop.myapp.entity.Cody">
-		select * from tb_cody
+		select * from tb_cody ORDER BY RAND()
 	</select>
 
 	<select id="likeCodyList"
@@ -48,6 +48,7 @@
 		select * from tb_cody inner join tb_cody_favorite on
 		tb_cody.cody_idx = tb_cody_favorite.cody_idx where
 		tb_cody_favorite.user_id = #{user_id}
+		ORDER BY RAND()
 	</select>
 
 	<delete id="deleteCodyReco" parameterType="String">
@@ -82,12 +83,14 @@
 	<select id="filterCodyLook" parameterType="String"
 		resultType="com.trendypeop.myapp.entity.Cody">
 		select * from tb_cody where cody_look = #{cody_look}
+		ORDER BY RAND()
 	</select>
 
 	<select id="filterCodyStyleTag" parameterType="String"
 		resultType="com.trendypeop.myapp.entity.Cody">
 		select * from tb_cody where cody_style_tag =
 		#{cody_style_tag}
+		ORDER BY RAND()
 	</select>
 
 	<select id="detailRecoList1" parameterType="int"

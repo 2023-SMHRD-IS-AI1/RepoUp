@@ -3,7 +3,7 @@
 <mapper namespace="com.trendypeop.myapp.mapper.StyleMapper">
 
 	<select id = "styleList" resultType="com.trendypeop.myapp.entity.Style">
-		select * from tb_style
+		select * from tb_style ORDER BY RAND()
 	</select>
 	
 	<select id = "myClosetList" parameterType="String" resultType="com.trendypeop.myapp.entity.Style">
@@ -47,7 +47,7 @@
 	
 	
 	<select id="getTags" parameterType = "String" resultType="com.trendypeop.myapp.entity.Style">
-		select * from tb_style inner join tb_style_favorite on tb_style.style_idx = tb_style_favorite.style_idx where tb_style_favorite.user_id = #{user_id}
+		select * from tb_style inner join tb_style_favorite on tb_style.style_idx = tb_style_favorite.style_idx where tb_style_favorite.user_id = #{user_id} ORDER BY RAND()
 	</select>
 
 	<delete id="deleteStyleReco" parameterType="String">
@@ -71,15 +71,15 @@
 	
 	
 	<select id="filterStyleCate" parameterType = "String" resultType="com.trendypeop.myapp.entity.Style">
-		select * from tb_style where style_cate = #{style_cate}
+		select * from tb_style where style_cate = #{style_cate} ORDER BY RAND()
 	</select>
 	
 	<select id="filterStyleColor" parameterType = "String" resultType="com.trendypeop.myapp.entity.Style">
-		select * from tb_style where style_color = #{style_color}
+		select * from tb_style where style_color = #{style_color} ORDER BY RAND()
 	</select>
 	
 	<select id="filterStyleTag" parameterType = "String" resultType="com.trendypeop.myapp.entity.Style">
-		select * from tb_style where style_tag = #{style_tag}
+		select * from tb_style where style_tag = #{style_tag} ORDER BY RAND()
 	</select>
 
 </mapper>
