@@ -59,3 +59,5 @@ select *
 		on tb_style.style_idx = tb_closet.style_idx 
 		where tb_closet.user_id = 1;
 
+select * from datalab
+
