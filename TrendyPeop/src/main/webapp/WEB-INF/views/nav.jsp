@@ -8,6 +8,95 @@
 <html>
 <head>
 
+<style>
+.pantone-section {
+	overflow-x: auto; /* 오른쪽으로 스크롤 가능하도록 설정 */
+}
+
+.pantone-images {
+	display: flex;
+	justify-content: flex-start;
+	overflow-x: hidden; /* 스크롤 바 숨김 */
+	width: 100%;
+	/* 기존 스타일 유지 */
+}
+
+.pantone-image-container {
+	width: calc(100%/ 6); /* 전체 너비의 1/6 */
+	flex-shrink: 0; /* 이미지 크기 유지 */
+	display: inline-block;
+	position: relative;
+}
+
+.pantone-image {
+	width: 100%; /* 이미지 컨테이너에 맞게 크기 조정 */
+	height: auto;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.year-label {
+	display: none; /* Hide by default */
+	position: absolute;
+	bottom: 5px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: rgba(0, 0, 0, 0.7);
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.pantone-title {
+	display: block; /* Change to block-level element for centering */
+	text-align: center; /* Center the text horizontally */
+	font-weight: bold; /* Make the text bold */
+	font-size: 15px; /* Optional: Adjust the font size as needed */
+	margin-top: 5px; /* Optional: Adjust top margin */
+	margin-bottom: 5px; /* Optional: Adjust bottom margin */
+}
+
+.pantone-image-container:hover .year-label, .pantone-image-container:active .year-label
+	{
+	display: block; /* Show on hover */
+}
+
+.pantone-section {
+	position: relative;
+	width: 100%; /* 전체 너비 사용 */
+}
+
+.pantone-image-container {
+	display: inline-block;
+	width: 100%; /* 전체 너비 사용 */
+}
+
+.pantone-image {
+	width: 150px; /* Increased size */
+	height: auto;
+	display: inline-block;
+	cursor: pointer;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	/* Smooth transition for emphasis */
+}
+
+.pantone-image:active {
+	transform: scale(1.1); /* Scale up the image when clicked */
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Add shadow for emphasis */
+}
+</style>
+
+<script>
+  var style = document.createElement('style');
+  style.innerHTML = `
+    body {
+      font-family: "Open Sans", sans-serif;
+      ...
+    }
+  `;
+  document.head.appendChild(style);
+</script>
+
 </head>
 <body>
 
@@ -34,13 +123,17 @@
 	</div>
 	<!-- [ Pre-loader ] End -->
 	<!-- [ navigation menu ] start -->
-	<nav class="pcoded-navbar menu-light ">
+	<nav class="pcoded-navbar menu-light" id="navColor">
 		<div class="navbar-wrapper  ">
 			<div class="navbar-content scroll-div ">
 
 				<!-- 여기는 로그인을 해야 뜰 수 있게 -->
-				<%if(loginUser == null){ %>
-				<%}else{ %>
+				<%
+				if (loginUser == null) {
+				%>
+				<%
+				} else {
+				%>
 				<div class="">
 					<div class="main-menu-header">
 						<img class="img-radius"
@@ -61,7 +154,9 @@
 						</ul>
 					</div>
 				</div>
-				<%} %>
+				<%
+				}
+				%>
 
 				<ul class="nav pcoded-inner-navbar ">
 					<li class="nav-item pcoded-menu-caption"><label>Pages</label></li>
@@ -70,31 +165,47 @@
 							class="pcoded-mtext">Main</span></a></li>
 					<li class="nav-item pcoded-hasmenu"><a href="#!"
 						class="nav-link"><span class="pcoded-micon"><i
-							class="feather icon-align-justify"></i></span><span
+								class="feather icon-align-justify"></i></span><span
 							class="pcoded-mtext">Item</span></a>
 						<ul class="pcoded-submenu">
-							<li><a href="goStyleMain" target="_self"><i class="feather icon-tag"></i> Item Main</a></li>
-							<% if (loginUser == null) {%>
-								<li><a href="" onclick="user()" target="_self"><i
-										class="feather icon-thumbs-up m-r-5"></i> 추천</a></li>
-							<% } else { %>
-								<li><a href="goRecoStyle?user_id=${loginUser.user_id}"
-									target="_self"><i class="feather icon-thumbs-up m-r-5"></i>추천</a></li>
-							<% } %>
-						</ul>
-					</li>
-					<li class="nav-item pcoded-hasmenu"><a href="#!" class="nav-link">
-					<span class="pcoded-micon"><i class="feather icon-align-justify"></i></span>
-					<span class="pcoded-mtext">Cody </span></a>
+							<li><a href="goStyleMain" target="_self"><i
+									class="feather icon-tag"></i> Item Main</a></li>
+							<%
+							if (loginUser == null) {
+							%>
+							<li><a href="" onclick="user()" target="_self"><i
+									class="feather icon-thumbs-up m-r-5"></i> 추천</a></li>
+							<%
+							} else {
+							%>
+							<li><a href="goRecoStyle?user_id=${loginUser.user_id}"
+								target="_self"><i class="feather icon-thumbs-up m-r-5"></i>추천</a></li>
+							<%
+							}
+							%>
+						</ul></li>
+					<li class="nav-item pcoded-hasmenu"><a href="#!"
+						class="nav-link"> <span class="pcoded-micon"><i
+								class="feather icon-align-justify"></i></span> <span
+							class="pcoded-mtext">Cody </span></a>
 						<ul class="pcoded-submenu">
-							<li><a href="goCodyMain" target="_self"><i class="feather icon-tag"></i> Cody Main</a></li>
-								<% if (loginUser == null) { %>
-								<li><a href="" onclick="user()" target="_self"><i class="feather icon-thumbs-up m-r-5"></i> 추천</a></li>
-								<% } else { %>
-								<li><a href="goRecoCody?user_id=${loginUser.user_id}&cody_season=<%=season %>" target="_self"><i class="feather icon-thumbs-up m-r-5"></i>추천</a></li>
-								<% } %>
-						</ul>
-					</li>
+							<li><a href="goCodyMain" target="_self"><i
+									class="feather icon-tag"></i> Cody Main</a></li>
+							<%
+							if (loginUser == null) {
+							%>
+							<li><a href="" onclick="user()" target="_self"><i
+									class="feather icon-thumbs-up m-r-5"></i> 추천</a></li>
+							<%
+							} else {
+							%>
+							<li><a
+								href="goRecoCody?user_id=${loginUser.user_id}&cody_season=<%=season %>"
+								target="_self"><i class="feather icon-thumbs-up m-r-5"></i>추천</a></li>
+							<%
+							}
+							%>
+						</ul></li>
 					<li class="nav-item pcoded-hasmenu"><a href="#!"
 						class="nav-link"><span class="pcoded-micon"><i
 								class="feather icon-align-justify"></i></span><span
@@ -130,7 +241,42 @@
 							%>
 						</ul></li>
 				</ul>
+				<span class="pantone-title"><연도별 팬톤컬러></span>
+				<div class="pantone-images" id="pantone-images">
 
+					<div class="pantone-image-container">
+						<img src="resources/assets/images/2024_peachFuzz.png"
+							alt="Peach Fuzz" class="pantone-image" data-color="#FF6F61">
+						<span class="year-label">2024</span>
+					</div>
+					<!-- 각 팬톤 이미지에 대해 반복 -->
+					<!-- ... 다른 팬톤 이미지와 그들의 컨테이너 및 연도 라벨 ... -->
+					<div class="pantone-image-container">
+						<img src="resources/assets/images/widget/2023_vivaMagenta.png"
+							alt="Viva Magenta" class="pantone-image" data-color="#9B1B30">
+						<span class="year-label">2023</span>
+					</div>
+					<div class="pantone-image-container">
+						<img src="resources/assets/images/widget/2022_veryPeri.png"
+							alt="Very Peri" class="pantone-image" data-color="#6667AB">
+						<span class="year-label">2022</span>
+					</div>
+					<div class="pantone-image-container">
+						<img src="resources/assets/images/widget/2021_illuminating.png"
+							alt="Illuminating" class="pantone-image" data-color="#F5DF4D">
+						<span class="year-label">2021</span>
+					</div>
+					<div class="pantone-image-container">
+						<img src="resources/assets/images/widget/2021_ultimateGray.png"
+							alt="Ultimate Gray" class="pantone-image" data-color="#939597">
+						<span class="year-label">2020</span>
+					</div>
+					<div class="pantone-image-container">
+						<img src="resources/assets/images/widget/2020_classicBlue.png"
+							alt="Classic Blue" class="pantone-image" data-color="#34568B">
+						<span class="year-label">2019</span>
+					</div>
+				</div>
 			</div>
 		</div>
 	</nav>
@@ -151,7 +297,9 @@
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"></li>
 			</ul>
-			<%if(loginUser == null){ %>
+			<%
+			if (loginUser == null) {
+			%>
 			<ul class="navbar-nav ml-auto">
 				<li>
 					<div class="dropdown drp-user">
@@ -168,8 +316,12 @@
 					</div>
 				</li>
 			</ul>
-			<%}else{ %>
-			<%} %>
+			<%
+			} else {
+			%>
+			<%
+			}
+			%>
 		</div>
 		<script>
 					function user() {

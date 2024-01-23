@@ -147,6 +147,105 @@
 		}
 	</script>
 
+<script>
+
+let posColor ="#FFBE98";
+ 
+  //2. 내가 원하는 색깔 선택시 바뀜 --> changeHeaderColor 만듬
+  //3. 텍스트 색깔도 바뀜
+  
+//|| e.target.classList[i]=="nav-link" ||e.target.classList[i]=="pcoded-mtext"
+document.getElementById("navColor").addEventListener('mouseover', e => {
+    console.log(e)
+    for(let i=0;i<e.target.classList.length;i++){
+        if(e.target.classList[i]=="nav-item"|| e.target.classList[i]=="nav-link"){
+        let childList = e.target.childNodes
+        for(let j=0;j<childList.length;j++){
+            childList[j].style.backgroundColor=posColor;
+        }
+        e.target.style.backgroundColor=posColor
+    
+        }
+    }
+});
+
+document.getElementById("navColor").addEventListener('mouseout', e => {
+    console.log(e)
+    for(let i=0;i<e.target.classList.length;i++){
+        if(e.target.classList[i]=="nav-item"|| e.target.classList[i]=="nav-link"){
+             e.target.style.backgroundColor="white"
+
+             let childList = e.target.childNodes
+            for(let j=0;j<childList.length;j++){
+                childList[j].style.backgroundColor="white"
+            }
+        }
+    }
+});
+
+
+    
+
+    function animateImages() {
+        var images = document.getElementById("pantone-images");
+        var width = images.scrollWidth - images.clientWidth;
+        var start = Date.now();
+
+        function step() {
+            var elapsed = Date.now() - start;
+            var position = (elapsed / 20) % (width * 2);
+            if (position < width) {
+                images.scrollLeft = position;
+            } else {
+                images.scrollLeft = width * 2 - position;
+            }
+            requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.pantone-image').forEach(function(image) {
+            image.addEventListener('click', function () {
+                var color = image.getAttribute('data-color');
+                changeHeaderColor(color);
+                posColor =color;
+            });
+        });
+
+        animateImages();
+    });
+
+    function changeHeaderColor(color) {
+        // 바디 배경색 변경
+
+        // 'nav-item pcoded-menu-caption' 클래스를 가진 요소들의 색상 변경
+        var menuCaptions = document.querySelectorAll('.nav-item.pcoded-menu-caption');
+        menuCaptions.forEach(function(element) {
+        });
+
+        // 'nav-link has-ripple' 클래스를 가진 요소들의 색상 변경
+        var navLinks = document.querySelectorAll('.nav-link.has-ripple');
+        navLinks.forEach(function(element) {
+        });
+
+        
+    }
+
+       // 'nav-link has-ripple' 클래스를 가진 요소들의 색상 변경
+       var navLinks = document.querySelectorAll('mobile-menu on');
+        navLinks.forEach(function(element) {
+        });
+
+      
+        var navLinks = document.querySelectorAll('.pcoded-navbar.menu-light .pcoded-inner-navbar > li.pcoded-trigger > a');
+        navLinks.forEach(function(element) {
+        });
+
+
+
+</script>
+
 </body>
 
 </html>
