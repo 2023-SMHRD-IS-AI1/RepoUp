@@ -20,7 +20,7 @@ select * from tb_style_favorite;
 
 delete from tb_style_favorite;
 
-select * from tb_cody;
+select * from tb_news;
 
 select count(*) from tb_cody;
 
