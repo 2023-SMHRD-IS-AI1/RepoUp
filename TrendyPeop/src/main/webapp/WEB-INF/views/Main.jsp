@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.trendypeop.myapp.entity.Keyword"%>
 <%@page import="com.trendypeop.myapp.entity.Cody"%>
 <%@page import="java.util.List"%>
@@ -129,6 +130,7 @@
 																class=""><img
 																src="<%=bestCody.get(4).getCody_img_url()%>"></a>
 														</div>
+
 													</div>
 												</div>
 											</div>
@@ -138,25 +140,26 @@
 							</div>
 						</div>
 						<div class="row" style="padding: inherit;">
-							<div class="col-5">
+							<div class="col-4">
 								<div class="card">
 									<div class="card-header">
 										<h4 class="mt-3">2023년 12월 Best Color</h4>
 									</div>
-									<div class="card-body">
-										<div style="width: 70%; height: 70%; margin: auto;">
+									<div class="card-body" >
+									<br><br>
+										<div style="width: 80%; height: 80%; margin: auto;">
 											<canvas id="colorTrendChart"></canvas>
-										</div>
+										</div><br><br>
 									</div>
 								</div>
 							</div>
-							<div class="col-7">
+							<div class="col-8">
 								<div class="card">
 									<div class="card-header">
 										<h4 class="mt-4">패션 검색어 트렌드</h4>
 									</div>
 									<div class="card-body" style="margin: auto;">
-										<div style="width: 700px; height: 400px;">
+										<div style="width: 700px; height: 450px;">
 											<canvas id='myChart'></canvas>
 										</div>
 									</div>
@@ -180,7 +183,6 @@
 									</div>
 								</div>
 							</div>
-							<%	List<Cody> randomCody = (List<Cody>) request.getAttribute("randomCody"); %>
 							
 							<div class="col-5">
 								<div class="card">
@@ -188,18 +190,39 @@
 										<h4 class="mt-3">오늘의 코디 추천</h4>
 									</div>
 									<div class="card-body">
-									
-									<button type="button" class="btn btn-outline-info" id="float"
-											style="margin-left: auto; margin-top: auto;"
-											onclick="location.href='goCodyDetail?cody_idx=<%= randomCody.get(0).getCody_idx() %>'">
-											<!-- <i class="feather icon-search"></i> -->추천 코디
-										</button>
-										
+										<div class="row">
+											<div class="col">
+												<%
+												List<Cody> randomCody = (List<Cody>) request.getAttribute("randomCody");
+												ArrayList<String> weatherList = (ArrayList<String>) request.getAttribute("weather");
+												Float minTemp = Float.parseFloat(weatherList.get(1));
+												Float maxTemp = Float.parseFloat(weatherList.get(0));
+												%>
+
+												<div id="wrapper-temper">
+													<div id="termometer">
+														<div id="temperature" style="height: 0" data-value="0°C"></div>
+														<div id="graduations"></div>
+													</div>
+												</div>
+											</div>
+											<div class="col">
+												<div class="row text-center">
+													<h5>이부분에 추천내용 적어주세요</h5>
+												</div>
+												<div class="row">
+													<button type="button" class="btn btn-outline-info"
+														id="float" style="right: 25%; bottom: 25%; position: absolute;"
+														onclick="location.href='goCodyDetail?cody_idx=<%=randomCody.get(0).getCody_idx()%>'">
+														<!-- <i class="feather icon-search"></i> -->
+														추천 코디 보러가기
+													</button>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
-							
-							
 						</div>
 					</div>
 				</div>
@@ -395,6 +418,60 @@
 			}
 		});
 	</script>
+
+	<script>
+    const config = {
+        minTemp: -20,
+        maxTemp: 40,
+        unit: " C"
+    };
+
+    // 서버로부터 받은 최소 및 최대 온도 값을 사용하여 온도 설정
+    setTemperatureBetweenRange( <%=minTemp%> , <%=maxTemp%>);
+
+    function setTemperatureBetweenRange(serverMinTemp, serverMaxTemp) {
+        const temperature = document.getElementById("temperature");
+        const unitElement = document.getElementById("unit"); // 온도 단위를 표시하는 요소 추가
+        let currentTemp = serverMinTemp;
+        let isIncreasing = true;
+
+        function updateTemperature() {
+            if (isIncreasing) {
+                currentTemp += 0.1; // 작은 값으로 증가
+
+                if (currentTemp >= serverMaxTemp) {
+                    clearInterval(intervalId);
+                    setTimeout(() => {
+                        isIncreasing = false;
+                        intervalId = setInterval(updateTemperature, 200); // 2초 후에 다시 interval 시작
+                    }, 2000);
+                }
+            } else {
+                currentTemp -= 0.1; // 작은 값으로 감소
+
+                if (currentTemp <= serverMinTemp) {
+                    clearInterval(intervalId);
+                    setTimeout(() => {
+                        isIncreasing = true;
+                        intervalId = setInterval(updateTemperature, 200); // 2초 후에 다시 interval 시작
+                    }, 2000);
+                }
+            }
+
+            // 온도가 지정된 범위를 벗어나지 않도록 처리
+            currentTemp = Math.max(serverMinTemp, Math.min(serverMaxTemp, currentTemp));
+
+            const normalizedHeight = (currentTemp - config.minTemp) / (config.maxTemp - config.minTemp) * 100;
+            temperature.style.transition = "height 0.5s ease-in-out";
+            temperature.style.height = normalizedHeight + "%";
+            temperature.dataset.value = currentTemp.toFixed(1) + config.unit; // 소수점 1자리까지 표시
+            unitElement.innerText = config.unit; // 온도 단위 표시 업데이트
+        }
+
+        let intervalId = setInterval(updateTemperature, 100); // 0.1초마다 온도를 업데이트
+    }
+   </script>
+
 </body>
 
 </body>
