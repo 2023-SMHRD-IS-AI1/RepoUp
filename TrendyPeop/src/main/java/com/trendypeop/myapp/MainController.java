@@ -81,8 +81,9 @@ public class MainController {
 	      System.out.println(keywordList.getTop1());
 	      
 	   
-	        String clientId = "2wfu86SPC0J9dFdG2iJq"; // 애플리케이션 클라이언트 아이디
-	        String clientSecret = "Yv305cvfq_"; // 애플리케이션 클라이언트 시크릿
+	        String clientId = "EUOsprwxSj6kFEPTAUbW"; // 애플리케이션 클라이언트 아이디
+	        String clientSecret = "rR3tjTJTAg"; // 애플리케이션 클라이언트 시크릿
+	        // 현재 다은 버전 로그인
 
 	        String apiUrl = "https://openapi.naver.com/v1/datalab/search";
 
