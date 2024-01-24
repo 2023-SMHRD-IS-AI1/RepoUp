@@ -74,10 +74,10 @@ public class MainController {
 //	      String data10 = "톰보이코트";
 	      LocalDate now = LocalDate.now();
 	      String now_string = now.toString();
-	      System.out.println("2024-01-15");
-	      String date = "2024-01-15";
+	      System.out.println("2024-01-23");
+	      String date = "2024-01-23";
 	      //DataController dataController = new DataController();
-	      Keyword keywordList = graphMapper.keywordListing("2024-01-15");
+	      Keyword keywordList = graphMapper.keywordListing(date);
 	      System.out.println(keywordList.getTop1());
 	      
 	   
