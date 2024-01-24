@@ -74,10 +74,9 @@ public class MainController {
 //	      String data10 = "톰보이코트";
 	      LocalDate now = LocalDate.now();
 	      String now_string = now.toString();
-	      System.out.println("2024-01-15");
-	      String date = "2024-01-15";
+	      String date = "2024-01-23";
 	      //DataController dataController = new DataController();
-	      Keyword keywordList = graphMapper.keywordListing("2024-01-15");
+	      Keyword keywordList = graphMapper.keywordListing("2024-01-23");
 	      System.out.println(keywordList.getTop1());
 	      
 	   
@@ -169,19 +168,12 @@ public class MainController {
 	           
 	            
 	        }
-	        // BufferedReader를 닫습니다.
 	        in.close();
 
-	        // 응답을 출력합니다.
-	        
-	        
-	        //System.out.println(response.getClass()); 
-	        
 	        String newInput = response.toString();
 	        
 	        String[] weatherList = newInput.split(",");
 	        
-	       
 	        ArrayList<String> weatherFinal = new ArrayList<String>();
 	        weatherFinal.add(weatherList[11]);
 	        weatherFinal.add(weatherList[13]);
