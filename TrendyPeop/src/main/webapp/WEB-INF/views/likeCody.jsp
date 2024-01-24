@@ -76,8 +76,10 @@
 						<div class="card-deck">
 						<c:forEach items="${likeCodyList }" var="c" begin="<%=j %>" end="<%=j+4 %>"  varStatus="status">
 							<div class="card" id="max">
-								<img class="img-fluid card-img-top" src="${c.cody_img_url }"
-									alt="Card image cap">
+								<a href="goCodyDetail?cody_idx=${c.cody_idx }"> <img
+										class="img-fluid card-img-top" src="${c.cody_img_url}"
+										alt="Card image cap">
+									</a>
 								<div class="card-body">
 									<h5 class="card-title">${c.cody_name }</h5>
 								</div>

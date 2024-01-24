@@ -83,10 +83,6 @@ public class MainController {
 	   
 	        String clientId = "EUOsprwxSj6kFEPTAUbW"; // 애플리케이션 클라이언트 아이디
 	        String clientSecret = "rR3tjTJTAg"; // 애플리케이션 클라이언트 시크릿
-<<<<<<< HEAD
-=======
-	        // 현재 다은 버전 로그인
->>>>>>> branch 'master' of https://github.com/2023-SMHRD-IS-AI1/RepoUp.git
 
 	        String apiUrl = "https://openapi.naver.com/v1/datalab/search";
 
@@ -149,7 +145,7 @@ public class MainController {
 	      String formatedNow = now.format(formatter);
 	      //System.out.println(formatedNow);
 	        // API URL을 만듭니다.
-	        URL url = new URL("https://apihub.kma.go.kr/api/typ01/url/kma_sfcdd.php?tm=" + formatedNow + "&stn=90&help=0&dataType=JSON&authKey=rfjJrTMzQpK4ya0zM6KSpw");
+	        URL url = new URL("https://apihub.kma.go.kr/api/typ01/url/kma_sfcdd.php?tm=" + formatedNow + "&stn=156&help=0&dataType=JSON&authKey=rfjJrTMzQpK4ya0zM6KSpw");
 	        // HttpURLConnection 객체를 만들어 API를 호출합니다.
 	        HttpURLConnection con = (HttpURLConnection) url.openConnection(); 
 	        // 요청 방식을 GET으로 설정합니다.
@@ -204,15 +200,18 @@ public class MainController {
     	Float sum = Float.parseFloat(weatherFinal.get(0)) + Float.parseFloat(weatherFinal.get(1));
     	Float mean = sum/2;
     	
-    	if(mean > 23) {
-    		season = "여름";
-    	}else if(mean > 17) {
-    		season = "봄";
-    	}else if(mean > 9) {
-    		season = "가을";
-    	}else {
-    		season = "겨울";
-    	}
+    	if(mean > 20) {
+            season = "여름";
+         }else if(mean > 5) {
+            if (month.equals("12") || month.equals("01") || month.equals("02") || month.equals("03") || month.equals("04")
+                  || month.equals("05")) {
+               season = "봄";
+            } else {
+               season = "가을";
+            } ;
+         }else {
+            season = "겨울";
+         }
     	
     	List<Cody> randomCody = codyMapper.randomCody(season);
 		model.addAttribute("randomCody", randomCody);
