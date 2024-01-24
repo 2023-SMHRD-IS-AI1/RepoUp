@@ -146,7 +146,7 @@ public class MainController {
 	      String formatedNow = now.format(formatter);
 	      //System.out.println(formatedNow);
 	        // API URL을 만듭니다.
-	        URL url = new URL("https://apihub.kma.go.kr/api/typ01/url/kma_sfcdd.php?tm=" + formatedNow + "&stn=90&help=0&dataType=JSON&authKey=rfjJrTMzQpK4ya0zM6KSpw");
+	        URL url = new URL("https://apihub.kma.go.kr/api/typ01/url/kma_sfcdd.php?tm=" + formatedNow + "&stn=156&help=0&dataType=JSON&authKey=rfjJrTMzQpK4ya0zM6KSpw");
 	        // HttpURLConnection 객체를 만들어 API를 호출합니다.
 	        HttpURLConnection con = (HttpURLConnection) url.openConnection(); 
 	        // 요청 방식을 GET으로 설정합니다.
