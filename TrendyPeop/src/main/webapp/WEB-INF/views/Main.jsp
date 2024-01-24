@@ -248,7 +248,7 @@
 	            labels: ['pink', 'blue', 'green', 'yellow', 'purple', 'red', 'orange'],
 	            datasets: [{
 	            	label: '색상 트렌드 비율',
-	                   data: [1821606, 3541406, 1994494, 742633, 694929, 339377, 238845],
+	                   data: [14.45, 28.11, 15.84, 5.89, 5.51, 2.69, 1.89],
 	                   backgroundColor: [
 	                      'lightpink', 'skyblue', 'yellowgreen', 'yellow', 'mediumpurple', 'tomato', 'orange'
 	                   ],

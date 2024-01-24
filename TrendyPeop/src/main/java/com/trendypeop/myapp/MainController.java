@@ -201,15 +201,18 @@ public class MainController {
     	Float sum = Float.parseFloat(weatherFinal.get(0)) + Float.parseFloat(weatherFinal.get(1));
     	Float mean = sum/2;
     	
-    	if(mean > 23) {
-    		season = "여름";
-    	}else if(mean > 17) {
-    		season = "봄";
-    	}else if(mean > 9) {
-    		season = "가을";
-    	}else {
-    		season = "겨울";
-    	}
+    	if(mean > 20) {
+            season = "여름";
+         }else if(mean > 5) {
+            if (month.equals("12") || month.equals("01") || month.equals("02") || month.equals("03") || month.equals("04")
+                  || month.equals("05")) {
+               season = "봄";
+            } else {
+               season = "가을";
+            } ;
+         }else {
+            season = "겨울";
+         }
     	
     	List<Cody> randomCody = codyMapper.randomCody(season);
 		model.addAttribute("randomCody", randomCody);
