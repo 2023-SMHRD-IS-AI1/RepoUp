@@ -209,7 +209,7 @@
 											</div>
 											<div class="col">
 												<div class="row text-center">
-													<h5>이부분에 추천내용 적어주세요</h5>
+													<h5>금일 기온이 매우 낮습니다. <br>따뜻하고 포근한 옷이 어떨까요? </h5>
 												</div>
 												<div class="row">
 													<button type="button" class="btn btn-outline-info"
