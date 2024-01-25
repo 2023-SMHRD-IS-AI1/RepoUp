@@ -127,7 +127,7 @@
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"></li>
 			</ul>
-			<%if(loginUser != null){ %>
+			<%if(loginUser == null){ %>
 			<ul class="navbar-nav ml-auto">
 				<li>
 					<div class="dropdown drp-user">
