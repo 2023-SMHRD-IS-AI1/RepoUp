@@ -63,12 +63,10 @@ public class MainController {
 	      LocalDate now = LocalDate.now();
 	      String now_string = now.toString();
 
-	      System.out.println("2024-01-23");
 	      String date = "2024-01-23";
 
 	      Keyword keywordList = graphMapper.keywordListing("2024-01-23");
-	      
-	   
+
 	        String clientId = "EUOsprwxSj6kFEPTAUbW"; // 애플리케이션 클라이언트 아이디
 	        String clientSecret = "rR3tjTJTAg"; // 애플리케이션 클라이언트 시크릿
 
@@ -97,11 +95,8 @@ public class MainController {
 	        String responseBody3 = post(apiUrl, requestHeaders, requestBody);
 	        
 	        rateList = makeMap(responseBody3, rateList);
-	        
-	        System.out.println(rateList);
-	        
+   
 	        Collections.sort(rateList, Collections.reverseOrder());
-	        System.out.println(rateList);
 	        keywordList.setTop1_rate(rateList.get(0));
 	        keywordList.setTop2_rate(rateList.get(1));
 	        keywordList.setTop3_rate(rateList.get(2));
@@ -152,7 +147,6 @@ public class MainController {
 	        ArrayList<String> weatherFinal = new ArrayList<String>();
 	        weatherFinal.add(weatherList[11]);
 	        weatherFinal.add(weatherList[13]);
-	        System.out.println(weatherFinal.toString()); 
 	        model.addAttribute("weather", weatherFinal);
 
         List<Keyword> article_list = graphMapper.article_list();
