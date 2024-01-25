@@ -19,15 +19,6 @@
   - Apache Tomcat 8.5
 
 
-  - Java 8
-  - Spring Boot 2.3
-  - Gradle
-  - Spring Data JPA
-  - QueryDSL
-  - H2
-  - MySQL 5.7
-  - Spring Security
-  - Jsoup
 #### `Front-end`
 
   - 여기는 몰?루
@@ -38,21 +29,19 @@
 </br>
 
 ## 3. ERD 설계
-![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/final_erd.png)
-![](https://github.com/JungHyung2/gitio.io/blob/master/assets/images/portfolio/p1.jpg)
-
+![KakaoTalk_20240121_161201916](https://github.com/2023-SMHRD-IS-AI1/RepoUp/assets/153901365/75738182-5d4c-4156-bafe-f7d8ecc331d8)
 
 ## 4. 핵심 기능
-이 서비스의 핵심 기능은 컨텐츠 등록 기능입니다.  
-사용자는 단지 컨텐츠의 카테고리를 선택하고, URL만 입력하면 끝입니다.  
-이 단순한 기능의 흐름을 보면, 서비스가 어떻게 동작하는지 알 수 있습니다.  
+이 서비스의 핵심 기능은 의상 및 코디 추천 기능입니다.  
+사용자는 원하는 항목에 대해서 좋아요와 옷장 추가를 누르면 끝입니다.
+이 기능의 흐름을 보면, 서비스가 어떻게 동작하는지 알 수 있습니다.  
 
 <details>
 <summary><b>핵심 기능 설명 펼치기</b></summary>
 <div markdown="1">
 
 ### 4.1. 전체 흐름
-![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow1.png)
+![흐름도](https://github.com/2023-SMHRD-IS-AI1/RepoUp/assets/153901365/b798b535-9fc1-4f66-bc7b-19e42c2027d1)
 
 ### 4.2. 사용자 요청
 ![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_vue.png)
