@@ -83,8 +83,7 @@ public class CodyController {
 
 	@RequestMapping("/insertCodyHeart")
 	@ResponseBody
-	public Map<String, Object> insertCodyHeart(@RequestParam("cody_idx") int cody_idx,
-			@RequestParam("user_id") String user_id) {
+	public Map<String, Object> insertCodyHeart(@RequestParam("cody_idx") int cody_idx, @RequestParam("user_id") String user_id) {
 
 		Map<String, Object> response = new HashMap<>();
 		Cody cody = new Cody(cody_idx, user_id);
@@ -152,7 +151,7 @@ public class CodyController {
 
 		for (Map.Entry<String, Integer> entry : entryList2) {
 			tagList2.add(entry.getKey());
-		} // 내림차순으로 entryList 안에 들어가 있는 상태에서 key 값(태그 값)만 list에 따로 담기
+		}
 
 		String top1_cdLook;
 		String top2_cdLook;
@@ -211,8 +210,7 @@ public class CodyController {
 	}
 
 	@RequestMapping("/deleteCodyHeart")
-	public String deleteCodyHeart(@RequestParam("cody_idx") int cody_idx, @RequestParam("user_id") String user_id,
-			Model model) {
+	public String deleteCodyHeart(@RequestParam("cody_idx") int cody_idx, @RequestParam("user_id") String user_id, Model model) {
 
 		Cody cody = new Cody(cody_idx, user_id);
 
@@ -231,8 +229,7 @@ public class CodyController {
 	}
 
 	@RequestMapping("/goRecoCody")
-	public String goRecoCody(@RequestParam("user_id") String user_id, @RequestParam("cody_season") String cody_season,
-			Model model) {
+	public String goRecoCody(@RequestParam("user_id") String user_id, @RequestParam("cody_season") String cody_season, Model model) {
 
 		Cody cody = new Cody(cody_season, user_id);
 
