@@ -1,17 +1,24 @@
-# :pushpin: goQuality
->고퀄리티 개발 컨텐츠 공유 서비스  
+# :pushpin: Thumb up
+> 2~30대 여성들을 위한 패션 대시보드 
 > 데모사이트 링크
 
 </br>
 
 ## 1. 제작 기간 & 참여 인원
-- 2019년 2월 18일 ~ 4월 5일
-- 개인 프로젝트
+- 2023년 12월 15일 ~ 2024년 01월 24일
+- 팀 프로젝트
+- 참여인원 : 엄다은(팀장), 정현지(팀원), 임해솔(팀원), 방찬혁(팀원), 강재희(팀원)
 
 </br>
 
 ## 2. 사용 기술
 #### `Back-end`
+  - Java 1.6
+  - Springframework 5.0.7
+  - MYSQL 5.1
+  - Apache Tomcat 8.5
+
+
   - Java 8
   - Spring Boot 2.3
   - Gradle
@@ -22,6 +29,9 @@
   - Spring Security
   - Jsoup
 #### `Front-end`
+
+  - 여기는 몰?루
+
   - Vue.js 3.0
   - Element UI
 
