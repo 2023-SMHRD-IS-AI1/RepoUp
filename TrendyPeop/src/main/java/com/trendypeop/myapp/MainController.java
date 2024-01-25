@@ -59,19 +59,7 @@ public class MainController {
 	      
 	      List<Cody> bestCody = codyMapper.bestCody();
 	      model.addAttribute("bestCody", bestCody);
-	      
-	      Map<String, Double> ratioData = new HashMap<String, Double>();
-	      
-//	      String data1 = "패딩";
-//	      String data2 = "원피스";
-//	      String data3 = "코트";
-//	      String data4 = "티셔츠";
-//	      String data5 = "재킷";
-//	      String data6 = "트위트자켓";
-//	      String data7 = "여성코트";
-//	      String data8 = "숏패딩";
-//	      String data9 = "니트원피스";
-//	      String data10 = "톰보이코트";
+
 	      LocalDate now = LocalDate.now();
 	      String now_string = now.toString();
 
@@ -79,13 +67,10 @@ public class MainController {
 	      String date = "2024-01-23";
 
 	      Keyword keywordList = graphMapper.keywordListing("2024-01-23");
-
-	      System.out.println(keywordList.getTop1());
 	      
 	   
 	        String clientId = "EUOsprwxSj6kFEPTAUbW"; // 애플리케이션 클라이언트 아이디
 	        String clientSecret = "rR3tjTJTAg"; // 애플리케이션 클라이언트 시크릿
-	        // 현재 다은 버전 로그인
 
 
 	        String apiUrl = "https://openapi.naver.com/v1/datalab/search";
@@ -95,20 +80,6 @@ public class MainController {
 	        requestHeaders.put("X-Naver-Client-Secret", clientSecret);
 	        requestHeaders.put("Content-Type", "application/json");
 
-//	        String requestBody = String.format("{\"startDate\":\"2023-12-12\"," +
-//	                "\"endDate\":\"2023-12-12\"," + 
-//	                "\"timeUnit\":\"date\"," +
-//	                "\"keywordGroups\":[{\"groupName\":\"%s\"," + "\"keywords\":[\"%s\"]}," +
-//	                "{\"groupName\":\"%s\"," + "\"keywords\":[\"%s\"]}," +
-//	                "{\"groupName\":\"%s\"," + "\"keywords\":[\"%s\"]}," + 
-//	                "{\"groupName\":\"%s\"," + "\"keywords\":[\"%s\"]}," + 
-//	                "{\"groupName\":\"%s\"," + "\"keywords\":[\"%s\"]}]," +
-//	                "\"device\":\"pc\"," +
-//	                "\"ages\":[\"3\",\"4\",\"5\",\"6\"]," +
-//	                "\"gender\":\"f\"}", keywordList.getTop1(), keywordList.getTop1(), keywordList.getTop2(), keywordList.getTop2(), 
-//	                               keywordList.getTop3(), keywordList.getTop3(), keywordList.getTop4(), keywordList.getTop4(), 
-//	                               keywordList.getTop5(), keywordList.getTop5());
-//	        이쪽은 확인!!!!!!!!!!
 	        ArrayList<Double> rateList = new ArrayList<Double>();
 	        rateList.add(100.0);
 	              
@@ -145,24 +116,23 @@ public class MainController {
 	        model.addAttribute("keywordList", keywordList);
 
 	        //여기부터 기상청 데이터
-	      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");         // 포맷 적용        String formatedNow = now.format(formatter);
-	      String formatedNow = now.format(formatter);
-	      //System.out.println(formatedNow);
-	        // API URL을 만듭니다.
+	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");         // 포맷 적용        String formatedNow = now.format(formatter);
+	        String formatedNow = now.format(formatter);
+
 	        URL url = new URL("https://apihub.kma.go.kr/api/typ01/url/kma_sfcdd.php?tm=" + formatedNow + "&stn=156&help=0&dataType=JSON&authKey=rfjJrTMzQpK4ya0zM6KSpw");
-	        // HttpURLConnection 객체를 만들어 API를 호출합니다.
+	        // HttpURLConnection 객체를 만들어 API를 호출
 	        HttpURLConnection con = (HttpURLConnection) url.openConnection(); 
-	        // 요청 방식을 GET으로 설정합니다.
+	        // 요청 방식을 GET으로 설정
 	        con.setRequestMethod("GET");
-	        // 요청 헤더를 설정합니다. 여기서는 Content-Type을 application/json으로 설정합니다.
+	        // 요청 헤더를 설정 Content-Type을 application/json으로 설정
 	        con.setRequestProperty("Content-Type", "application/json");
 	        
-	        // API의 응답을 읽기 위한 BufferedReader를 생성합니다.
+	        // API의 응답을 읽기 위한 BufferedReader 생성
 	        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream(), "euc-kr"));
 	        String inputLine;
 	        StringBuffer response = new StringBuffer();
 	        
-	        // 응답을 한 줄씩 읽어들이면서 StringBuffer에 추가합니다.
+	        // 응답을 StringBuffer에 추가
 	        while ((inputLine = in.readLine()) != null) {
 	           if(inputLine.contains("#")) {
 	              
