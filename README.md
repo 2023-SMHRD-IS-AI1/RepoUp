@@ -20,11 +20,9 @@
 
 
 #### `Front-end`
-
-  - 여기는 몰?루
-
-  - Vue.js 3.0
-  - Element UI
+  - JavaScript
+  - HTML
+  - SCC
 
 </br>
 
