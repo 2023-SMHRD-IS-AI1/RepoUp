@@ -22,7 +22,7 @@
 #### `Front-end`
   - JavaScript
   - HTML
-  - SCC
+  - CSS
 
 </br>
 
@@ -96,9 +96,19 @@
 </br>
 
 ## 5. 핵심 트러블 슈팅
-### 5.1. 컨텐츠 필터와 페이징 처리 문제
-- 저는 이 서비스가 페이스북이나 인스타그램 처럼 가볍게, 자주 사용되길 바라는 마음으로 개발했습니다.  
-때문에 페이징 처리도 무한 스크롤을 적용했습니다.
+### 5.1. 이미지 분석 머신러닝 모델 학습 중 오류 발생 문제
+- 이미지 분석 모델은 EfficientNET을 사용하였음.
+
+- 초기 분석 이미지는 의상 데이터가 118000건, 코디 데이터가 20000건
+
+- 머신러닝 모델 활용의 용이성을 위하여 학습 환경은 Google Colab에서 진행
+
+- Colab은 정책상 약 10분 이상 반응이 없을 경우 런타임을 중지시킴
+- > 때문에 Colab 학습 중 중단을 막기 위해 개발자 모드에서 임의로 런타임을 연장시킴
+  ![image](https://github.com/2023-SMHRD-IS-AI1/RepoUp/assets/148600254/2e6c31c7-6778-42e4-9260-ae300fe8a8b5)
+- 단, 이런 경우에도 12시간 이상 활용시 강제로 런타임이 중지됨.
+  
+- 으로 로드와 전처리 과정에서 잦은 오류가 발생하여 최종적으로 의상 데이터 812건, 코디 데이터 498건으로 데이터 규모 축소
 
 - 하지만 [무한스크롤, 페이징 혹은 “더보기” 버튼? 어떤 걸 써야할까](https://cyberx.tistory.com/82) 라는 글을 읽고 무한 스크롤의 단점들을 알게 되었고,  
 다양한 기준(카테고리, 사용자, 등록일, 인기도)의 게시물 필터 기능을 넣어서 이를 보완하고자 했습니다.
@@ -194,30 +204,31 @@ public Page<Post> findAllByTagName(String tagName, Pageable pageable) {
 
 ## 6. 그 외 트러블 슈팅
 <details>
-<summary>npm run dev 실행 오류</summary>
+<summary>좋아요 / 옷장 추가 버튼 클릭 시 페이지를 다시 호출하면서 맨 위로 올라가는 문제점</summary>
 <div markdown="1">
 
-- Webpack-dev-server 버전을 3.0.0으로 다운그레이드로 해결
-- `$ npm install —save-dev webpack-dev-server@3.0.0`
+- Ajax를 활용하여 비동기화 방식으로 전환하여 버튼 클릭시 페이지가 바로 새로고침 되는 것을 막음
+- ![image](https://github.com/2023-SMHRD-IS-AI1/RepoUp/assets/148600254/3c99ae12-65b5-4309-aa3c-22cf0196071b)
 
 </div>
 </details>
 
 <details>
-<summary>vue-devtools 크롬익스텐션 인식 오류 문제</summary>
+<summary>vue-devtools 비로그인 이용자의 이용 기능 제한 문제</summary>
 <div markdown="1">
   
-  - main.js 파일에 `Vue.config.devtools = true` 추가로 해결
-  - [https://github.com/vuejs/vue-devtools/issues/190](https://github.com/vuejs/vue-devtools/issues/190)
+  - alert 기능을 사용하여 비로그인 사용자의 접근을 제한
+  - ![image](https://github.com/2023-SMHRD-IS-AI1/RepoUp/assets/148600254/5ffc2d09-d950-43dd-a1ac-3612388ff948)
   
 </div>
 </details>
 
 <details>
-<summary>ElementUI input 박스에서 `v-on:keyup.enter="메소드명"`이 정상 작동 안하는 문제</summary>
+<summary>기존 데이터와 새로운 데이터를 접목시키는 과정에서 인덱스 길이가 달라 오류가 생기는 문제</summary>
 <div markdown="1">
   
-  - `v-on:keyup.enter.native=""` 와 같이 .native 추가로 해결
+  - 기존 데이터의 인덱스를 가져와 해당하는 데이터에 대해서만 테이블 제작하려 하였으나 불러온 데이터가 튜플 형식으로 이루어져있어 사용 불가
+  - 가져온 튜플에서 데이터를 추출해서 리스트로 제작 및 새로운 데이터와 접목, 기존 데이터와 인덱스 번호가 동일한 행만 DB에 추가
   
 </div>
 </details>
