@@ -17,8 +17,7 @@
 <meta name="author" content="Phoenixcoded" />
 
 <!-- Favicon icon -->
-<link rel="icon" href="resources/assets/images/favicon.png"
-	type="image/x-icon">
+<link rel="icon" href="resources/assets/images/favicon.png" type="image/x-icon">
 
 <!-- vendor css -->
 <link rel="stylesheet" href="resources/assets/css/style.css">
@@ -41,8 +40,8 @@
 								<h5 class="m-b-10">Fashion Trend Dashboard</h5>
 							</div>
 							<ul class="breadcrumb">
-								<li class="breadcrumb-item"><a href="goMain"><i
-										class="feather icon-home"></i></a></li>
+								<li class="breadcrumb-item"><a href="goMain">
+								<i class="feather icon-home"></i></a></li>
 								<li class="breadcrumb-item"><a>TrendyPeop</a></li>
 							</ul>
 						</div>
@@ -57,7 +56,6 @@
 				<div class="row">
 					<div class="col">
 						<h4 class="mt-4 text-center">
-							<!-- <i class="feather icon-briefcase m-r-5"></i> -->
 							My Closet
 						</h4>
 						<hr>
@@ -74,36 +72,26 @@
 							int j = i * 5;
 						%>
 						<div class="card-deck">
-							<c:forEach items="${myClosetList }" var="c" begin="<%=j %>"
-								end="<%=j+4 %>" varStatus="status">
-
+							<c:forEach items="${myClosetList }" var="c" begin="<%=j %>" end="<%=j+4 %>" varStatus="status">
 								<div class="card" id="max">
-									<img data-toggle="modal" data-target="#item${status.index }"
-										class="img-fluid card-img-top" src="${c.style_img_url}"
-										alt="Card image cap">
+									<img data-toggle="modal" data-target="#item${status.index }" class="img-fluid card-img-top" src="${c.style_img_url}" alt="Card image cap">
 									<div class="card-footer">
-										<div class="modal fade bd-example-modal-lg"
-											id="item${status.index }" tabindex="-1" role="dialog"
-											aria-labelledby="myLargeModalLabel" aria-hidden="true">
+										<div class="modal fade bd-example-modal-lg" id="item${status.index }" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 											<div class="modal-dialog modal-lg">
 												<div class="modal-content">
 													<div class="modal-body">
-														<button type="button" class="close" data-dismiss="modal"
-															aria-label="Close">
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 															<span aria-hidden="true">&times;</span>
 														</button>
-														<img class="img-fluid card-img-top"
-															src="${c.style_img_url}" alt="Card image cap">
+														<img class="img-fluid card-img-top" src="${c.style_img_url}" alt="Card image cap">
 													</div>
 												</div>
 											</div>
 										</div>
-										<button type="button" class="btn btn-icon btn-success"
-											onclick="location.href='deleteCloset?style_idx=${c.style_idx }&user_id=${loginUser.user_id}'">
+										<button type="button" class="btn btn-icon btn-success" onclick="location.href='deleteCloset?style_idx=${c.style_idx }&user_id=${loginUser.user_id}'">
 											<i class="feather icon-briefcase"></i>
 										</button>
-										<button type="button" class="btn btn-icon btn-info"
-											onclick="location.href='gostyleRecoDetail?style_idx=${c.style_idx }'">
+										<button type="button" class="btn btn-icon btn-info" onclick="location.href='gostyleRecoDetail?style_idx=${c.style_idx }'">
 											<i class="feather icon-search"></i>
 										</button>
 									</div>
@@ -111,9 +99,7 @@
 							</c:forEach>
 						</div>
 						<br><br>
-						<%
-						}
-						%>
+						<% } %>
 					</div>
 				</div>
 				<!-- 이미지 출력 끝 -->

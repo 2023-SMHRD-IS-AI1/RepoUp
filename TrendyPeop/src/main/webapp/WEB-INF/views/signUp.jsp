@@ -26,35 +26,35 @@
 			<div class="row align-items-center text-center">
 				<div class="col-md-12">
 					<div class="card-body">
-					<form action="signUpSuccess" method="post">
-						<img src="resources/assets/images/로고_누끼(160X23).png" alt="" class="img-fluid mb-4">
-						<h4 class="mb-4 f-w-400">회원가입</h4>
-						
-                        <div class="form-group mb-4">
-							<label class="floating-label" for="userid">UserID</label>
-							<input type="text" class="form-control" id=user_id name="user_id" placeholder="아이디를 입력하세요"><br>
-							<label id="label1"></label>
-						</div>
-						<div class="form-group mb-4">
-					        <label class="floating-label" for="Password">Password</label>
-					        <input type="password" class="form-control" id="user_pw" name="user_pw" placeholder="비밀번호를 입력하세요" onchange="isSame()" >
-					    </div>
-					    <div class="form-group mb-4">
-					        <label class="floating-label" for="PasswordCheck">PasswordCheck</label>
-					        <input type="password" class="form-control" id="user_pwcheck"  name="user_pwcheck" placeholder="비밀번호 확인" onchange="isSame()" > 
-					        <label id="same"></label>
-					    </div>
-						<div class="form-group mb-3">
-							<label class="floating-label" for="Username">Username</label>
-							<input type="text" class="form-control" id="username" name="user_name" placeholder="이름을 입력하세요">
-						</div>
-						<div class="form-group mb-3">
-							<label class="floating-label" for="Nickname">Nickname</label>
-							<input type="text" class="form-control" id="nickname" name="user_nick" placeholder="닉네임을 입력하세요">
-						</div>
-						<button class="btn btn-primary btn-block mb-4">Sign up</button>
-						<p class="mb-2">이미 계정이 있으신가요? <a href="signIn" class="f-w-400">Signin</a></p>
-					</form>
+						<form action="signUpSuccess" method="post">
+							<img src="resources/assets/images/로고_누끼(160X23).png" alt="" class="img-fluid mb-4">
+							<h4 class="mb-4 f-w-400">회원가입</h4>
+							
+	                        <div class="form-group mb-4">
+								<label class="floating-label" for="userid">UserID</label>
+								<input type="text" class="form-control" id=user_id name="user_id" placeholder="아이디를 입력하세요"><br>
+								<label id="label1"></label>
+							</div>
+							<div class="form-group mb-4">
+						        <label class="floating-label" for="Password">Password</label>
+						        <input type="password" class="form-control" id="user_pw" name="user_pw" placeholder="비밀번호를 입력하세요" onchange="isSame()" >
+						    </div>
+						    <div class="form-group mb-4">
+						        <label class="floating-label" for="PasswordCheck">PasswordCheck</label>
+						        <input type="password" class="form-control" id="user_pwcheck"  name="user_pwcheck" placeholder="비밀번호 확인" onchange="isSame()" > 
+						        <label id="same"></label>
+						    </div>
+							<div class="form-group mb-3">
+								<label class="floating-label" for="Username">Username</label>
+								<input type="text" class="form-control" id="username" name="user_name" placeholder="이름을 입력하세요">
+							</div>
+							<div class="form-group mb-3">
+								<label class="floating-label" for="Nickname">Nickname</label>
+								<input type="text" class="form-control" id="nickname" name="user_nick" placeholder="닉네임을 입력하세요">
+							</div>
+							<button class="btn btn-primary btn-block mb-4">Sign up</button>
+							<p class="mb-2">이미 계정이 있으신가요? <a href="signIn" class="f-w-400">Signin</a></p>
+						</form>
 					</div>
 				</div>
 			</div>

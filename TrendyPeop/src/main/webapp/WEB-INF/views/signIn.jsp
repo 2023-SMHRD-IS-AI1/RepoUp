@@ -25,24 +25,21 @@
 			<div class="row align-items-center text-center">
 				<div class="col-md-12">
 					<div class="card-body">
-					<form action="userSelect" method="post">
-						<img src="resources/assets/images/로고_누끼(160X23).png" alt="" class="img-fluid mb-4">
-						<h4 class="mb-4 f-w-400">로그인</h4>
-						<div class="form-group mb-3">
-							<label class="floating-label" for="Userid">UserID</label>
-							<input type="text" class="form-control" name="user_id" id="user_id" placeholder="">
-						</div>
-						<div class="form-group mb-4">
-							<label class="floating-label" for="Password">Password</label>
-							<input type="password" class="form-control" name="user_pw" id="user_pw" placeholder="">
-						</div><br><br>
-						<!-- <div class="custom-control custom-checkbox text-left mb-4 mt-2">
-							<input type="checkbox" class="custom-control-input" id="customCheck1">
-							<label class="custom-control-label" for="customCheck1">로그인 정보 저장</label>
-						</div> -->
-						<button class="btn btn-block btn-primary mb-4">Signin</button>
-						<p class="mb-0 text-muted">아직 계정이 없으신가요? <a href="signUp" class="f-w-400">Signup</a></p>
-					</form>
+						<form action="userSelect" method="post">
+							<img src="resources/assets/images/로고_누끼(160X23).png" alt="" class="img-fluid mb-4">
+							<h4 class="mb-4 f-w-400">로그인</h4>
+							<div class="form-group mb-3">
+								<label class="floating-label" for="Userid">UserID</label>
+								<input type="text" class="form-control" name="user_id" id="user_id" placeholder="">
+							</div>
+							<div class="form-group mb-4">
+								<label class="floating-label" for="Password">Password</label>
+								<input type="password" class="form-control" name="user_pw" id="user_pw" placeholder="">
+							</div>
+							<br><br>
+							<button class="btn btn-block btn-primary mb-4">Signin</button>
+							<p class="mb-0 text-muted">아직 계정이 없으신가요? <a href="signUp" class="f-w-400">Signup</a></p>
+						</form>
 					</div>
 				</div>
 			</div>

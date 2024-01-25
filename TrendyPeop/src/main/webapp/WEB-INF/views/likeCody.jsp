@@ -41,8 +41,8 @@
 								<h5 class="m-b-10">Fashion Trend Dashboard</h5>
 							</div>
 							<ul class="breadcrumb">
-								<li class="breadcrumb-item"><a href="goMain"><i
-										class="feather icon-home"></i></a></li>
+								<li class="breadcrumb-item"><a href="goMain">
+								<i class="feather icon-home"></i></a></li>
 								<li class="breadcrumb-item"><a>TrendyPeop</a></li>
 							</ul>
 						</div>
@@ -76,10 +76,9 @@
 						<div class="card-deck">
 						<c:forEach items="${likeCodyList }" var="c" begin="<%=j %>" end="<%=j+4 %>"  varStatus="status">
 							<div class="card" id="max">
-								<a href="goCodyDetail?cody_idx=${c.cody_idx }"> <img
-										class="img-fluid card-img-top" src="${c.cody_img_url}"
-										alt="Card image cap">
-									</a>
+								<a href="goCodyDetail?cody_idx=${c.cody_idx }"> 
+								<img class="img-fluid card-img-top" src="${c.cody_img_url}" alt="Card image cap">
+								</a>
 								<div class="card-body">
 									<h5 class="card-title">${c.cody_name }</h5>
 								</div>
@@ -88,7 +87,6 @@
 											class="feather icon-heart"></i></button>
 								</div>
 							</div>
-							
 						</c:forEach>
 						</div>
 						<br><br>
