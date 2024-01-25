@@ -17,8 +17,7 @@
 <meta name="author" content="Phoenixcoded" />
 
 <!-- Favicon icon -->
-<link rel="icon" href="resources/assets/images/favicon.png"
-	type="image/x-icon">
+<link rel="icon" href="resources/assets/images/favicon.png" type="image/x-icon">
 
 <!-- vendor css -->
 <link rel="stylesheet" href="resources/assets/css/style.css">
@@ -41,8 +40,8 @@
 								<h5 class="m-b-10">Fashion Trend Dashboard</h5>
 							</div>
 							<ul class="breadcrumb">
-								<li class="breadcrumb-item"><a href="goMain"><i
-										class="feather icon-home"></i></a></li>
+								<li class="breadcrumb-item"><a href="goMain">
+								<i class="feather icon-home"></i></a></li>
 								<li class="breadcrumb-item"><a>TrendyPeop</a></li>
 							</ul>
 						</div>
@@ -74,25 +73,18 @@
 						%>
 
 						<div class="card-deck">
-							<c:forEach items="${recoList1 }" var="s" begin="<%=j %>"
-								end="<%=j+4 %>" varStatus="status">
+							<c:forEach items="${recoList1 }" var="s" begin="<%=j %>" end="<%=j+4 %>" varStatus="status">
 								<div class="card" id="max">
-									<img data-toggle="modal" data-target="#item${status.index }"
-										class="img-fluid card-img-top" src="${s.style_img_url}"
-										alt="Card image cap">
+									<img data-toggle="modal" data-target="#item${status.index }" class="img-fluid card-img-top" src="${s.style_img_url}" alt="Card image cap">
 									<div class="card-footer">
-										<div class="modal fade bd-example-modal-lg"
-											id="item${status.index }" tabindex="-1" role="dialog"
-											aria-labelledby="myLargeModalLabel" aria-hidden="true">
+										<div class="modal fade bd-example-modal-lg" id="item${status.index }" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 											<div class="modal-dialog modal-lg">
 												<div class="modal-content">
 													<div class="modal-body">
-														<button type="button" class="close" data-dismiss="modal"
-															aria-label="Close">
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 															<span aria-hidden="true">&times;</span>
 														</button>
-														<img class="img-fluid card-img-top"
-															src="${s.style_img_url}" alt="Card image cap">
+														<img class="img-fluid card-img-top" src="${s.style_img_url}" alt="Card image cap">
 													</div>
 												</div>
 											</div>
@@ -114,77 +106,76 @@
 								</div>
 							</c:forEach>
 						</div>
-						<br> <br>
-						<%
-						}
-						%>
+						<br><br>
+						<% } %>
 					</div>
 				</div>
-				<!-- 컨텐츠 영역 끝 -->
 				<button type="button" class="btn btn-icon btn-primary" id="scrollToTopBtn">
 					<a href="#" style="color: white;"><i class="feather icon-arrow-up"></i></a>
 				</button>
+			<!-- 컨텐츠 영역 끝 -->
 			</div>
 		</div>
-		<!-- [ Main Content ] end -->
+	</div>
+	<!-- [ Main Content ] end -->
 
 
-		<!-- Required Js -->
-		<script src="resources/assets/js/vendor-all.min.js"></script>
-		<script src="resources/assets/js/plugins/bootstrap.min.js"></script>
-		<script src="resources/assets/js/ripple.js"></script>
-		<script src="resources/assets/js/pcoded.min.js"></script>
+	<!-- Required Js -->
+	<script src="resources/assets/js/vendor-all.min.js"></script>
+	<script src="resources/assets/js/plugins/bootstrap.min.js"></script>
+	<script src="resources/assets/js/ripple.js"></script>
+	<script src="resources/assets/js/pcoded.min.js"></script>
 
-		<!-- Apex Chart -->
-		<script src="resources/assets/js/plugins/apexcharts.min.js"></script>
+	<!-- Apex Chart -->
+	<script src="resources/assets/js/plugins/apexcharts.min.js"></script>
 
 
-		<!-- custom-chart js -->
-		<script src="resources/assets/js/pages/dashboard-main.js"></script>
+	<!-- custom-chart js -->
+	<script src="resources/assets/js/pages/dashboard-main.js"></script>
 
-		<script>
-			function insertStyleHeart(style_idx, user_id) {
+	<script>
+		function insertStyleHeart(style_idx, user_id) {
 
-				console.log('style_idx:', style_idx);
-				console.log('user_id:', user_id);
-				//Ajax로 전송
-				$.ajax({
-					url : './insertStyleHeart',
-					data : {
-						style_idx : style_idx,
-						user_id : user_id
-					},
-					type : 'POST',
-					dataType : 'json',
-					success : function(result1) {
-						if (result1.success) {
-							pass;
-						}
+			console.log('style_idx:', style_idx);
+			console.log('user_id:', user_id);
+			//Ajax로 전송
+			$.ajax({
+				url : './insertStyleHeart',
+				data : {
+					style_idx : style_idx,
+					user_id : user_id
+				},
+				type : 'POST',
+				dataType : 'json',
+				success : function(result1) {
+					if (result1.success) {
+						pass;
 					}
-				}); //End Ajax
-			}
+				}
+			}); //End Ajax
+		}
 
-			function insertStyleCloset(style_idx, user_id) {
+		function insertStyleCloset(style_idx, user_id) {
 
-				console.log('style_idx:', style_idx);
-				console.log('user_id:', user_id);
-				//Ajax로 전송
-				$.ajax({
-					url : './insertCloset',
-					data : {
-						style_idx : style_idx,
-						user_id : user_id
-					},
-					type : 'POST',
-					dataType : 'json',
-					success : function(result2) {
-						if (result2.success) {
-							pass;
-						}
+			console.log('style_idx:', style_idx);
+			console.log('user_id:', user_id);
+			//Ajax로 전송
+			$.ajax({
+				url : './insertCloset',
+				data : {
+					style_idx : style_idx,
+					user_id : user_id
+				},
+				type : 'POST',
+				dataType : 'json',
+				success : function(result2) {
+					if (result2.success) {
+						pass;
 					}
-				}); //End Ajax
-			}
-		</script>
+				}
+			}); //End Ajax
+		}
+	</script>
 </body>
 
 </html>

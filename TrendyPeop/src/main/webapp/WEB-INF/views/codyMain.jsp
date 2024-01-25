@@ -42,8 +42,8 @@
 								<h5 class="m-b-10">Fashion Trend Dashboard</h5>
 							</div>
 							<ul class="breadcrumb">
-								<li class="breadcrumb-item"><a href="goMain"><i
-										class="feather icon-home"></i></a></li>
+								<li class="breadcrumb-item"><a href="goMain">
+								<i class="feather icon-home"></i></a></li>
 								<li class="breadcrumb-item"><a>TrendyPeop</a></li>
 							</ul>
 						</div>
@@ -58,15 +58,13 @@
 				<div class="row">
 					<div class="col">
 						<h4 class="mt-4">
-							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-								fill="currentColor" class="bi bi-arrow-through-heart-fill"
-								viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-									d="M2.854 15.854A.5.5 0 0 1 2 15.5V14H.5a.5.5 0 0 1-.354-.854l1.5-1.5A.5.5 0 0 1 2 11.5h1.793l3.103-3.104a.5.5 0 1 1 .708.708L4.5 12.207V14a.5.5 0 0 1-.146.354l-1.5 1.5ZM16 3.5a.5.5 0 0 1-.854.354L14 2.707l-1.006 1.006c.236.248.44.531.6.845.562 1.096.585 2.517-.213 4.092-.793 1.563-2.395 3.288-5.105 5.08L8 13.912l-.276-.182A23.825 23.825 0 0 1 5.8 12.323L8.31 9.81a1.5 1.5 0 0 0-2.122-2.122L3.657 10.22a8.827 8.827 0 0 1-1.039-1.57c-.798-1.576-.775-2.997-.213-4.093C3.426 2.565 6.18 1.809 8 3.233c1.25-.98 2.944-.928 4.212-.152L13.292 2 12.147.854A.5.5 0 0 1 12.5 0h3a.5.5 0 0 1 .5.5v3Z" />
-                              </svg>
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-through-heart-fill" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M2.854 15.854A.5.5 0 0 1 2 15.5V14H.5a.5.5 0 0 1-.354-.854l1.5-1.5A.5.5 0 0 1 2 11.5h1.793l3.103-3.104a.5.5 0 1 1 .708.708L4.5 12.207V14a.5.5 0 0 1-.146.354l-1.5 1.5ZM16 3.5a.5.5 0 0 1-.854.354L14 2.707l-1.006 1.006c.236.248.44.531.6.845.562 1.096.585 2.517-.213 4.092-.793 1.563-2.395 3.288-5.105 5.08L8 13.912l-.276-.182A23.825 23.825 0 0 1 5.8 12.323L8.31 9.81a1.5 1.5 0 0 0-2.122-2.122L3.657 10.22a8.827 8.827 0 0 1-1.039-1.57c-.798-1.576-.775-2.997-.213-4.093C3.426 2.565 6.18 1.809 8 3.233c1.25-.98 2.944-.928 4.212-.152L13.292 2 12.147.854A.5.5 0 0 1 12.5 0h3a.5.5 0 0 1 .5.5v3Z" />
+							</svg>
 							Cody Main
 						</h4>
 					</div>
+					<!-- 카테고리 버튼 -->
 					<div class="col" style="margin-left: auto; margin-top: auto;">
 						<div class="row" id="float">
 							<div class="col-sm" style="padding: inherit">
@@ -123,35 +121,26 @@
 										<h5 class="card-title">${c.cody_name }</h5>
 									</div>
 									<div class="card-footer">
-										<!-- 여기도 마찬가지, 좋아요 눌렀으면 btn-, 안눌렀으면 btn-outline-(빈하트) -->
-										<%
-										if (loginUser == null) {
-										%>
-										<button type="button" class="btn btn-icon btn-outline-primary"
-											onclick="user()">
+									<% if (loginUser == null) { %>
+										<button type="button" class="btn btn-icon btn-outline-primary" onclick="user()">
 											<i class="feather icon-heart"></i>
 										</button>
-										<button type="button" class="btn btn-icon btn-outline-info"
-											onclick="location.href='goCodyDetail?cody_idx=${c.cody_idx }'">
+										<button type="button" class="btn btn-icon btn-outline-info" onclick="location.href='goCodyDetail?cody_idx=${c.cody_idx }'">
 											<i class="feather icon-search"></i>
 										</button>
-										<% } else { %>
-										<button type="button" class="btn btn-icon btn-outline-primary" id="insertCodyHeart"
-											onclick="insertCodyHeart('${c.cody_idx}', '${loginUser.user_id}')">
+									<% } else { %>
+										<button type="button" class="btn btn-icon btn-outline-primary" id="insertCodyHeart" onclick="insertCodyHeart('${c.cody_idx}', '${loginUser.user_id}')">
 											<i class="feather icon-heart"></i>
 										</button>
-										<button type="button" class="btn btn-icon btn-outline-info"
-											onclick="location.href='goCodyDetail?cody_idx=${c.cody_idx }'">
+										<button type="button" class="btn btn-icon btn-outline-info" onclick="location.href='goCodyDetail?cody_idx=${c.cody_idx }'">
 											<i class="feather icon-search"></i>
 										</button>
-										<% }  %>
+									<% }  %>
 									</div>
 								</div>
-
 							</c:forEach>
 						</div>
-						<br>
-						<br>
+						<br><br>
 						<% } %>
 					</div>
 				</div>
@@ -163,6 +152,7 @@
 			</button>
 		</div>
 	</div>
+	
 	<script>
 		function user() {
 			alert("로그인후 사용 가능합니다.")

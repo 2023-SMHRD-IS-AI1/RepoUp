@@ -18,8 +18,7 @@
 <meta name="author" content="Phoenixcoded" />
 
 <!-- Favicon icon -->
-<link rel="icon" href="resources/assets/images/favicon.png"
-	type="image/x-icon">
+<link rel="icon" href="resources/assets/images/favicon.png" type="image/x-icon">
 
 <!-- vendor css -->
 <link rel="stylesheet" href="resources/assets/css/style.css">
@@ -50,8 +49,7 @@
 								<h5 class="m-b-10">Fashion Trend Dashboard</h5>
 							</div>
 							<ul class="breadcrumb">
-								<li class="breadcrumb-item"><a href="goMain"><i
-										class="feather icon-home"></i></a></li>
+								<li class="breadcrumb-item"><a href="goMain"><i class="feather icon-home"></i></a></li>
 								<li class="breadcrumb-item"><a>TrendyPeop</a></li>
 							</ul>
 						</div>
@@ -66,12 +64,9 @@
 					<div class="row">
 						<div class="col-xl-12 ">
 							<h4 class="mt-4">
-								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-									fill="currentColor" class="bi bi-arrow-through-heart-fill"
-									viewBox="0 0 16 16">
-								<path fill-rule="evenodd"
-										d="M2.854 15.854A.5.5 0 0 1 2 15.5V14H.5a.5.5 0 0 1-.354-.854l1.5-1.5A.5.5 0 0 1 2 11.5h1.793l3.103-3.104a.5.5 0 1 1 .708.708L4.5 12.207V14a.5.5 0 0 1-.146.354l-1.5 1.5ZM16 3.5a.5.5 0 0 1-.854.354L14 2.707l-1.006 1.006c.236.248.44.531.6.845.562 1.096.585 2.517-.213 4.092-.793 1.563-2.395 3.288-5.105 5.08L8 13.912l-.276-.182A23.825 23.825 0 0 1 5.8 12.323L8.31 9.81a1.5 1.5 0 0 0-2.122-2.122L3.657 10.22a8.827 8.827 0 0 1-1.039-1.57c-.798-1.576-.775-2.997-.213-4.093C3.426 2.565 6.18 1.809 8 3.233c1.25-.98 2.944-.928 4.212-.152L13.292 2 12.147.854A.5.5 0 0 1 12.5 0h3a.5.5 0 0 1 .5.5v3Z" />
-							</svg>
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-through-heart-fill" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M2.854 15.854A.5.5 0 0 1 2 15.5V14H.5a.5.5 0 0 1-.354-.854l1.5-1.5A.5.5 0 0 1 2 11.5h1.793l3.103-3.104a.5.5 0 1 1 .708.708L4.5 12.207V14a.5.5 0 0 1-.146.354l-1.5 1.5ZM16 3.5a.5.5 0 0 1-.854.354L14 2.707l-1.006 1.006c.236.248.44.531.6.845.562 1.096.585 2.517-.213 4.092-.793 1.563-2.395 3.288-5.105 5.08L8 13.912l-.276-.182A23.825 23.825 0 0 1 5.8 12.323L8.31 9.81a1.5 1.5 0 0 0-2.122-2.122L3.657 10.22a8.827 8.827 0 0 1-1.039-1.57c-.798-1.576-.775-2.997-.213-4.093C3.426 2.565 6.18 1.809 8 3.233c1.25-.98 2.944-.928 4.212-.152L13.292 2 12.147.854A.5.5 0 0 1 12.5 0h3a.5.5 0 0 1 .5.5v3Z" />
+								</svg>
 								Style Recommend Details
 							</h4>
 							<hr>
@@ -79,9 +74,7 @@
 								<div class="card-deck">
 									<div class="col-md-6">
 										<div class="card">
-											<img class="img-fluid card-img-top"
-												src="<%=detailRecoList1.get(0).getStyle_img_url()%>"
-												alt="Card image cap">
+											<img class="img-fluid card-img-top" src="<%=detailRecoList1.get(0).getStyle_img_url()%>" alt="Card image cap">
 											<div class="card-body">
 												<h5 class="card-title"></h5>
 											</div>
@@ -89,14 +82,10 @@
 									</div>
 
 									<div class="col">
-
 										<div class="card-group">
 											<div class="card text-center" id="details">
-												<a
-													href="goCodyDetail?cody_idx=<%=detailRecoList1.get(0).getCody_idx()%>">
-													<img class="img-fluid card-img-top"
-													src="<%=detailRecoList1.get(0).getCody_img_url()%>"
-													alt="Card image cap">
+												<a href="goCodyDetail?cody_idx=<%=detailRecoList1.get(0).getCody_idx()%>">
+													<img class="img-fluid card-img-top" src="<%=detailRecoList1.get(0).getCody_img_url()%>" alt="Card image cap">
 												</a>
 												<div class="card-body">
 													<h5 class="card-title"><%=detailRecoList1.get(0).getCody_name()%></h5>
@@ -104,11 +93,8 @@
 											</div>
 
 											<div class="card text-center" id="details">
-												<a
-													href="goCodyDetail?cody_idx=<%=detailRecoList2.get(0).getCody_idx()%>">
-													<img class="img-fluid card-img-top"
-													src="<%=detailRecoList2.get(0).getCody_img_url()%>"
-													alt="Card image cap">
+												<a href="goCodyDetail?cody_idx=<%=detailRecoList2.get(0).getCody_idx()%>">
+													<img class="img-fluid card-img-top" src="<%=detailRecoList2.get(0).getCody_img_url()%>" alt="Card image cap">
 												</a>
 												<div class="card-body">
 													<h5 class="card-title"><%=detailRecoList2.get(0).getCody_name()%></h5>
@@ -118,11 +104,8 @@
 										</div>
 										<div class="card-group">
 											<div class="card text-center" id="details">
-												<a
-													href="goCodyDetail?cody_idx=<%=detailRecoList3.get(0).getCody_idx()%>">
-													<img class="img-fluid card-img-top"
-													src="<%=detailRecoList3.get(0).getCody_img_url()%>"
-													alt="Card image cap">
+												<a href="goCodyDetail?cody_idx=<%=detailRecoList3.get(0).getCody_idx()%>">
+													<img class="img-fluid card-img-top" src="<%=detailRecoList3.get(0).getCody_img_url()%>" alt="Card image cap">
 												</a>
 												<div class="card-body">
 													<h5 class="card-title"><%=detailRecoList3.get(0).getCody_name()%></h5>
@@ -130,11 +113,8 @@
 											</div>
 
 											<div class="card text-center" id="details">
-												<a
-													href="goCodyDetail?cody_idx=<%=detailRecoList4.get(0).getCody_idx()%>">
-													<img class="img-fluid card-img-top"
-													src="<%=detailRecoList4.get(0).getCody_img_url()%>"
-													alt="Card image cap">
+												<a href="goCodyDetail?cody_idx=<%=detailRecoList4.get(0).getCody_idx()%>">
+													<img class="img-fluid card-img-top" src="<%=detailRecoList4.get(0).getCody_img_url()%>" alt="Card image cap">
 												</a>
 												<div class="card-body">
 													<h5 class="card-title"><%=detailRecoList4.get(0).getCody_name()%></h5>

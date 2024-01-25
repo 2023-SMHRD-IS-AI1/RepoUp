@@ -86,18 +86,15 @@
 										<div class="modal-dialog modal-lg">
 											<div class="modal-content">
 												<div class="modal-body">
-													<button type="button" class="close" data-dismiss="modal"
-														aria-label="Close"><span
-															aria-hidden="true">&times;</span></button>
-													<img class="img-fluid card-img-top"
-														src="${s.style_img_url }"
-														alt="Card image cap">
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span></button>
+													<img class="img-fluid card-img-top" src="${s.style_img_url }" alt="Card image cap">
 												</div>
 											</div>
 										</div>
 									</div>
-									<button type="button" class="btn btn-icon btn-primary" onclick="location.href='deleteStyleHeart?style_idx=${s.style_idx }&user_id=${loginUser.user_id}'"><i
-                                        class="feather icon-heart"></i></button>
+									<button type="button" class="btn btn-icon btn-primary" onclick="location.href='deleteStyleHeart?style_idx=${s.style_idx }&user_id=${loginUser.user_id}'">
+									<i class="feather icon-heart"></i></button>
 								</div>
 							</div>
 						</c:forEach>

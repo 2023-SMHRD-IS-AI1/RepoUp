@@ -17,8 +17,7 @@
 <meta name="author" content="Phoenixcoded" />
 
 <!-- Favicon icon -->
-<link rel="icon" href="resources/assets/images/favicon.png"
-	type="image/x-icon">
+<link rel="icon" href="resources/assets/images/favicon.png" type="image/x-icon">
 
 <!-- vendor css -->
 <link rel="stylesheet" href="resources/assets/css/style.css">
@@ -41,8 +40,7 @@
 								<h5 class="m-b-10">Fashion Trend Dashboard</h5>
 							</div>
 							<ul class="breadcrumb">
-								<li class="breadcrumb-item"><a href="goMain"><i
-										class="feather icon-home"></i></a></li>
+								<li class="breadcrumb-item"><a href="goMain"><i class="feather icon-home"></i></a></li>
 								<li class="breadcrumb-item"><a>TrendyPeop</a></li>
 							</ul>
 						</div>
@@ -57,11 +55,8 @@
 				<div class="row">
 					<div class="col">
 						<h4 class="mt-4">
-							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-								fill="currentColor" class="bi bi-arrow-through-heart"
-								viewBox="0 0 16 16">
-                			<path fill-rule="evenodd"
-									d="M2.854 15.854A.5.5 0 0 1 2 15.5V14H.5a.5.5 0 0 1-.354-.854l1.5-1.5A.5.5 0 0 1 2 11.5h1.793l.53-.53c-.771-.802-1.328-1.58-1.704-2.32-.798-1.575-.775-2.996-.213-4.092C3.426 2.565 6.18 1.809 8 3.233c1.25-.98 2.944-.928 4.212-.152L13.292 2 12.147.854A.5.5 0 0 1 12.5 0h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.854.354L14 2.707l-1.006 1.006c.236.248.44.531.6.845.562 1.096.585 2.517-.213 4.092-.793 1.563-2.395 3.288-5.105 5.08L8 13.912l-.276-.182a21.86 21.86 0 0 1-2.685-2.062l-.539.54V14a.5.5 0 0 1-.146.354l-1.5 1.5Zm2.893-4.894A20.419 20.419 0 0 0 8 12.71c2.456-1.666 3.827-3.207 4.489-4.512.679-1.34.607-2.42.215-3.185-.817-1.595-3.087-2.054-4.346-.761L8 4.62l-.358-.368c-1.259-1.293-3.53-.834-4.346.761-.392.766-.464 1.845.215 3.185.323.636.815 1.33 1.519 2.065l1.866-1.867a.5.5 0 1 1 .708.708L5.747 10.96Z" />
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-through-heart" viewBox="0 0 16 16">
+                			<path fill-rule="evenodd" d="M2.854 15.854A.5.5 0 0 1 2 15.5V14H.5a.5.5 0 0 1-.354-.854l1.5-1.5A.5.5 0 0 1 2 11.5h1.793l.53-.53c-.771-.802-1.328-1.58-1.704-2.32-.798-1.575-.775-2.996-.213-4.092C3.426 2.565 6.18 1.809 8 3.233c1.25-.98 2.944-.928 4.212-.152L13.292 2 12.147.854A.5.5 0 0 1 12.5 0h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.854.354L14 2.707l-1.006 1.006c.236.248.44.531.6.845.562 1.096.585 2.517-.213 4.092-.793 1.563-2.395 3.288-5.105 5.08L8 13.912l-.276-.182a21.86 21.86 0 0 1-2.685-2.062l-.539.54V14a.5.5 0 0 1-.146.354l-1.5 1.5Zm2.893-4.894A20.419 20.419 0 0 0 8 12.71c2.456-1.666 3.827-3.207 4.489-4.512.679-1.34.607-2.42.215-3.185-.817-1.595-3.087-2.054-4.346-.761L8 4.62l-.358-.368c-1.259-1.293-3.53-.834-4.346.761-.392.766-.464 1.845.215 3.185.323.636.815 1.33 1.519 2.065l1.866-1.867a.5.5 0 1 1 .708.708L5.747 10.96Z" />
                 			</svg>
 							Style Main
 						</h4>
@@ -77,15 +72,12 @@
 										<a class="dropdown-item" href="filterStyleCate?style_cate=청바지">청바지</a>
 										<a class="dropdown-item" href="filterStyleCate?style_cate=셔츠">셔츠</a>
 										<a class="dropdown-item" href="filterStyleCate?style_cate=코트">코트</a>
-										<a class="dropdown-item"
-											href="filterStyleCate?style_cate=캐주얼상의">캐주얼상의</a> <a
-											class="dropdown-item" href="filterStyleCate?style_cate=팬츠">팬츠</a>
-										<a class="dropdown-item"
-											href="filterStyleCate?style_cate=블라우스">블라우스</a> <a
-											class="dropdown-item" href="filterStyleCate?style_cate=스커트">스커트</a>
-										<a class="dropdown-item"
-											href="filterStyleCate?style_cate=니트웨어">니트웨어</a> <a
-											class="dropdown-item" href="filterStyleCate?style_cate=재킷">재킷</a>
+										<a class="dropdown-item" href="filterStyleCate?style_cate=캐주얼상의">캐주얼상의</a> 
+										<a class="dropdown-item" href="filterStyleCate?style_cate=팬츠">팬츠</a>
+										<a class="dropdown-item" href="filterStyleCate?style_cate=블라우스">블라우스</a> 
+										<a class="dropdown-item" href="filterStyleCate?style_cate=스커트">스커트</a>
+										<a class="dropdown-item" href="filterStyleCate?style_cate=니트웨어">니트웨어</a> 
+										<a class="dropdown-item" href="filterStyleCate?style_cate=재킷">재킷</a>
 										<a class="dropdown-item" href="filterStyleCate?style_cate=베스트">베스트</a>
 										<a class="dropdown-item" href="filterStyleCate?style_cate=점퍼">점퍼</a>
 										<a class="dropdown-item" href="filterStyleCate?style_cate=패딩">패딩</a>
@@ -99,32 +91,23 @@
 										type="button" data-toggle="dropdown" aria-haspopup="true"
 										aria-expanded="false">Color</button>
 									<div class="dropdown-menu dropdown-menu-right">
-										<a class="dropdown-item"
-											href="filterStyleColor?style_color=블랙">블랙</a> <a
-											class="dropdown-item" href="filterStyleColor?style_color=화이트">화이트</a>
-										<a class="dropdown-item"
-											href="filterStyleColor?style_color=브라운">브라운</a> <a
-											class="dropdown-item" href="filterStyleColor?style_color=그레이">그레이</a>
-										<a class="dropdown-item"
-											href="filterStyleColor?style_color=베이지">베이지</a> <a
-											class="dropdown-item" href="filterStyleColor?style_color=블루">블루</a>
-										<a class="dropdown-item"
-											href="filterStyleColor?style_color=네이비">네이비</a> <a
-											class="dropdown-item" href="filterStyleColor?style_color=카키">카키</a>
-										<a class="dropdown-item"
-											href="filterStyleColor?style_color=스카이블루">스카이블루</a> <a
-											class="dropdown-item" href="filterStyleColor?style_color=라벤더">라벤더</a>
-										<a class="dropdown-item"
-											href="filterStyleColor?style_color=민트">민트</a> <a
-											class="dropdown-item" href="filterStyleColor?style_color=레드">레드</a>
-										<a class="dropdown-item"
-											href="filterStyleColor?style_color=오렌지">오렌지</a> <a
-											class="dropdown-item" href="filterStyleColor?style_color=옐로우">옐로우</a>
-										<a class="dropdown-item"
-											href="filterStyleColor?style_color=핑크">핑크</a> <a
-											class="dropdown-item" href="filterStyleColor?style_color=퍼플">퍼플</a>
-										<a class="dropdown-item"
-											href="filterStyleColor?style_color=그린">그린</a>
+										<a class="dropdown-item" href="filterStyleColor?style_color=블랙">블랙</a> 
+										<a class="dropdown-item" href="filterStyleColor?style_color=화이트">화이트</a>
+										<a class="dropdown-item" href="filterStyleColor?style_color=브라운">브라운</a> 
+										<a class="dropdown-item" href="filterStyleColor?style_color=그레이">그레이</a>
+										<a class="dropdown-item" href="filterStyleColor?style_color=베이지">베이지</a> 
+										<a class="dropdown-item" href="filterStyleColor?style_color=블루">블루</a>
+										<a class="dropdown-item" href="filterStyleColor?style_color=네이비">네이비</a> 
+										<a class="dropdown-item" href="filterStyleColor?style_color=카키">카키</a>
+										<a class="dropdown-item" href="filterStyleColor?style_color=스카이블루">스카이블루</a> 
+										<a class="dropdown-item" href="filterStyleColor?style_color=라벤더">라벤더</a>
+										<a class="dropdown-item" href="filterStyleColor?style_color=민트">민트</a> 
+										<a class="dropdown-item" href="filterStyleColor?style_color=레드">레드</a>
+										<a class="dropdown-item" href="filterStyleColor?style_color=오렌지">오렌지</a> 
+										<a class="dropdown-item" href="filterStyleColor?style_color=옐로우">옐로우</a>
+										<a class="dropdown-item" href="filterStyleColor?style_color=핑크">핑크</a> 
+										<a class="dropdown-item" href="filterStyleColor?style_color=퍼플">퍼플</a>
+										<a class="dropdown-item" href="filterStyleColor?style_color=그린">그린</a>
 									</div>
 								</div>
 							</div>
@@ -159,30 +142,22 @@
 							int j = i * 5;
 						%>
 						<div class="card-deck">
-							<c:forEach items="${styleTagFilterList }" var="s" begin="<%=j %>"
-								end="<%=j+4 %>" varStatus="status">
+							<c:forEach items="${styleTagFilterList }" var="s" begin="<%=j %>" end="<%=j+4 %>" varStatus="status">
 								<div class="card" id="max">
-									<img data-toggle="modal" data-target="#item${status.index }"
-										class="img-fluid card-img-top" src="${s.style_img_url}"
-										alt="Card image cap">
+									<img data-toggle="modal" data-target="#item${status.index }" class="img-fluid card-img-top" src="${s.style_img_url}" alt="Card image cap">
 									<div class="card-footer">
-										<div class="modal fade bd-example-modal-lg"
-											id="item${status.index }" tabindex="-1" role="dialog"
-											aria-labelledby="myLargeModalLabel" aria-hidden="true">
+										<div class="modal fade bd-example-modal-lg" id="item${status.index }" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 											<div class="modal-dialog modal-lg">
 												<div class="modal-content">
 													<div class="modal-body">
-														<button type="button" class="close" data-dismiss="modal"
-															aria-label="Close">
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 															<span aria-hidden="true">&times;</span>
 														</button>
-														<img class="img-fluid card-img-top"
-															src="${s.style_img_url}" alt="Card image cap">
+														<img class="img-fluid card-img-top" src="${s.style_img_url}" alt="Card image cap">
 													</div>
 												</div>
 											</div>
 										</div>
-										<!-- 좋아요 안되어있으면 btn-outline-(빈) 속성, 좋아요 했으면 btn-(채워진) 으로 들어가야함 -->
 										<button type="button" class="btn btn-icon btn-outline-primary"
 											onclick="insertStyleHeart('${s.style_idx}', '${loginUser.user_id}')">
 											<i class="feather icon-heart"></i>
@@ -200,10 +175,8 @@
 								</div>
 							</c:forEach>
 						</div>
-						<br> <br>
-						<%
-						}
-						%>
+						<br><br>
+						<% } %>
 					</div>
 				</div>
 				<!-- 이미지 출력 끝 -->

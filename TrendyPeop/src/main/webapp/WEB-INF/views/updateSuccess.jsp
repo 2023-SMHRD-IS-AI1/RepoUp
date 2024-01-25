@@ -38,24 +38,6 @@
 	</div>
 </div>
 
-<!-- 회원정보 수정 실패 메세지 -->
-<!-- <div class="auth-wrapper">
-	<div class="auth-content">
-		<div class="card">
-			<div class="row align-items-center text-center">
-                <div class="col-sm-12">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h5 class="card-title">회원정보 수정에 실패하였습니다</h5>
-                            <p class="card-text">홈페이지로 돌아가기</p>
-                            <a href="goMain" class="btn  btn-primary"><i class="feather icon-home"></i> Main</a>
-                        </div>
-                    </div>
-                </div>
-			</div>
-		</div>
-	</div>
-</div> -->
 
 <!-- Required Js -->
 <script src="resources/assets/js/vendor-all.min.js"></script>

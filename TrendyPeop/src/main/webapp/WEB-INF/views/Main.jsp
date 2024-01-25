@@ -28,11 +28,9 @@
 	href="resources/assets/css/owl.theme.default.min.css">
 
 <!-- 데이터 분석 그래프 -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <!-- 색상분석 파이차트 -->
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <style>
 /* Add custom styles for the chart text here */
 .chart-title {
@@ -53,11 +51,8 @@
 
 <body class="">
 
-	<%@include file="./nav.jsp"%>
-	<%
-	Keyword keywordList = (Keyword) request.getAttribute("keywordList");
-	%>
-
+	<%@ include file="./nav.jsp" %>
+	<% Keyword keywordList = (Keyword) request.getAttribute("keywordList"); %>
 
 	<!-- [ Main Content ] start -->
 	<div class="pcoded-main-container">
@@ -71,8 +66,8 @@
 								<h5 class="m-b-10">Fashion Trend Dashboard</h5>
 							</div>
 							<ul class="breadcrumb">
-								<li class="breadcrumb-item"><a href="goMain"><i
-										class="feather icon-home"></i></a></li>
+								<li class="breadcrumb-item"><a href="goMain">
+								<i class="feather icon-home"></i></a></li>
 								<li class="breadcrumb-item"><a>TrendyPeop</a></li>
 							</ul>
 						</div>
@@ -86,60 +81,48 @@
 					<div class="card support-bar full">
 						<div class="row" style="padding: inherit;">
 							<div class="col">
+								<!-- 베스트 코디 -->
 								<div class="card">
 									<div class="card-header">
 										<h4 class="mt-4">Best Cody!</h4>
 									</div>
-									<%
-									List<Cody> bestCody = (List<Cody>) request.getAttribute("bestCody");
-									%>
-									<div class="cardbody"
-										style="padding: 40px 40px 30px 40px; margin: 0 10%;">
+									<% List<Cody> bestCody = (List<Cody>) request.getAttribute("bestCody"); %>
+									<div class="cardbody" style="padding: 40px 40px 30px 40px; margin: 0 10%;">
 										<div class="bestCody">
 											<div class="owl-carousel owl-theme owl-loaded">
 												<div class="owl-stage-outer">
 													<div class="owl-stage" style="height: 50% !important;">
-
 														<div class="owl-item">
-															<a
-																href="goCodyDetail?cody_idx=<%=bestCody.get(0).getCody_idx()%>"
-																class=""><img
-																src="<%=bestCody.get(0).getCody_img_url()%>"></a>
+															<a href="goCodyDetail?cody_idx=<%=bestCody.get(0).getCody_idx()%>" class="">
+															<img src="<%=bestCody.get(0).getCody_img_url()%>"></a>
 														</div>
 														<div class="owl-item">
-															<a
-																href="goCodyDetail?cody_idx=<%=bestCody.get(1).getCody_idx()%>"
-																class=""><img
-																src="<%=bestCody.get(1).getCody_img_url()%>"></a>
+															<a href="goCodyDetail?cody_idx=<%=bestCody.get(1).getCody_idx()%>" class="">
+															<img src="<%=bestCody.get(1).getCody_img_url()%>"></a>
 														</div>
 														<div class="owl-item">
-															<a
-																href="goCodyDetail?cody_idx=<%=bestCody.get(2).getCody_idx()%>"
-																class=""><img
-																src="<%=bestCody.get(2).getCody_img_url()%>"></a>
+															<a href="goCodyDetail?cody_idx=<%=bestCody.get(2).getCody_idx()%>" class="">
+															<img src="<%=bestCody.get(2).getCody_img_url()%>"></a>
 														</div>
 														<div class="owl-item">
-															<a
-																href="goCodyDetail?cody_idx=<%=bestCody.get(3).getCody_idx()%>"
-																class=""><img
-																src="<%=bestCody.get(3).getCody_img_url()%>"></a>
+															<a href="goCodyDetail?cody_idx=<%=bestCody.get(3).getCody_idx()%>" class="">
+															<img src="<%=bestCody.get(3).getCody_img_url()%>"></a>
 														</div>
 														<div class="owl-item">
-															<a
-																href="goCodyDetail?cody_idx=<%=bestCody.get(4).getCody_idx()%>"
-																class=""><img
-																src="<%=bestCody.get(4).getCody_img_url()%>"></a>
+															<a href="goCodyDetail?cody_idx=<%=bestCody.get(4).getCody_idx()%>" class="">
+															<img src="<%=bestCody.get(4).getCody_img_url()%>"></a>
 														</div>
-
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
+								<!-- 베스트 코디 끝 -->
 							</div>
 						</div>
 						<div class="row" style="padding: inherit;">
+							<!-- 색상트렌드 -->
 							<div class="col-4">
 								<div class="card">
 									<div class="card-header">
@@ -154,6 +137,7 @@
 									</div>
 								</div>
 							</div>
+							<!-- 패션 검색어 트렌드 -->
 							<div class="col-8">
 								<div class="card">
 									<div class="card-header">
@@ -168,6 +152,7 @@
 							</div>
 						</div>
 						<div class="row" style="padding: inherit;">
+							<!-- 패션 뉴스 -->
 							<div class="col-7">
 								<%
 								List<Keyword> article_list = (List<Keyword>) request.getAttribute("article_list");
@@ -184,7 +169,7 @@
 									</div>
 								</div>
 							</div>
-							
+							<!-- 기온별 오늘의 코디 -->
 							<div class="col-5">
 								<div class="card">
 									<div class="card-header">
@@ -215,7 +200,6 @@
 													<button type="button" class="btn btn-outline-info"
 														id="float" style="right: 25%; bottom: 25%; position: absolute;"
 														onclick="location.href='goCodyDetail?cody_idx=<%=randomCody.get(0).getCody_idx()%>'">
-														<!-- <i class="feather icon-search"></i> -->
 														추천 코디 보러가기
 													</button>
 												</div>
@@ -229,10 +213,9 @@
 				</div>
 			</div>
 			<!-- [ Main Content ] end -->
-			<button type="button" class="btn btn-icon btn-primary"
-				id="scrollToTopBtn">
-				<a href="#" style="color: white;"><i
-					class="feather icon-arrow-up"></i></a>
+			<!-- 업버튼 -->
+			<button type="button" class="btn btn-icon btn-primary" id="scrollToTopBtn">
+				<a href="#" style="color: white;"><i class="feather icon-arrow-up"></i></a>
 			</button>
 		</div>
 	</div>
