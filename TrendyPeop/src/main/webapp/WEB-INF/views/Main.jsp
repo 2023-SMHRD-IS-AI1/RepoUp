@@ -145,11 +145,12 @@
 									<div class="card-header">
 										<h4 class="mt-3">2023년 12월 Best Color</h4>
 									</div>
-									<div class="card-body" >
-									<br><br>
+									<div class="card-body">
+										<br><br>
 										<div style="width: 80%; height: 80%; margin: auto;">
 											<canvas id="colorTrendChart"></canvas>
-										</div><br><br>
+										</div>
+										<br><br>
 									</div>
 								</div>
 							</div>
@@ -208,7 +209,7 @@
 											</div>
 											<div class="col">
 												<div class="row text-center">
-													<h5>이부분에 추천내용 적어주세요</h5>
+													<h5>금일 기온이 매우 낮습니다. <br>따뜻하고 포근한 옷이 어떨까요? </h5>
 												</div>
 												<div class="row">
 													<button type="button" class="btn btn-outline-info"
@@ -247,7 +248,7 @@
 	            labels: ['pink', 'blue', 'green', 'yellow', 'purple', 'red', 'orange'],
 	            datasets: [{
 	            	label: '색상 트렌드 비율',
-	                   data: [1821606, 3541406, 1994494, 742633, 694929, 339377, 238845],
+	                   data: [14.45, 28.11, 15.84, 5.89, 5.51, 2.69, 1.89],
 	                   backgroundColor: [
 	                      'lightpink', 'skyblue', 'yellowgreen', 'yellow', 'mediumpurple', 'tomato', 'orange'
 	                   ],
