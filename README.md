@@ -42,7 +42,6 @@
 
 ### 4.1. 전체 흐름
 ![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow1.png)
-![흐름도](https://github.com/2023-SMHRD-IS-AI1/RepoUp/assets/153901365/d4f45585-d5fd-42bb-a3d6-7c3f851fdac9)
 
 ### 4.2. 사용자 요청
 ![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_vue.png)
