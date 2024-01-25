@@ -1,41 +1,40 @@
-# :pushpin: goQuality
->고퀄리티 개발 컨텐츠 공유 서비스  
-> 데모사이트 링크
+# :pushpin: Thumb up
+> 2~30대 여성들을 위한 패션 대시보드 
+
 
 </br>
 
 ## 1. 제작 기간 & 참여 인원
-- 2019년 2월 18일 ~ 4월 5일
-- 개인 프로젝트
+- 2023년 12월 15일 ~ 2024년 01월 24일
+- 팀 프로젝트
+- 참여인원 : 엄다은(팀장), 정현지(팀원), 임해솔(팀원), 방찬혁(팀원), 강재희(팀원)
 
 </br>
 
 ## 2. 사용 기술
 #### `Back-end`
-  - Java 8
-  - Spring Boot 2.3
-  - Gradle
-  - Spring Data JPA
-  - QueryDSL
-  - H2
-  - MySQL 5.7
-  - Spring Security
-  - Jsoup
+  - Java 1.6
+  - Springframework 5.0.7
+  - MYSQL 5.1
+  - Apache Tomcat 8.5
+
+
 #### `Front-end`
+
+  - 여기는 몰?루
+
   - Vue.js 3.0
   - Element UI
 
 </br>
 
 ## 3. ERD 설계
-![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/final_erd.png)
-![](https://github.com/JungHyung2/gitio.io/blob/master/assets/images/portfolio/p1.jpg)
-
+![KakaoTalk_20240121_161201916](https://github.com/2023-SMHRD-IS-AI1/RepoUp/assets/153901365/75738182-5d4c-4156-bafe-f7d8ecc331d8)
 
 ## 4. 핵심 기능
-이 서비스의 핵심 기능은 컨텐츠 등록 기능입니다.  
-사용자는 단지 컨텐츠의 카테고리를 선택하고, URL만 입력하면 끝입니다.  
-이 단순한 기능의 흐름을 보면, 서비스가 어떻게 동작하는지 알 수 있습니다.  
+이 서비스의 핵심 기능은 의상 및 코디 추천 기능입니다.  
+사용자는 원하는 항목에 대해서 좋아요와 옷장 추가를 누르면 끝입니다.
+이 기능의 흐름을 보면, 서비스가 어떻게 동작하는지 알 수 있습니다.  
 
 <details>
 <summary><b>핵심 기능 설명 펼치기</b></summary>
