@@ -94,7 +94,6 @@
         			type : 'POST',
         			dataType : 'json',
         			success : function(result) {
-        				console.log(result);
         				if (result == true) {
         					$("#label1").css("color", "black").text("사용 가능한 ID 입니다.");
         				} else{

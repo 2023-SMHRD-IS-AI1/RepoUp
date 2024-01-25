@@ -221,8 +221,6 @@
 	<script>
 		function insertStyleHeart(style_idx, user_id) {
 
-			console.log('style_idx:', style_idx);
-			console.log('user_id:', user_id);
 			//Ajax로 전송
 			$.ajax({
 				url : './insertStyleHeart',
@@ -242,8 +240,6 @@
 
 		function insertStyleCloset(style_idx, user_id) {
 
-			console.log('style_idx:', style_idx);
-			console.log('user_id:', user_id);
 			//Ajax로 전송
 			$.ajax({
 				url : './insertCloset',

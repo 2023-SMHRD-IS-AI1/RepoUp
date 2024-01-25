@@ -245,17 +245,6 @@
 				responsive : true,
 				maintainAspectRatio : true,
 				plugins : {
-					/* title : {
-						display : true,
-						text : ' 트렌디 컬러 TOP5 ', 
-						position : 'top',
-						font : {
-							size : 25,
-							family : 'Arial, sans-serif',
-							weight : 'bold',
-							style : 'italic'
-						}
-					}, */
 					legend : {
 						display : true,
 						position : 'bottom',

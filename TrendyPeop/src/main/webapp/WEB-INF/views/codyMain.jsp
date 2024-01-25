@@ -177,9 +177,7 @@
 	<script>
 		
 	function insertCodyHeart(cody_idx, user_id) {
-		
-		console.log('cody_idx:', cody_idx);
-        console.log('user_id:', user_id);
+
         //Ajax로 전송
         $.ajax({
             url : './insertCodyHeart',
