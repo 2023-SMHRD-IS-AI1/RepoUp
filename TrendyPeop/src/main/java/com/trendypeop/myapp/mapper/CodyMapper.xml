@@ -72,12 +72,9 @@
 		cody_look IN (SELECT cody_look FROM tb_cody_recommendation WHERE
 		tb_cody_recommendation.user_id = #{user_id})
 		AND cody_style_tag IN (SELECT cody_style_tag FROM tb_cody_recommendation
-		WHERE tb_cody_recommendation.user_id = #{user_id})
-		)
-		AND (
-		cody_season NOT LIKE #{cody_season}
-		)
-		ORDER BY RAND()
+		WHERE tb_cody_recommendation.user_id = #{user_id}) )
+		AND (cody_season NOT LIKE #{cody_season}
+		) ORDER BY RAND()
 	</select>
 
 	<select id="filterCodyLook" parameterType="String"

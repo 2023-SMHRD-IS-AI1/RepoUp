@@ -1,7 +1,5 @@
 package com.trendypeop.myapp;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -12,21 +10,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.trendypeop.myapp.entity.Style;
-import com.trendypeop.myapp.entity.User;
 import com.trendypeop.myapp.mapper.StyleMapper;
-import com.trendypeop.myapp.mapper.UserMapper;
 
 @Controller
 public class StyleController {
@@ -37,38 +29,30 @@ public class StyleController {
 	
 	@RequestMapping("/filterStyleCate")
 	public String filterStyleCate(@RequestParam("style_cate") String style_cate, Model model) {
-
 		List<Style> styleCateFilterList = styleMapper.filterStyleCate(style_cate);
 		model.addAttribute("styleCateFilterList", styleCateFilterList);
-		
 		return "styleCateFilter";
 	}
 	
 	@RequestMapping("/filterStyleColor")
 	public String filterStyleColor(@RequestParam("style_color") String style_color, Model model) {
-
 		List<Style> styleColorFilterList = styleMapper.filterStyleColor(style_color);
 		model.addAttribute("styleColorFilterList", styleColorFilterList);
-		
 		return "styleColorFilter";
 	}
 	
 	@RequestMapping("/filterStyleTag")
 	public String filterStyleTag(@RequestParam("style_tag") String style_tag, Model model) {
-
 		List<Style> styleTagFilterList = styleMapper.filterStyleTag(style_tag);
 		model.addAttribute("styleTagFilterList", styleTagFilterList);
-		
 		return "styleTagFilter";
 	}
 	
 	
 	@RequestMapping("/goStyleMain")
 	public String goStyleMain(Model model) {
-		
 		List<Style> styleList = styleMapper.styleList();
 		model.addAttribute("styleList", styleList);
-		
 		return "styleMain";
 	}
 	
@@ -76,27 +60,19 @@ public class StyleController {
 	
 	@RequestMapping("/goLikeStyle")
 	public String goLikeStyle(@RequestParam("user_id") String user_id, Model model) {
-		
 		List<Style> likeStyleList = styleMapper.likeStyleList(user_id);
 		model.addAttribute("likeStyleList", likeStyleList);
-		
 		return "likeStyle";
 	}
 	
 	@RequestMapping("/insertStyleHeart")
 	@ResponseBody
 	public Map<String, Object> insertHeart(@RequestParam("style_idx") int style_idx, @RequestParam("user_id") String user_id) {
-		
-		System.out.println("test1");
-		System.out.println(style_idx);		
-		System.out.println(user_id);
-		System.out.println("test2");
 
 		Map<String, Object> response = new HashMap<>(); 
 		Style style = new Style(style_idx, user_id);
 
 		int count = styleMapper.checkStyleHeart(style);
-		System.out.println(count);
 		
 		if(count == 0) {
 			styleMapper.insertStyleHeart(style);
@@ -106,17 +82,11 @@ public class StyleController {
 			response.put("success", false);
 		}
 		
-		
-		
-		
 				// 여기까지는 db에 좋아요 넣고 빼는 코드
 		
 				// 밑으로는 좋아요 태그 분석(item, color, tag)
 				// top3_stItem, top3_stColor, top3_stTag
 				// 이렇게 3개 리스트(좋아요 누를 때마다 갱신)
-				
-				
-				
 				List<Style> list = styleMapper.getTags(user_id);
 				
 				List<String> stItemList = new ArrayList<String>();
@@ -128,9 +98,7 @@ public class StyleController {
 					stColorList.add(list.get(i).getStyle_color());
 					stTagList.add(list.get(i).getStyle_tag());
 				} // 만약 3가지 컬럼 따로 가져와서 조합할 거라면 리스트 3개 만들고 컬럼 하나씩 가져와야 함!
-				
 
-				
 				Set<String> stItemDistinct = new HashSet<>(stItemList);
 				Set<String> stColorDistinct = new HashSet<>(stColorList);
 				Set<String> stTagDistinct = new HashSet<>(stTagList);
@@ -263,28 +231,7 @@ public class StyleController {
 		        	top1_stTag = tagList3.get(0);
 		        	top2_stTag = tagList3.get(1);
 		        	top3_stTag = tagList3.get(2);
-		        }
-		       
-		        System.out.println(top1_stItem);
-		        System.out.println(top2_stItem);
-		        System.out.println(top3_stItem);
-		        
-		        System.out.println("=======================");
-		        
-		        System.out.println(top1_stColor);
-		        System.out.println(top2_stColor);
-		        System.out.println(top3_stColor);
-
-		        System.out.println("=======================");
-		        
-		        System.out.println("=======================");
-		        
-		        System.out.println(top1_stTag);
-		        System.out.println(top2_stTag);
-		        System.out.println(top3_stTag);
-		        
-		        System.out.println("=======================");
-		        
+		        }   
 		        
 		        styleMapper.deleteStyleReco(user_id);
 		        Style style1 = new Style(user_id, top1_stItem, top1_stColor, top1_stTag);
@@ -293,42 +240,30 @@ public class StyleController {
 		        styleMapper.insertStyleReco(style2);
 		        Style style3 = new Style(user_id, top3_stItem, top3_stColor, top3_stTag);
 		        styleMapper.insertStyleReco(style3);
-		
-		
 		return response;
 	}
 	
 	@RequestMapping("/insertCloset")
 	public String insertCloset(@RequestParam("style_idx") int style_idx, @RequestParam("user_id") String user_id) {
-		
 		Style style = new Style(style_idx, user_id);
-		
 		int count = styleMapper.checkCloset(style);
-		System.out.println(count);
-		
 		if(count == 0) {
 			styleMapper.insertCloset(style);
 		} else {
 			styleMapper.deleteCloset(style);
 		}
-		
-		
 		return "redirect:/goStyleMain";
 	}
 	
 	@RequestMapping("/deleteStyleHeart")
 	public String deleteHeart(@RequestParam("style_idx") int style_idx, @RequestParam("user_id") String user_id, Model model) {
-		
 		Style style = new Style(style_idx, user_id);
-		
 		int count = styleMapper.checkStyleHeart(style);
-		
 		if(count == 0) {
 			styleMapper.insertStyleHeart(style);
 		} else {
 			styleMapper.deleteStyleHeart(style);
 		}
-		
 		List<Style> likeStyleList = styleMapper.likeStyleList(user_id);
 		model.addAttribute("likeStyleList", likeStyleList);
 		
@@ -337,45 +272,29 @@ public class StyleController {
 	
 	@RequestMapping("/goMyCloset")
 	public String goMyCloset(@RequestParam("user_id") String user_id, Model model) {
-		
 		List<Style> myClosetList = styleMapper.myClosetList(user_id);
 		model.addAttribute("myClosetList", myClosetList);
-		
-		System.out.println(myClosetList.toString());
-		
 		return "myCloset";
 	}
 	
 	@RequestMapping("/deleteCloset")
 	   public String deleteCloset(@RequestParam("style_idx") int style_idx, @RequestParam("user_id") String user_id, Model model) {
-	      
 	      Style style = new Style(style_idx, user_id);
-	      
 	      int count = styleMapper.checkCloset(style);
-	      
 	      if(count == 0) {
 	         styleMapper.insertCloset(style);
 	      } else {
 	         styleMapper.deleteCloset(style);
 	      }
-	      
-	      
 	      List<Style> myClosetList = styleMapper.myClosetList(user_id);
 	      model.addAttribute("myClosetList", myClosetList);
-	      
-	      System.out.println(myClosetList.toString());
-	      
 	      return "myCloset";
 	   }
 	
 	@RequestMapping("/goRecoStyle")
 	public String goRecoCody(@RequestParam("user_id") String user_id, Model model) {
-
-		System.out.println(user_id.toString());
 		List<Style> recoList1 = styleMapper.recoList(user_id);
 		model.addAttribute("recoList1", recoList1);	
-		System.out.println(recoList1.toString());
-		
 		return "recommendStyle";
 	}
 }
