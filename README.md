@@ -106,99 +106,30 @@
 - Colab은 정책상 약 10분 이상 반응이 없을 경우 런타임을 중지시킴
 - > 때문에 Colab 학습 중 중단을 막기 위해 개발자 모드에서 임의로 런타임을 연장시킴
   ![image](https://github.com/2023-SMHRD-IS-AI1/RepoUp/assets/148600254/2e6c31c7-6778-42e4-9260-ae300fe8a8b5)
-- 단, 이런 경우에도 12시간 이상 활용시 강제로 런타임이 중지됨.
+- 단, 이런 경우에도 12시간 이상 활용시 강제로 런타임이 중지됨. 따라서 12시간 안에 학습을 완료시킬 경량화된 코드를 필요로 함
+
+- 이 때문에 EfficientNet B0 모델을 사용
   
-- 으로 로드와 전처리 과정에서 잦은 오류가 발생하여 최종적으로 의상 데이터 812건, 코디 데이터 498건으로 데이터 규모 축소
+- 또한, 이미지의 수가 많아 로드와 전처리 과정에서 잦은 오류가 발생하여 최종적으로 의상 데이터 812건, 코디 데이터 498건으로 데이터 규모 축소
 
-- 하지만 [무한스크롤, 페이징 혹은 “더보기” 버튼? 어떤 걸 써야할까](https://cyberx.tistory.com/82) 라는 글을 읽고 무한 스크롤의 단점들을 알게 되었고,  
-다양한 기준(카테고리, 사용자, 등록일, 인기도)의 게시물 필터 기능을 넣어서 이를 보완하고자 했습니다.
+- Colab 특성상 런타임 종료시 업로드한 이미지가 모두 삭제되기 때문에 이미지는 모두 구글 드라이브에 저장하고 Colab과 구글 드라이브를 연결하여 이용
 
-- 그런데 게시물이 필터링 된 상태에서 무한 스크롤이 동작하면,  
-필터링 된 게시물들만 DB에 요청해야 하기 때문에 아래의 **기존 코드** 처럼 각 필터별로 다른 Query를 날려야 했습니다.
 
-<details>
-<summary><b>기존 코드</b></summary>
-<div markdown="1">
+- Colab과 Eclipse를 연결하기가 어려움. 연결 방법을 고민하다가 해당 알고리즘에서는 일단 유사도의 결과만 필요함을 상기,
+또한 당장 이미지를 추가할 예정이 없기 때문에 학습이 여러번 반복되어야 할 이유가 없었다.
 
-~~~java
-/**
- * 게시물 Top10 (기준: 댓글 수 + 좋아요 수)
- * @return 인기순 상위 10개 게시물
- */
-public Page<PostResponseDto> listTopTen() {
+- 이미지 유사도 분석을 진행하여 옷에 대한 코디의 유사도를 측정하고 DataFrame 형식으로 작성. 
+![image](https://github.com/2023-SMHRD-IS-AI1/RepoUp/assets/148600254/73b681bc-1f12-4bf9-9dc2-c20f4a5d4f20)
+![image](https://github.com/2023-SMHRD-IS-AI1/RepoUp/assets/148600254/28783a12-eb48-4bc3-b9b6-f5a227b74e93)
 
-    PageRequest pageRequest = PageRequest.of(0, 10, Sort.Direction.DESC, "rankPoint", "likeCnt");
-    return postRepository.findAll(pageRequest).map(PostResponseDto::new);
-}
+- 프로젝트에서는 유사도가 높은 코디를 전부 보여주는 것이 아닌 4위까지 보여줄 것이므로 결과를 내림차순으로 정렬하여 4위까지 정리.
+![image](https://github.com/2023-SMHRD-IS-AI1/RepoUp/assets/148600254/a4d99e53-e001-4cf8-938f-9019303e8cbc)
+![image](https://github.com/2023-SMHRD-IS-AI1/RepoUp/assets/148600254/775841fb-a3e0-4fd9-ad3c-d615f6e0f782)
 
-/**
- * 게시물 필터 (Tag Name)
- * @param tagName 게시물 박스에서 클릭한 태그 이름
- * @param pageable 페이징 처리를 위한 객체
- * @return 해당 태그가 포함된 게시물 목록
- */
-public Page<PostResponseDto> listFilteredByTagName(String tagName, Pageable pageable) {
+- 그리고 결과 DataFrame을 csv형식으로 저장하여 해당 파일을 데이터베이스 중 의상 필드에 컬럼을 추가해서 각각의 의상에 삽입하였다.
 
-    return postRepository.findAllByTagName(tagName, pageable).map(PostResponseDto::new);
-}
+- 결과적으로, 특정 의상을 옷장에 넣을 경우 해당 의상과 유사도가 높은 4위까지의 코디를 추천해주는 추천 알고리즘을 구현할 수 있었다.
 
-// ... 게시물 필터 (Member) 생략 
-
-/**
- * 게시물 필터 (Date)
- * @param createdDate 게시물 박스에서 클릭한 날짜
- * @return 해당 날짜에 등록된 게시물 목록
- */
-public List<PostResponseDto> listFilteredByDate(String createdDate) {
-
-    // 등록일 00시부터 24시까지
-    LocalDateTime start = LocalDateTime.of(LocalDate.parse(createdDate), LocalTime.MIN);
-    LocalDateTime end = LocalDateTime.of(LocalDate.parse(createdDate), LocalTime.MAX);
-
-    return postRepository
-                    .findAllByCreatedAtBetween(start, end)
-                    .stream()
-                    .map(PostResponseDto::new)
-                    .collect(Collectors.toList());
-    }
-~~~
-
-</div>
-</details>
-
-- 이 때 카테고리(tag)로 게시물을 필터링 하는 경우,  
-각 게시물은 최대 3개까지의 카테고리(tag)를 가질 수 있어 해당 카테고리를 포함하는 모든 게시물을 질의해야 했기 때문에  
-- 아래 **개선된 코드**와 같이 QueryDSL을 사용하여 다소 복잡한 Query를 작성하면서도 페이징 처리를 할 수 있었습니다.
-
-<details>
-<summary><b>개선된 코드</b></summary>
-<div markdown="1">
-
-~~~java
-/**
- * 게시물 필터 (Tag Name)
- */
-@Override
-public Page<Post> findAllByTagName(String tagName, Pageable pageable) {
-
-    QueryResults<Post> results = queryFactory
-            .selectFrom(post)
-            .innerJoin(postTag)
-                .on(post.idx.eq(postTag.post.idx))
-            .innerJoin(tag)
-                .on(tag.idx.eq(postTag.tag.idx))
-            .where(tag.name.eq(tagName))
-            .orderBy(post.idx.desc())
-                .limit(pageable.getPageSize())
-                .offset(pageable.getOffset())
-            .fetchResults();
-
-    return new PageImpl<>(results.getResults(), pageable, results.getTotal());
-}
-~~~
-
-</div>
-</details>
 
 </br>
 
