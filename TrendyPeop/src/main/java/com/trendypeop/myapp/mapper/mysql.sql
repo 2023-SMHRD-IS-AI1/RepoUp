@@ -63,3 +63,4 @@ select *
 
 select * from datalab
 
+select * from tb_user;
