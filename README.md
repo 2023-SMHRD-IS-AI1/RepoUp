@@ -22,7 +22,7 @@
 #### `Front-end`
   - JavaScript
   - HTML
-  - SCC
+  - CSS
 
 </br>
 
@@ -96,295 +96,92 @@
 </br>
 
 ## 5. 핵심 트러블 슈팅
-### 5.1. 컨텐츠 필터와 페이징 처리 문제
-- 저는 이 서비스가 페이스북이나 인스타그램 처럼 가볍게, 자주 사용되길 바라는 마음으로 개발했습니다.  
-때문에 페이징 처리도 무한 스크롤을 적용했습니다.
+### 5.1. 이미지 분석 머신러닝 모델 학습 중 오류 발생 문제
+- 이미지 분석 모델은 EfficientNET을 사용하였음.
 
-- 하지만 [무한스크롤, 페이징 혹은 “더보기” 버튼? 어떤 걸 써야할까](https://cyberx.tistory.com/82) 라는 글을 읽고 무한 스크롤의 단점들을 알게 되었고,  
-다양한 기준(카테고리, 사용자, 등록일, 인기도)의 게시물 필터 기능을 넣어서 이를 보완하고자 했습니다.
+- 초기 분석 이미지는 의상 데이터가 118000건, 코디 데이터가 20000건
 
-- 그런데 게시물이 필터링 된 상태에서 무한 스크롤이 동작하면,  
-필터링 된 게시물들만 DB에 요청해야 하기 때문에 아래의 **기존 코드** 처럼 각 필터별로 다른 Query를 날려야 했습니다.
+- 머신러닝 모델 활용의 용이성을 위하여 학습 환경은 Google Colab에서 진행
 
-<details>
-<summary><b>기존 코드</b></summary>
-<div markdown="1">
+- Colab은 정책상 약 10분 이상 반응이 없을 경우 런타임을 중지시킴
+- > 때문에 Colab 학습 중 중단을 막기 위해 개발자 모드에서 임의로 런타임을 연장시킴
+  ![image](https://github.com/2023-SMHRD-IS-AI1/RepoUp/assets/148600254/2e6c31c7-6778-42e4-9260-ae300fe8a8b5)
+- 단, 이런 경우에도 12시간 이상 활용시 강제로 런타임이 중지됨. 따라서 12시간 안에 학습을 완료시킬 경량화된 코드를 필요로 함
 
-~~~java
-/**
- * 게시물 Top10 (기준: 댓글 수 + 좋아요 수)
- * @return 인기순 상위 10개 게시물
- */
-public Page<PostResponseDto> listTopTen() {
+- 이 때문에 EfficientNet B0 모델을 사용
+  
+- 또한, 이미지의 수가 많아 로드와 전처리 과정에서 잦은 오류가 발생하여 최종적으로 의상 데이터 812건, 코디 데이터 498건으로 데이터 규모 축소
 
-    PageRequest pageRequest = PageRequest.of(0, 10, Sort.Direction.DESC, "rankPoint", "likeCnt");
-    return postRepository.findAll(pageRequest).map(PostResponseDto::new);
-}
+- Colab 특성상 런타임 종료시 업로드한 이미지가 모두 삭제되기 때문에 이미지는 모두 구글 드라이브에 저장하고 Colab과 구글 드라이브를 연결하여 이용
 
-/**
- * 게시물 필터 (Tag Name)
- * @param tagName 게시물 박스에서 클릭한 태그 이름
- * @param pageable 페이징 처리를 위한 객체
- * @return 해당 태그가 포함된 게시물 목록
- */
-public Page<PostResponseDto> listFilteredByTagName(String tagName, Pageable pageable) {
 
-    return postRepository.findAllByTagName(tagName, pageable).map(PostResponseDto::new);
-}
+- Colab과 Eclipse를 연결하기가 어려움. 연결 방법을 고민하다가 해당 알고리즘에서는 일단 유사도의 결과만 필요함을 상기,
+또한 당장 이미지를 추가할 예정이 없기 때문에 학습이 여러번 반복되어야 할 이유가 없었다.
 
-// ... 게시물 필터 (Member) 생략 
+- 이미지 유사도 분석을 진행하여 옷에 대한 코디의 유사도를 측정하고 DataFrame 형식으로 작성. 
+![image](https://github.com/2023-SMHRD-IS-AI1/RepoUp/assets/148600254/73b681bc-1f12-4bf9-9dc2-c20f4a5d4f20)
+![image](https://github.com/2023-SMHRD-IS-AI1/RepoUp/assets/148600254/28783a12-eb48-4bc3-b9b6-f5a227b74e93)
 
-/**
- * 게시물 필터 (Date)
- * @param createdDate 게시물 박스에서 클릭한 날짜
- * @return 해당 날짜에 등록된 게시물 목록
- */
-public List<PostResponseDto> listFilteredByDate(String createdDate) {
+- 프로젝트에서는 유사도가 높은 코디를 전부 보여주는 것이 아닌 4위까지 보여줄 것이므로 결과를 내림차순으로 정렬하여 4위까지 정리.
+![image](https://github.com/2023-SMHRD-IS-AI1/RepoUp/assets/148600254/a4d99e53-e001-4cf8-938f-9019303e8cbc)
+![image](https://github.com/2023-SMHRD-IS-AI1/RepoUp/assets/148600254/775841fb-a3e0-4fd9-ad3c-d615f6e0f782)
 
-    // 등록일 00시부터 24시까지
-    LocalDateTime start = LocalDateTime.of(LocalDate.parse(createdDate), LocalTime.MIN);
-    LocalDateTime end = LocalDateTime.of(LocalDate.parse(createdDate), LocalTime.MAX);
+- 그리고 결과 DataFrame을 csv형식으로 저장하여 해당 파일을 데이터베이스 중 의상 필드에 컬럼을 추가해서 각각의 의상에 삽입하였다.
 
-    return postRepository
-                    .findAllByCreatedAtBetween(start, end)
-                    .stream()
-                    .map(PostResponseDto::new)
-                    .collect(Collectors.toList());
-    }
-~~~
+- 결과적으로, 특정 의상을 옷장에 넣을 경우 해당 의상과 유사도가 높은 4위까지의 코디를 추천해주는 추천 알고리즘을 구현할 수 있었다.
 
-</div>
-</details>
-
-- 이 때 카테고리(tag)로 게시물을 필터링 하는 경우,  
-각 게시물은 최대 3개까지의 카테고리(tag)를 가질 수 있어 해당 카테고리를 포함하는 모든 게시물을 질의해야 했기 때문에  
-- 아래 **개선된 코드**와 같이 QueryDSL을 사용하여 다소 복잡한 Query를 작성하면서도 페이징 처리를 할 수 있었습니다.
-
-<details>
-<summary><b>개선된 코드</b></summary>
-<div markdown="1">
-
-~~~java
-/**
- * 게시물 필터 (Tag Name)
- */
-@Override
-public Page<Post> findAllByTagName(String tagName, Pageable pageable) {
-
-    QueryResults<Post> results = queryFactory
-            .selectFrom(post)
-            .innerJoin(postTag)
-                .on(post.idx.eq(postTag.post.idx))
-            .innerJoin(tag)
-                .on(tag.idx.eq(postTag.tag.idx))
-            .where(tag.name.eq(tagName))
-            .orderBy(post.idx.desc())
-                .limit(pageable.getPageSize())
-                .offset(pageable.getOffset())
-            .fetchResults();
-
-    return new PageImpl<>(results.getResults(), pageable, results.getTotal());
-}
-~~~
-
-</div>
-</details>
 
 </br>
 
 ## 6. 그 외 트러블 슈팅
 <details>
-<summary>npm run dev 실행 오류</summary>
+<summary>좋아요 / 옷장 추가 버튼 클릭 시 페이지를 다시 호출하면서 맨 위로 올라가는 문제점</summary>
 <div markdown="1">
 
-- Webpack-dev-server 버전을 3.0.0으로 다운그레이드로 해결
-- `$ npm install —save-dev webpack-dev-server@3.0.0`
+- Ajax를 활용하여 비동기화 방식으로 전환하여 버튼 클릭시 페이지가 바로 새로고침 되는 것을 막음
+- ![image](https://github.com/2023-SMHRD-IS-AI1/RepoUp/assets/148600254/3c99ae12-65b5-4309-aa3c-22cf0196071b)
 
 </div>
 </details>
 
 <details>
-<summary>vue-devtools 크롬익스텐션 인식 오류 문제</summary>
+<summary>vue-devtools 비로그인 이용자의 이용 기능 제한 문제</summary>
 <div markdown="1">
   
-  - main.js 파일에 `Vue.config.devtools = true` 추가로 해결
-  - [https://github.com/vuejs/vue-devtools/issues/190](https://github.com/vuejs/vue-devtools/issues/190)
+  - alert 기능을 사용하여 비로그인 사용자의 접근을 제한
+  - ![image](https://github.com/2023-SMHRD-IS-AI1/RepoUp/assets/148600254/5ffc2d09-d950-43dd-a1ac-3612388ff948)
   
 </div>
 </details>
 
 <details>
-<summary>ElementUI input 박스에서 `v-on:keyup.enter="메소드명"`이 정상 작동 안하는 문제</summary>
+<summary>기존 데이터와 새로운 데이터를 접목시키는 과정중 인덱스 번호 불일치로 생긴 문제</summary>
 <div markdown="1">
   
-  - `v-on:keyup.enter.native=""` 와 같이 .native 추가로 해결
+  - 기존 데이터중 제거된 행이 존재하여 DB상 없는 인덱스 번호 존재함. 
+  - 또한 DB에 입력시 해당 데이터와 동일한 길이의 데이터를 동일한 인덱스번호를 통해 추가해야 되기 때문에 데이터의 길이 및 내용 확인 필요.
+  - DB에서 기존 데이터의 인덱스 번호만 꺼내와서 배열로 만들고 해당 배열을 통해 새로운 데이터를 정제하려고 하였으나 배열이 튜플 형식으로 되어있어 사용이 어려웠음.
+  - 튜플로 된 배열에서 값을 하나씩 꺼내와 리스트로 제작 후 해당 리스트를 통해 새로운 데이터 정제, DB에 추가함.
   
 </div>
 </details>
 
 <details>
-<summary> Post 목록 출력시에 Member 객체 출력 에러 </summary>
+<summary> 네이버 데이터랩 API의 검색어 개수 제한 문제 </summary>
 <div markdown="1">
   
-  - 에러 메세지(500에러)
-    - No serializer found for class org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationConfig.SerializationFeature.FAIL_ON_EMPTY_BEANS)
-  - 해결
-    - Post 엔티티에 @ManyToOne 연관관계 매핑을 LAZY 옵션에서 기본(EAGER)옵션으로 수정
+  - 네이버 데이터랩에서 인기 검색어를 10위까지 요청하여 그래프로 제시하려고 하였으나 네이버 데이터랩 API의 검색어 갯수 제한은 5개.
+  - 또한 검색량 자체를 제공하는 것이 아닌 5개중 가장 높은 검색어를 기준으로 하여 퍼센티지(%)로 제시하는 방식
+
+![image](https://github.com/2023-SMHRD-IS-AI1/RepoUp/assets/148600254/f8d8c9e0-5b1d-480c-9b0f-3b3aa11e2e34)
+
+  - 따라서 10개의 검색어 중 1위를 제외하고 3개의 조합으로 나누어 요청 자체를 3번 진행했으며 세 번의 요청 모두 API요청값에 1위인 검색어를 모두 포함하여 상대비율을 고정시켰다.
+  - 결과적으로 1위 검색어를 100% 기준으로 타 검색어들의 검색량 비율을 알 수 있었고, 해당 데이터를 시각화하였다. 
   
 </div>
 </details>
-    
-<details>
-<summary> 프로젝트를 git init으로 생성 후 발생하는 npm run dev/build 오류 문제 </summary>
-<div markdown="1">
-  
-  ```jsx
-    $ npm run dev
-    npm ERR! path C:\Users\integer\IdeaProjects\pilot\package.json
-    npm ERR! code ENOENT
-    npm ERR! errno -4058
-    npm ERR! syscall open
-    npm ERR! enoent ENOENT: no such file or directory, open 'C:\Users\integer\IdeaProjects\pilot\package.json'
-    npm ERR! enoent This is related to npm not being able to find a file.
-    npm ERR! enoent
 
-    npm ERR! A complete log of this run can be found in:
-    npm ERR!     C:\Users\integer\AppData\Roaming\npm-cache\_logs\2019-02-25T01_23_19_131Z-debug.log
-  ```
-  
-  - 단순히 npm run dev/build 명령을 입력한 경로가 문제였다.
-   
-</div>
-</details>    
-
-<details>
-<summary> 태그 선택후 등록하기 누를 때 `object references an unsaved transient instance - save the transient instance before flushing` 오류</summary>
-<div markdown="1">
-  
-  - Post 엔티티의 @ManyToMany에 영속성 전이(cascade=CascadeType.ALL) 추가
-    - JPA에서 Entity를 저장할 때 연관된 모든 Entity는 영속상태여야 한다.
-    - CascadeType.PERSIST 옵션으로 부모와 자식 Enitity를 한 번에 영속화할 수 있다.
-    - 참고
-        - [https://stackoverflow.com/questions/2302802/object-references-an-unsaved-transient-instance-save-the-transient-instance-be/10680218](https://stackoverflow.com/questions/2302802/object-references-an-unsaved-transient-instance-save-the-transient-instance-be/10680218)
-   
-</div>
-</details>    
-
-<details>
-<summary> JSON: Infinite recursion (StackOverflowError)</summary>
-<div markdown="1">
-  
-  - @JsonIgnoreProperties 사용으로 해결
-    - 참고
-        - [http://springquay.blogspot.com/2016/01/new-approach-to-solve-json-recursive.html](http://springquay.blogspot.com/2016/01/new-approach-to-solve-json-recursive.html)
-        - [https://stackoverflow.com/questions/3325387/infinite-recursion-with-jackson-json-and-hibernate-jpa-issue](https://stackoverflow.com/questions/3325387/infinite-recursion-with-jackson-json-and-hibernate-jpa-issue)
-        
-</div>
-</details>  
-    
-<details>
-<summary> H2 접속문제</summary>
-<div markdown="1">
-  
-  - H2의 JDBC URL이 jdbc:h2:~/test 으로 되어있으면 jdbc:h2:mem:testdb 으로 변경해서 접속해야 한다.
-        
-</div>
-</details> 
-    
-<details>
-<summary> 컨텐츠수정 모달창에서 태그 셀렉트박스 드랍다운이 뒤쪽에 보이는 문제</summary>
-<div markdown="1">
-  
-   - ElementUI의 Global Config에 옵션 추가하면 해결
-     - main.js 파일에 `Vue.us(ElementUI, { zIndex: 9999 });` 옵션 추가(9999 이하면 안됌)
-   - 참고
-     - [https://element.eleme.io/#/en-US/component/quickstart#global-config](https://element.eleme.io/#/en-US/component/quickstart#global-config)
-        
-</div>
-</details> 
-
-<details>
-<summary> HTTP delete Request시 개발자도구의 XHR(XMLHttpRequest )에서 delete요청이 2번씩 찍히는 이유</summary>
-<div markdown="1">
-  
-  - When you try to send a XMLHttpRequest to a different domain than the page is hosted, you are violating the same-origin policy. However, this situation became somewhat common, many technics are introduced. CORS is one of them.
-
-        In short, server that you are sending the DELETE request allows cross domain requests. In the process, there should be a **preflight** call and that is the **HTTP OPTION** call.
-
-        So, you are having two responses for the **OPTION** and **DELETE** call.
-
-        see [MDN page for CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS).
-
-    - 출처 : [https://stackoverflow.com/questions/35808655/why-do-i-get-back-2-responses-of-200-and-204-when-using-an-ajax-call-to-delete-o](https://stackoverflow.com/questions/35808655/why-do-i-get-back-2-responses-of-200-and-204-when-using-an-ajax-call-to-delete-o)
-        
-</div>
-</details> 
-
-<details>
-<summary> 이미지 파싱 시 og:image 경로가 달라서 제대로 파싱이 안되는 경우</summary>
-<div markdown="1">
-  
-  - UserAgent 설정으로 해결
-        - [https://www.javacodeexamples.com/jsoup-set-user-agent-example/760](https://www.javacodeexamples.com/jsoup-set-user-agent-example/760)
-        - [http://www.useragentstring.com/](http://www.useragentstring.com/)
-        
-</div>
-</details> 
-    
-<details>
-<summary> 구글 로그인으로 로그인한 사용자의 정보를 가져오는 방법이 스프링 2.0대 버전에서 달라진 것</summary>
-<div markdown="1">
-  
-  - 1.5대 버전에서는 Controller의 인자로 Principal을 넘기면 principal.getName(0에서 바로 꺼내서 쓸 수 있었는데, 2.0대 버전에서는 principal.getName()의 경우 principal 객체.toString()을 반환한다.
-    - 1.5대 버전에서 principal을 사용하는 경우
-    - 아래와 같이 사용했다면,
-
-    ```jsx
-    @RequestMapping("/sso/user")
-    @SuppressWarnings("unchecked")
-    public Map<String, String> user(Principal principal) {
-        if (principal != null) {
-            OAuth2Authentication oAuth2Authentication = (OAuth2Authentication) principal;
-            Authentication authentication = oAuth2Authentication.getUserAuthentication();
-            Map<String, String> details = new LinkedHashMap<>();
-            details = (Map<String, String>) authentication.getDetails();
-            logger.info("details = " + details);  // id, email, name, link etc.
-            Map<String, String> map = new LinkedHashMap<>();
-            map.put("email", details.get("email"));
-            return map;
-        }
-        return null;
-    }
-    ```
-
-    - 2.0대 버전에서는
-    - 아래와 같이 principal 객체의 내용을 꺼내 쓸 수 있다.
-
-    ```jsx
-    UsernamePasswordAuthenticationToken token =
-                    (UsernamePasswordAuthenticationToken) SecurityContextHolder
-                            .getContext().getAuthentication();
-            Map<String, Object> map = (Map<String, Object>) token.getPrincipal();
-
-            String email = String.valueOf(map.get("email"));
-            post.setMember(memberRepository.findByEmail(email));
-    ```
-        
-</div>
-</details> 
-    
-<details>
-<summary> 랭킹 동점자 처리 문제</summary>
-<div markdown="1">
-  
-  - PageRequest의 Sort부분에서 properties를 "rankPoint"를 주고 "likeCnt"를 줘서 댓글수보다 좋아요수가 우선순위 갖도록 설정.
-  - 좋아요 수도 똑같다면..........
-        
-</div>
-</details> 
     
 </br>
 
-## 6. 회고 / 느낀점
->프로젝트 개발 회고 글: https://zuminternet.github.io/ZUM-Pilot-integer/
 
