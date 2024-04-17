@@ -197,7 +197,8 @@
 													<h5>금일 기온이 매우 낮습니다. <br>따뜻하고 포근한 옷이 어떨까요? </h5>
 												</div>
 												<div class="row">
-													<%-- <button type="button" class="btn btn-outline-info"
+													<%-- DB에 있는 코디의 계절은 모두 "겨울" -> 다른 계절일 때는 randomCody 가져올 수 없음
+														<button type="button" class="btn btn-outline-info"
 														id="float" style="right: 25%; bottom: 25%; position: absolute;"
 														onclick="location.href='goCodyDetail?cody_idx=<%=randomCody.get(0).getCody_idx()%>'">
 														추천 코디 보러가기

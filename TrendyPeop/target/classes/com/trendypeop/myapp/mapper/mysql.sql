@@ -24,7 +24,7 @@ select * from datalab;
 
 select * from datalab where collected_at in ("2024-01-23" , "2024-01-15")
 
-select count(*) from tb_cody;
+select * from tb_cody;
 
 
 select count(*) from tb_item;
